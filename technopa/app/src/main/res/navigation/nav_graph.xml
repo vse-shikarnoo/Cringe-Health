@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.technopa.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/main_fragment_layout">
+        <action
+            android:id="@+id/action_mainFragment_to_personalDietFragment"
+            app:destination="@id/personalDietFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_personalTrainingFragment"
+            app:destination="@id/personalTrainingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/personalDietFragment"
+        android:name="com.example.technopa.PersonalDietFragment"
+        android:label="PersonalDietFragment"
+        tools:layout="@layout/personal_diet_layout"/>
+    <fragment
+        android:id="@+id/personalTrainingFragment"
+        android:name="com.example.technopa.PersonalTrainingFragment"
+        android:label="PersonalTrainingFragment"
+        tools:layout="@layout/personal_training_layout"/>
+</navigation>
