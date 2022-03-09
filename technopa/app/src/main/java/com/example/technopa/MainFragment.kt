@@ -17,6 +17,7 @@ class MainFragment : Fragment(R.layout.main_fragment_layout) {
         textViewXD.setOnLongClickListener {
             findNavController().navigate(MainFragmentDirections.actionMainFragmentToPersonalDietFragment())
             true
+
         }
     }
 }
