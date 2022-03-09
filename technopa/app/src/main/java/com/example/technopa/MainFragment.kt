@@ -10,8 +10,7 @@ class MainFragment : Fragment(R.layout.main_fragment_layout) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var a = 1
-        a = a+1
+
 
         textViewXD.setOnClickListener {
             findNavController().navigate(MainFragmentDirections.actionMainFragmentToPersonalTrainingFragment())
