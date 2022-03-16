@@ -13,6 +13,8 @@ import androidx.lifecycle.LifecycleOwner
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
+//Всякие функции расширения, можете добавлять
+
 fun Fragment.toast(@StringRes stringRes: String) {
     Toast.makeText(requireContext(), stringRes, Toast.LENGTH_SHORT).show()
 }
