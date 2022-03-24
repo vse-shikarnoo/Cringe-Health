@@ -5,4 +5,5 @@ import android.os.Bundle
 
 //Лучше не трогать вообще
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
+
 }
