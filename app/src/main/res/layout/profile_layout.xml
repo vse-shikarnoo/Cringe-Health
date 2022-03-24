@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/image1"
+        />
+    <TextView
+        android:id="@+id/edit_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:text="Редактировать информацию"
+        android:layout_below="@id/profile_image"
+        android:paddingTop="8dp"
+        android:layout_alignLeft="@+id/profile_image"
+        android:layout_alignRight="@+id/profile_image"
+        android:gravity="center"
+        />
+    <TextView
+        android:id="@+id/name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/profile_image"
+        android:layout_alignTop="@+id/profile_image"
+        android:textSize="30sp"
+        android:layout_marginLeft="30dp"
+        android:text="Вячеслав"
+        />
+    <TextView
+        android:id="@+id/surname_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/profile_image"
+        android:layout_below="@+id/name_tv"
+        android:textSize="30sp"
+        android:layout_marginLeft="30dp"
+        android:text="Горлов"
+        />
+
+    <TextView
+        android:id="@+id/height_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/surname_tv"
+        android:layout_marginLeft="30dp"
+        android:layout_toRightOf="@+id/profile_image"
+        android:text="Рост, см:"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/height_value_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/height_tv"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/height_tv"
+        android:text="180"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/weight_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/profile_image"
+        android:layout_below="@+id/height_tv"
+        android:textSize="20sp"
+        android:layout_marginLeft="30dp"
+        android:text="Вес, кг:"
+        />
+
+    <TextView
+        android:id="@+id/weight_value_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/weight_tv"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/weight_tv"
+        android:text="95"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/desired_weight_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/weight_tv"
+        android:layout_marginLeft="30dp"
+        android:layout_toRightOf="@+id/profile_image"
+        android:text="Желаемый вес, кг:"
+        android:textSize="20sp"
+        android:layout_alignBottom="@+id/edit_tv"
+        />
+
+    <TextView
+        android:id="@+id/desired_weight_value_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/desired_weight_tv"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/desired_weight_tv"
+        android:text="95"
+        android:textSize="20sp"
+        android:layout_alignBottom="@+id/edit_tv"/>
+
+    <TextView
+        android:id="@+id/progress_value_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_tv"
+        android:gravity="end"
+        android:text="95%"
+        android:textSize="20sp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        />
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_alignTop="@+id/progress_value_tv"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_toLeftOf="@+id/progress_value_tv"
+        />
+    <Button
+        android:id="@+id/achieve_btn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Достижения"
+        android:layout_below="@+id/progress_value_tv"
+        android:layout_marginLeft="20dp"
+        />
+    <Button
+        android:id="@+id/progress_btn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Прогресс"
+        android:layout_below="@+id/progress_value_tv"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true"
+        />
+    <com.jjoe64.graphview.GraphView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/progress_btn"
+        android:layout_marginTop="20dp"
+        />
+</RelativeLayout>

@@ -57,4 +57,10 @@ dependencies {
 
     // Jetpack Compose Integration
     implementation("androidx.navigation:navigation-compose:2.4.1")
+
+    // Сircular images
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // Graphs
+    implementation 'com.jjoe64:graphview:4.2.2'
 }
