@@ -11,7 +11,9 @@ import com.example.technopa.databinding.ItemPersonalDietLayoutBinding
 import com.example.technopa.inflate
 
 
-class PersonalDietAdapter: ListAdapter<PriemPishi,PersonalDietAdapter.Holder>(diffUtilCallBack()) {
+class PersonalDietAdapter(
+
+): ListAdapter<PriemPishi,PersonalDietAdapter.Holder>(diffUtilCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val binding = ItemPersonalDietLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -25,7 +27,7 @@ class PersonalDietAdapter: ListAdapter<PriemPishi,PersonalDietAdapter.Holder>(di
 
     class diffUtilCallBack():DiffUtil.ItemCallback<PriemPishi>() {
         override fun areItemsTheSame(oldItem: PriemPishi, newItem: PriemPishi): Boolean {
-            return oldItem.name == newItem.name
+            return oldItem.title == newItem.title
         }
 
         override fun areContentsTheSame(oldItem: PriemPishi, newItem: PriemPishi): Boolean {
@@ -35,8 +37,12 @@ class PersonalDietAdapter: ListAdapter<PriemPishi,PersonalDietAdapter.Holder>(di
 
     class Holder(val binding: ItemPersonalDietLayoutBinding): RecyclerView.ViewHolder(binding.root){
 
+        init {
+
+        }
+
         fun bind(item:PriemPishi){
-            binding.itemPersonalDietTextView.text = item.name
+            binding.itemPersonalDietTextView.text = item.title
             //itemView.itemPersonalDietTextView.text = item.name
         }
     }
