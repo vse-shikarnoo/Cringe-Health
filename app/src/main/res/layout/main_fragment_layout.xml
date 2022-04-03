@@ -6,76 +6,15 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textviewDietTrain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/textviewGI"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/textviewGI"
-        android:text="dietTrain" />
-
-    <TextView
-        android:id="@+id/textviewGI"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/textviewProfile"
-        app:layout_constraintStart_toEndOf="@id/textviewDietTrain"
-        android:text="GI" />
-
-    <TextView
-        android:id="@+id/textviewProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/textviewGI"
-        app:layout_constraintTop_toTopOf="@id/textviewGI"
-        tools:text="Profile" />
-
-    <TextView
-        android:id="@+id/textviewSmoking"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:background="@android:color/black"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/textviewDietTrain"
-        app:layout_constraintEnd_toStartOf="@id/textviewAlco"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="Smoking" />
-
-    <TextView
-        android:id="@+id/textviewAlco"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/black"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/textviewSmoking"
-        app:layout_constraintTop_toTopOf="@id/textviewSmoking"
-        android:text="Alco" />
-
-    <TextView
         android:id="@+id/textViewXD"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="XD"
         android:textColor="@android:color/black"
         android:textSize="64sp"
-        app:layout_constraintBottom_toTopOf="@+id/textviewSmoking"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="XD" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

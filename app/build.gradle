@@ -32,6 +32,14 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    viewBinding{
+        enabled true
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -63,4 +71,8 @@ dependencies {
 
     // Graphs
     implementation 'com.jjoe64:graphview:4.2.2'
+
+    //Fragments
+    implementation 'androidx.fragment:fragment-ktx:1.4.1'
+
 }
