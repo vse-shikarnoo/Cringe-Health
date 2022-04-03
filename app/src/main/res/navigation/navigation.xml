@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation"
+    app:startDestination="@id/profileFragment">
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="ProfileFragment"
+        android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.technopa.MainFragment"
+        android:label="MainFragment" />
+    <fragment
+        android:id="@+id/personalTrainingFragment"
+        android:name="com.example.technopa.PersonalTrainingFragment"
+        android:label="PersonalTrainingFragment" />
+</navigation>
