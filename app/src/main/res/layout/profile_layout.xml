@@ -27,16 +27,16 @@
         android:paddingTop="8dp"
         android:text="Редактировать информацию"
         android:textSize="13sp" />
+
     <TextView
         android:id="@+id/name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/profile_image"
         android:layout_alignTop="@+id/profile_image"
-        android:textSize="30sp"
         android:layout_marginLeft="30dp"
+        android:layout_toRightOf="@+id/profile_image"
         android:text="Вячеслав"
-        />
+        android:textSize="30sp" />
     <TextView
         android:id="@+id/surname_tv"
         android:layout_width="wrap_content"

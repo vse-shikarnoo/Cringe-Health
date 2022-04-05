@@ -20,9 +20,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        replaceFragment(mainFragment)
+        BottomView.selectedItemId = R.id.mainFragment
 
-        BottomView.setOnNavigationItemSelectedListener() {
+        BottomView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.profileFragment -> replaceFragment(profileFragment)
                 R.id.mainFragment -> replaceFragment(mainFragment)

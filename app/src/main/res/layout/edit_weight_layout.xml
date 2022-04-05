@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/weight_editing_tv"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Вес"
+        android:textSize="20dp"
+        tools:ignore="MissingConstraints"
+        android:gravity="center"/>
+    <NumberPicker
+        android:layout_marginLeft="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/weight_editing_tv"
+        android:id="@+id/weight_np1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintStart_toStartOf="@id/weight_editing_tv"/>
+
+    <TextView
+        android:id="@+id/weight_editing_dot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:text="."
+        app:flow_verticalAlign="center"
+        app:layout_constraintBottom_toBottomOf="@+id/weight_np1"
+        app:layout_constraintStart_toEndOf="@+id/weight_np1"
+        app:layout_constraintTop_toTopOf="@+id/weight_np1" />
+    <NumberPicker
+        app:layout_constraintTop_toBottomOf="@+id/weight_editing_tv"
+        android:id="@+id/weight_np2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintStart_toEndOf="@id/weight_editing_dot"/>
+    <TextView
+        android:layout_marginLeft="5dp"
+        android:id="@+id/weight_editing_kg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="кг"
+        app:flow_verticalAlign="center"
+        app:layout_constraintBottom_toBottomOf="@+id/weight_np2"
+        app:layout_constraintStart_toEndOf="@+id/weight_np2"
+        app:layout_constraintTop_toTopOf="@+id/weight_np2" />
+    <Button
+        android:id="@+id/cancel_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/weight_np1"
+        android:layout_marginTop="10dp"
+        android:text="Отмена"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:ignore="MissingConstraints" />
+    <Button
+        android:id="@+id/accept_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/weight_np1"
+        android:layout_marginTop="10dp"
+        android:text="Принять"
+        app:layout_constraintRight_toRightOf="@id/weight_editing_tv"
+        tools:ignore="MissingConstraints" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
