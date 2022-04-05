@@ -3,11 +3,11 @@
 
     <item
         android:id="@id/personalTrainingFragment"
-        android:title="Трени"
-        />
+        android:title="Трени" />
     <item
         android:id="@id/mainFragment"
-        android:title="ГИ" />
+        android:title="ГИ"
+        />
     <item
         android:id="@id/profileFragment"
         android:title="Профиль" />
