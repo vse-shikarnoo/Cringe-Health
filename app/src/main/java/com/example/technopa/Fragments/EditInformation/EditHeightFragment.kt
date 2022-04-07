@@ -1,15 +1,16 @@
-package com.example.technopa.EditInformation
+package com.example.technopa.Fragments.EditInformation
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.DialogFragment
-import com.example.technopa.R
+import androidx.lifecycle.MutableLiveData
+import com.example.technopa.ViewModels.EditHeightVM
 import com.example.technopa.databinding.EditHeightLayoutBinding
+import com.example.technopa.models.User
 
-class EditHeightFragment(var user: ProfileFragment.User): DialogFragment() {
+class EditHeightFragment(var user: MutableLiveData<User>): DialogFragment() {
     private lateinit var binding: EditHeightLayoutBinding
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -19,15 +20,12 @@ class EditHeightFragment(var user: ProfileFragment.User): DialogFragment() {
 
         binding = EditHeightLayoutBinding.inflate(inflater, container,  false)
 
-        binding.heightNp1.maxValue = 300
-        binding.heightNp1.minValue = 0
-        binding.heightNp1.value = user.height
+        val editHeightVM = EditHeightVM()
 
+        setNumberPicker(user.value)
 
         binding.acceptButton.setOnClickListener(){
-            user.height = binding.heightNp1.value
-            val height: TextView = requireActivity().findViewById(R.id.height_value_tv)
-            height.text = user.height.toString()
+            user.value = editHeightVM.setHeight(binding.heightNp1.value, user.value)
             dismiss()
         }
 
@@ -36,6 +34,11 @@ class EditHeightFragment(var user: ProfileFragment.User): DialogFragment() {
         }
 
         return binding.root
+    }
 
+    private fun setNumberPicker(user: User?){
+        binding.heightNp1.maxValue = 300
+        binding.heightNp1.minValue = 0
+        binding.heightNp1.value = user!!.height
     }
 }
