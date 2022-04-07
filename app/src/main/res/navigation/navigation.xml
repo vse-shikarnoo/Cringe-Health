@@ -6,14 +6,14 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="ProfileFragment"
+        android:name="com.example.technopa.Fragments.ProfileFragment"
         android:label="ProfileFragment" />
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.technopa.MainFragment"
+        android:name="com.example.technopa.Fragments.MainFragment"
         android:label="MainFragment" />
     <fragment
         android:id="@+id/personalTrainingFragment"
-        android:name="com.example.technopa.PersonalTrainingFragment"
+        android:name="com.example.technopa.Fragments.PersonalTrainingFragment"
         android:label="PersonalTrainingFragment" />
 </navigation>

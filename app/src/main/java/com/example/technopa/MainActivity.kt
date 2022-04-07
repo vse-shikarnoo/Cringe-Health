@@ -1,15 +1,11 @@
 package com.example.technopa
 
-import ProfileFragment
+import com.example.technopa.Fragments.ProfileFragment
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationMenuView
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.technopa.Fragments.MainFragment
+import com.example.technopa.Fragments.PersonalTrainingFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

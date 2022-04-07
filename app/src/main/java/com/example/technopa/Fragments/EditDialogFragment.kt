@@ -1,21 +1,22 @@
-package com.example.technopa
+package com.example.technopa.Fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.example.technopa.EditInformation.EditDesiredWeightFragment
-import com.example.technopa.EditInformation.EditHeightFragment
-import com.example.technopa.EditInformation.EditNameFragment
-import com.example.technopa.EditInformation.EditWeightFragment
-import com.example.technopa.databinding.ActivityMainBinding.inflate
+import androidx.lifecycle.MutableLiveData
+import com.example.technopa.Fragments.EditInformation.EditDesiredWeightFragment
+import com.example.technopa.Fragments.EditInformation.EditHeightFragment
+//import com.example.technopa.Fragments.EditInformation.EditDesiredWeightFragment
+//import com.example.technopa.Fragments.EditInformation.EditHeightFragment
+//import com.example.technopa.Fragments.EditInformation.EditWeightFragment
+import com.example.technopa.Fragments.EditInformation.EditNameFragment
+import com.example.technopa.Fragments.EditInformation.EditWeightFragment
 import com.example.technopa.databinding.EditDialogLayoutBinding
-import com.example.technopa.databinding.ProfileLayoutBinding
-import kotlinx.android.synthetic.main.edit_dialog_layout.*
-import kotlinx.android.synthetic.main.profile_layout.*
+import com.example.technopa.models.User
 
-class EditDialogFragment(var user : ProfileFragment.User) : DialogFragment() {
+class EditDialogFragment(var user: MutableLiveData<User>) : DialogFragment() {
     private lateinit var binding: EditDialogLayoutBinding
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,7 +25,6 @@ class EditDialogFragment(var user : ProfileFragment.User) : DialogFragment() {
     ): View? {
 
         binding = EditDialogLayoutBinding.inflate(inflater, container,  false)
-
 
         binding.editDesWeight.setOnClickListener(){
             val editDesWeight = EditDesiredWeightFragment(user)
