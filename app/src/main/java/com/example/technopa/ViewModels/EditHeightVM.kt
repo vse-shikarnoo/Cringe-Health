@@ -1,14 +1,21 @@
 package com.example.technopa.ViewModels
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.technopa.models.Repository
 import com.example.technopa.models.User
 
 class EditHeightVM: ViewModel() {
 
-    fun setHeight(newHeight: Int, user: User?): User {
-        var user1 = user!!
+    var user = MutableLiveData<User?>()
+
+    init {
+        user.value = Repository().getUser()
+    }
+
+    fun setHeight(newHeight: Int) {
+        val user1 = user.value!!
         user1.height = newHeight
-        return user1
-        // + send to server
+        Repository().sendUser(user1)
     }
 }

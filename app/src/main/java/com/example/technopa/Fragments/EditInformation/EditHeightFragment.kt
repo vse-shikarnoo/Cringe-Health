@@ -5,40 +5,41 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.MutableLiveData
+import androidx.fragment.app.viewModels
 import com.example.technopa.ViewModels.EditHeightVM
 import com.example.technopa.databinding.EditHeightLayoutBinding
-import com.example.technopa.models.User
 
-class EditHeightFragment(var user: MutableLiveData<User>): DialogFragment() {
+class EditHeightFragment: DialogFragment() {
+
+    private val editHeightVM : EditHeightVM by viewModels()
+
     private lateinit var binding: EditHeightLayoutBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
 
         binding = EditHeightLayoutBinding.inflate(inflater, container,  false)
 
-        val editHeightVM = EditHeightVM()
+        setNumberPicker()
 
-        setNumberPicker(user.value)
-
-        binding.acceptButton.setOnClickListener(){
-            user.value = editHeightVM.setHeight(binding.heightNp1.value, user.value)
+        binding.acceptButton.setOnClickListener {
+            editHeightVM.setHeight(binding.heightNp1.value)
             dismiss()
         }
 
-        binding.cancelButton.setOnClickListener(){
+        binding.cancelButton.setOnClickListener {
             dismiss()
         }
 
         return binding.root
     }
 
-    private fun setNumberPicker(user: User?){
+    private fun setNumberPicker(){
         binding.heightNp1.maxValue = 300
         binding.heightNp1.minValue = 0
-        binding.heightNp1.value = user!!.height
+        binding.heightNp1.value = editHeightVM.user.value!!.height as Int
     }
 }

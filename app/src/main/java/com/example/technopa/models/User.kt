@@ -1,13 +1,12 @@
 package com.example.technopa.models
 
-class User (){
-    //val id:Long
-    var name: String = "Vyacheslav"
-    var surname: String = "Gorlov"
-    var height : Int = 180
-    var weight : Double = 95.0
-    var desired_weight : Double = 85.0
+open class User {
 
+    var name = "Vyacheslav"
+    var surname = "Gorlov"
+    var height = 180
+    var weight = 95.0
+    var desired_weight = 85.0
     //val statistic: Statistic,
     //val achievment: List<Achievment>
 }

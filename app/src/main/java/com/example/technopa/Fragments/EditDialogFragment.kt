@@ -5,44 +5,39 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.MutableLiveData
 import com.example.technopa.Fragments.EditInformation.EditDesiredWeightFragment
 import com.example.technopa.Fragments.EditInformation.EditHeightFragment
-//import com.example.technopa.Fragments.EditInformation.EditDesiredWeightFragment
-//import com.example.technopa.Fragments.EditInformation.EditHeightFragment
-//import com.example.technopa.Fragments.EditInformation.EditWeightFragment
-import com.example.technopa.Fragments.EditInformation.EditNameFragment
 import com.example.technopa.Fragments.EditInformation.EditWeightFragment
+import com.example.technopa.Fragments.EditInformation.EditNameFragment
 import com.example.technopa.databinding.EditDialogLayoutBinding
-import com.example.technopa.models.User
 
-class EditDialogFragment(var user: MutableLiveData<User>) : DialogFragment() {
-    private lateinit var binding: EditDialogLayoutBinding
+class EditDialogFragment : DialogFragment() {
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        binding = EditDialogLayoutBinding.inflate(inflater, container,  false)
+        val binding = EditDialogLayoutBinding.inflate(inflater, container,  false)
 
-        binding.editDesWeight.setOnClickListener(){
-            val editDesWeight = EditDesiredWeightFragment(user)
+        binding.editDesWeight.setOnClickListener {
+            val editDesWeight = EditDesiredWeightFragment()
             childFragmentManager.let { it1 -> editDesWeight.show(it1, "EditDesWeightDialog") }
         }
-        binding.editWeight.setOnClickListener(){
-            val editWeight = EditWeightFragment(user)
+        binding.editWeight.setOnClickListener {
+            val editWeight = EditWeightFragment()
             childFragmentManager.let { it1 -> editWeight.show(it1, "EditWeightDialog") }
         }
-        binding.editHeight.setOnClickListener(){
-            val editHeight = EditHeightFragment(user)
+        binding.editHeight.setOnClickListener {
+            val editHeight = EditHeightFragment()
             childFragmentManager.let { it1 -> editHeight.show(it1, "EditDesHeightDialog") }
         }
-        binding.editName.setOnClickListener(){
-            val editName = EditNameFragment(user)
+        binding.editName.setOnClickListener {
+            val editName = EditNameFragment()
             childFragmentManager.let { it1 -> editName.show(it1, "EditNameDialog") }
         }
-        binding.backButton.setOnClickListener(){
+        binding.backButton.setOnClickListener {
             dismiss()
         }
 
