@@ -1,17 +1,25 @@
 package com.example.technopa.ViewModels
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.technopa.models.Repository
 import com.example.technopa.models.User
 
 class EditDesiredWeightVM: ViewModel() {
-    fun desiredWeightNp2(user: User): Int {
-        return ((user.desired_weight - user.desired_weight.toInt())*10).toInt()
+
+    var user = MutableLiveData<User?>()
+
+    init {
+        user.value = Repository().getUser()
     }
 
-    fun setDesWeight(IntPart: Int, FracPart: Int, user: User?): User {
-        var user1 = user!!
+    fun desiredWeightNp2(): Int {
+        return ((user.value!!.desired_weight - user.value!!.desired_weight.toInt())*10).toInt()
+    }
+
+    fun setDesWeight(IntPart: Int, FracPart: Int) {
+        val user1 = user.value!!
         user1.desired_weight = IntPart.toDouble()+(FracPart.toDouble()/10)
-        return user1
-        // + send to server
+        Repository().sendUser(user1)
     }
 }

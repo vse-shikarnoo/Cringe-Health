@@ -1,40 +1,37 @@
 package com.example.technopa.Fragments.EditInformation
 
-import android.annotation.SuppressLint
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.MutableLiveData
+import androidx.fragment.app.viewModels
 import com.example.technopa.ViewModels.EditWeightVM
 import com.example.technopa.databinding.EditWeightLayoutBinding
 import com.example.technopa.models.User
 
-class EditWeightFragment(var user: MutableLiveData<User>): DialogFragment() {
+class EditWeightFragment: DialogFragment() {
 
     private lateinit var binding: EditWeightLayoutBinding
+
+    private val editWeightVM : EditWeightVM by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
 
         binding = EditWeightLayoutBinding.inflate(inflater, container,  false)
 
-        val editWeightVM = EditWeightVM()
+        setNumberPickers(editWeightVM.user.value)
 
-        setNumberPickers(user.value, editWeightVM)
-
-        binding.acceptButton.setOnClickListener(){
-            user.value = editWeightVM.setWeight(binding.weightNp1.value, binding.weightNp2.value, user.value)
+        binding.acceptButton.setOnClickListener {
+            editWeightVM.setWeight(binding.weightNp1.value, binding.weightNp2.value)
             dismiss()
         }
 
-        binding.cancelButton.setOnClickListener(){
+        binding.cancelButton.setOnClickListener {
             dismiss()
         }
 
@@ -42,14 +39,14 @@ class EditWeightFragment(var user: MutableLiveData<User>): DialogFragment() {
 
     }
 
-    private fun setNumberPickers(user: User?, VM: EditWeightVM) {
+    private fun setNumberPickers(user: User?) {
         binding.weightNp1.maxValue = 300
         binding.weightNp1.minValue = 0
         binding.weightNp1.value = user?.weight!!.toInt()
 
         binding.weightNp2.maxValue = 9
         binding.weightNp2.minValue = 0
-        binding.weightNp2.value = VM.weightNp2(user)
+        binding.weightNp2.value = editWeightVM.weightNp2()
     }
 
 }

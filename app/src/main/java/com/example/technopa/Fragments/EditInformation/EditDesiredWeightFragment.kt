@@ -8,12 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.MutableLiveData
+import androidx.fragment.app.viewModels
 import com.example.technopa.ViewModels.EditDesiredWeightVM
 import com.example.technopa.databinding.EditDesWeightLayoutBinding
 import com.example.technopa.models.User
 
-class EditDesiredWeightFragment(var user: MutableLiveData<User>) : DialogFragment(){
+class EditDesiredWeightFragment : DialogFragment(){
+
+    private val editDesWeightVM : EditDesiredWeightVM by viewModels()
 
     private lateinit var binding: EditDesWeightLayoutBinding
     @SuppressLint("SetTextI18n")
@@ -22,20 +24,18 @@ class EditDesiredWeightFragment(var user: MutableLiveData<User>) : DialogFragmen
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
 
         binding = EditDesWeightLayoutBinding.inflate(inflater, container,  false)
 
-        val editDesWeightVM = EditDesiredWeightVM()
+        setNumberPickers(editDesWeightVM.user.value)
 
-        setNumberPickers(user.value, editDesWeightVM)
-
-        binding.acceptButton.setOnClickListener(){
-            user.value = editDesWeightVM.setDesWeight(binding.desiredWeightNp1.value, binding.desiredWeightNp2.value, user.value)
+        binding.acceptButton.setOnClickListener {
+            editDesWeightVM.setDesWeight(binding.desiredWeightNp1.value, binding.desiredWeightNp2.value)
             dismiss()
         }
 
-        binding.cancelButton.setOnClickListener(){
+        binding.cancelButton.setOnClickListener {
             dismiss()
         }
 
@@ -43,14 +43,14 @@ class EditDesiredWeightFragment(var user: MutableLiveData<User>) : DialogFragmen
 
     }
 
-    private fun setNumberPickers(user: User?, VM: EditDesiredWeightVM) {
+    private fun setNumberPickers(user: User?) {
         binding.desiredWeightNp1.maxValue = 300
         binding.desiredWeightNp1.minValue = 0
         binding.desiredWeightNp1.value = user?.desired_weight!!.toInt()
 
         binding.desiredWeightNp2.maxValue = 9
         binding.desiredWeightNp2.minValue = 0
-        binding.desiredWeightNp2.value = VM.desiredWeightNp2(user)
+        binding.desiredWeightNp2.value = editDesWeightVM.desiredWeightNp2()
     }
 
 }

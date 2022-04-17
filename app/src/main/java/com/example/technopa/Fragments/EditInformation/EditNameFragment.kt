@@ -6,32 +6,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.MutableLiveData
+import androidx.fragment.app.viewModels
 import com.example.technopa.ViewModels.EditNameVM
 import com.example.technopa.databinding.EditNameLayoutBinding
-import com.example.technopa.models.User
 
-class EditNameFragment(var user: MutableLiveData<User>): DialogFragment(){
-    private lateinit var binding: EditNameLayoutBinding
+class EditNameFragment: DialogFragment(){
+
+    private val editNameVM : EditNameVM by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
 
-        val editNameVM = EditNameVM()
+        val binding = EditNameLayoutBinding.inflate(inflater, container,  false)
 
-        binding = EditNameLayoutBinding.inflate(inflater, container,  false)
+        binding.nameEditingEt.setText(editNameVM.user.value?.name)
+        binding.surnameEditingEt.setText(editNameVM.user.value?.surname)
 
-        binding.nameEditingEt.setText(user.value?.name)
-        binding.surnameEditingEt.setText(user.value?.surname)
-
-        binding.acceptButton.setOnClickListener(){
-            user.value = editNameVM.setNameSurname(binding.nameEditingEt.text.toString(), binding.surnameEditingEt.text.toString(), user.value)
+        binding.acceptButton.setOnClickListener {
+            editNameVM.setNameSurname(binding.nameEditingEt.text.toString(), binding.surnameEditingEt.text.toString())
             dismiss()
         }
 
-        binding.cancelButton.setOnClickListener(){
+        binding.cancelButton.setOnClickListener {
             dismiss()
         }
 
