@@ -9,12 +9,13 @@ import com.example.technopa.models.User
 class ProfileVM: ViewModel() {
 
         var user = MutableLiveData<User?>()
+        var progressText = MutableLiveData<String>()
 
         init {
                 user.value = Repository().getUser()
+                progressText.value = (((user.value?.weight?.let { user.value?.desired_weight?.div(it) })?.times(
+                        100
+                ))?.toInt()).toString() + "%"
         }
 
-        fun progressText(): String{
-                return (((user.value!!.desired_weight / user.value!!.weight)*100).toInt()).toString() + "%"
-        }
 }

@@ -22,8 +22,10 @@ class EditNameFragment: DialogFragment(){
 
         val binding = EditNameLayoutBinding.inflate(inflater, container,  false)
 
-        binding.nameEditingEt.setText(editNameVM.user.value?.name)
-        binding.surnameEditingEt.setText(editNameVM.user.value?.surname)
+        editNameVM.user.observe(viewLifecycleOwner){
+            binding.nameEditingEt.setText(it?.name)
+            binding.surnameEditingEt.setText(it?.surname)
+        }
 
         binding.acceptButton.setOnClickListener {
             editNameVM.setNameSurname(binding.nameEditingEt.text.toString(), binding.surnameEditingEt.text.toString())
