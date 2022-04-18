@@ -3,14 +3,14 @@
     android:id="@+id/scroll"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
         android:layout_marginTop="15dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:src="@drawable/image1"
@@ -21,11 +21,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/profile_image"
-        android:layout_alignLeft="@+id/profile_image"
-        android:layout_alignRight="@+id/profile_image"
+        android:layout_alignStart="@+id/profile_image"
+        android:layout_alignEnd="@+id/profile_image"
         android:gravity="center"
         android:paddingTop="8dp"
-        android:text="Редактировать информацию"
+        android:text="@string/EditInformation"
         android:textSize="13sp" />
 
     <TextView
@@ -33,19 +33,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/profile_image"
-        android:layout_marginLeft="30dp"
-        android:layout_toRightOf="@+id/profile_image"
-        android:text="Вячеслав"
+        android:layout_marginStart="30dp"
+        android:layout_toEndOf="@+id/profile_image"
+        android:text="Имя"
         android:textSize="30sp" />
     <TextView
         android:id="@+id/surname_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/profile_image"
+        android:layout_toEndOf="@+id/profile_image"
         android:layout_below="@+id/name_tv"
         android:textSize="30sp"
-        android:layout_marginLeft="30dp"
-        android:text="Горлов"
+        android:layout_marginStart="30dp"
+        android:text="Фамилия"
         />
 
     <TextView
@@ -53,9 +53,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/surname_tv"
-        android:layout_marginLeft="30dp"
-        android:layout_toRightOf="@+id/profile_image"
-        android:text="Рост, см:"
+        android:layout_marginStart="30dp"
+        android:layout_toEndOf="@+id/profile_image"
+        android:text="@string/Height"
         android:textSize="20sp" />
 
     <TextView
@@ -63,19 +63,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/height_tv"
-        android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@+id/height_tv"
-        android:text="180"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@+id/height_tv"
+        android:text=""
         android:textSize="20sp" />
     <TextView
         android:id="@+id/weight_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/profile_image"
+        android:layout_toEndOf="@+id/profile_image"
         android:layout_below="@+id/height_tv"
         android:textSize="20sp"
-        android:layout_marginLeft="30dp"
-        android:text="Вес, кг:"
+        android:layout_marginStart="30dp"
+        android:text="@string/Weight"
         />
 
     <TextView
@@ -83,9 +83,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/weight_tv"
-        android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@+id/weight_tv"
-        android:text="95"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@+id/weight_tv"
+        android:text=""
         android:textSize="20sp" />
 
     <TextView
@@ -94,9 +94,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/weight_tv"
         android:layout_alignBottom="@+id/edit_tv"
-        android:layout_marginLeft="30dp"
-        android:layout_toRightOf="@+id/profile_image"
-        android:text="Желаемый вес, кг:"
+        android:layout_marginStart="30dp"
+        android:layout_toEndOf="@+id/profile_image"
+        android:text="@string/DesiredWeight"
         android:textSize="20sp" />
 
     <TextView
@@ -105,9 +105,9 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/desired_weight_tv"
         android:layout_alignBottom="@+id/edit_tv"
-        android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@+id/desired_weight_tv"
-        android:text="95"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@+id/desired_weight_tv"
+        android:text=""
         android:textSize="20sp" />
 
     <TextView
@@ -115,11 +115,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edit_tv"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
         android:gravity="end"
-        android:text="95%"
+        android:text=""
         android:textSize="20sp" />
 
     <ProgressBar
@@ -128,28 +128,28 @@
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:layout_alignTop="@+id/progress_value_tv"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_toLeftOf="@+id/progress_value_tv" />
+        android:layout_marginEnd="10dp"
+        android:layout_toStartOf="@+id/progress_value_tv" />
 
     <Button
         android:id="@+id/achieve_btn"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/progress_value_tv"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:text="Достижения" />
+        android:text="@string/Achievments" />
     <Button
         android:id="@+id/progress_btn"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Прогресс"
+        android:text="@string/Progress"
         android:layout_below="@+id/progress_value_tv"
-        android:layout_marginRight="20dp"
-        android:layout_alignParentRight="true"
+        android:layout_marginEnd="20dp"
+        android:layout_alignParentEnd="true"
         />
     <com.jjoe64.graphview.GraphView
         android:layout_width="wrap_content"
