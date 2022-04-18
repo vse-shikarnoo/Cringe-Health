@@ -1,74 +1,130 @@
 package com.example.technopa
 
+import android.os.Parcelable
+import android.util.Log
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-
+import com.google.firebase.database.ValueEventListener
+import kotlinx.parcelize.Parcelize
+import java.lang.Exception
 
 
 data class User(
-    val id:Long,
-    val nickname:String,
-    val height:Double,
-    val weight:Double,
+    val id: Long,
+    val nickname: String,
+    val height: Double,
+    val weight: Double,
     //val statistic:Statistic,
     //val Achievements:List<Achievement>
-    )
+)
 
 data class Statistic(
-    val id:Long,
-    val TrainingList:Map<String,List<Training>>, //Здесь String это дата
-    val PriemPishiList:Map<String,List<PriemPishi>>,)
+    val id: Long,
+    val TrainingList: Map<String, List<Training>>, //Здесь String это дата
+    val PriemPishiList: Map<String, List<PriemPishi>>,
+)
 
 data class Achievement(
     //val picture:Picture,
-    val data:String,
-    val opisanie:String)
-
+    val data: String,
+    val opisanie: String
+)
 
 
 data class Training(
-    val exercises:List<Exercise>,
-    val kalorii:Double,
-    val time:Int)
+    val exercises: List<Exercise> = emptyList(),
+    val kalorii: Double = 0.0,
+    val time: Int = 0
+)
 
 data class Exercise(
-    val title:String,
-    val povtoreniya:Pair<Int,Int>,
-    val opisanie:String)
-
+    val title: String = "",
+    val povtoreniya: Pair<Int, Int> = Pair(0,0),
+    val opisanie: String = ""
+)
+@Parcelize
 data class PriemPishi(
-    val title:String,
-    val eda:List<Eda>,
-    val kaloriiO:Double, //Каллории и БЖУ общее за прием пищи
-    val belkiO:Double,
-    val zhiriO:Double,
-    val uglevodiO:Double)
+    val title: String? = null,
+    val eda: List<Eda>? = null,
+    var kaloriiO: Double? = 0.0, //Каллории и БЖУ общее за прием пищи
+    var belkiO: Double? = 0.0,
+    var zhiriO: Double? = 0.0,
+    var uglevodiO: Double? = 0.0
+):Parcelable {
 
+
+}
+@Parcelize
 data class Eda(
-    val title:String,
-    val kalorii:Double,
-    val belki:Double,
-    val zhiri:Double,
-    val uglevodi:Double)
+    val title: String? = null,
+    val kalorii: Double? = null,
+    val belki: Double? = null,
+    val zhiri: Double? = null,
+    val uglevodi: Double? = null
+):Parcelable
 
+@Parcelize
 data class Dieta(
-    val title:String,
-    val priemPishiList:List<PriemPishi>,
-    val kaloriipd:Double, // Каллории и БЖУ в день
-    val belkipd:Double,
-    val zhiripd:Double,
-    val uglevodipd:Double,
-    val opisanie:String)
-
+    var title: String? = "",
+    var id: Long? = null,
+    var priemPishiList: List<PriemPishi>? = emptyList(),
+    var kaloriipd: Double? = 0.0, // Каллории и БЖУ в день
+    var opisanie: String? = ""
+):Parcelable {
+    override fun toString(): String {
+        return "Dieta[title = ${title};priem pishi = ${priemPishiList}]"
+    }
+}
 
 
 class FirebaseNetwork {
     private val database = FirebaseDatabase.getInstance()
-    val refUsers = database.getReference("Users")
+    private val refUsers = database.getReference("Users")
     private val refTrainings = database.getReference("Trainings")
     private val refDiets = database.getReference("Diets")
 
-    fun setUser(user: User){
-        refUsers.setValue(user)
+
+    fun setUser(user: User) {
+        refUsers.child(user.id.toString()).setValue(user)
     }
+
+    fun getDiets(
+        call:(MutableList<Dieta>) -> Unit,
+        errorCall:(error:Throwable) -> Unit) {
+        val listDiets = mutableListOf<Dieta>()
+        refDiets.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (postSnapshot in snapshot.children) {
+                    listDiets.add(postSnapshot.getValue(Dieta::class.java)?:Dieta())
+                }
+                call(listDiets)
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Log.d("Test", error.message)
+                errorCall(Exception(error.message))
+            }
+        })
+    }
+
+    fun getTrainings(
+        call:(MutableList<Training>) -> Unit,
+        errorCall:(error:Throwable) -> Unit) {
+        val listTrainings = mutableListOf<Training>()
+        refDiets.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (postSnapshot in snapshot.children) {
+                    listTrainings.add(postSnapshot.getValue(Training::class.java)?: Training())
+                }
+                call(listTrainings)
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Log.d("Test", error.message)
+                errorCall(error.toException())
+            }
+        })
+    }
+
+
 
 }

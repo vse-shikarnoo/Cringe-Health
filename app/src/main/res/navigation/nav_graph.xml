@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/dietListFragment">
 
     <fragment
         android:id="@+id/mainFragment"
@@ -27,4 +27,22 @@
         android:name="com.example.technopa.PersonalTrainingFragment"
         android:label="PersonalTrainingFragment"
         tools:layout="@layout/personal_training_layout"/>
+    <fragment
+        android:id="@+id/dietListFragment"
+        android:name="com.example.technopa.Diet.Views.DietListFragment"
+        android:label="DietListFragment"
+        tools:layout="@layout/diet_list_layout">
+        <action
+            android:id="@+id/action_dietListFragment_to_detailDietFragment"
+            app:destination="@id/detailDietFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailDietFragment"
+        android:name="com.example.technopa.Diet.Views.DetailDietFragment"
+        android:label="DetailDietFragment" >
+        <argument
+            android:name="dieta"
+            app:argType="com.example.technopa.Dieta"
+            app:nullable="true" />
+    </fragment>
 </navigation>

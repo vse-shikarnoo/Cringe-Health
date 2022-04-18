@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.technopa.PriemPishi
 import com.example.technopa.R
 import com.example.technopa.databinding.ItemPersonalDietLayoutBinding
 import com.example.technopa.inflate

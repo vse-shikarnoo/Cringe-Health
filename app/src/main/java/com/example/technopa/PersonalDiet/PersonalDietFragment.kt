@@ -2,6 +2,7 @@ package com.example.technopa.PersonalDiet
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,18 +13,21 @@ import com.google.firebase.database.FirebaseDatabase
 
 class PersonalDietFragment : Fragment(R.layout.personal_diet_layout) {
 
-    val mdb = FirebaseDatabase.getInstance()
-    val mRf = mdb.getReference("priem")
-    val mrfUsers = mdb.getReference("Users")
+
 
 
 
     private var binding: PersonalDietLayoutBinding? = null
 
+    private val listEda = mutableListOf(
+        Eda("Syrok",kalorii = 102.0, belki = 25.0, zhiri = 30.0, uglevodi = 10.0),
+        Eda("Sup",kalorii = 112.0, belki = 35.0, zhiri = 40.0, uglevodi = 20.0),
+        Eda("Meat",kalorii = 122.0, belki = 45.0, zhiri = 50.0, uglevodi = 30.0)
+    )
     private val list:MutableList<PriemPishi> = mutableListOf(
-        PriemPishi("Завтрак","Sirok"),
-        PriemPishi("Обед","Sup"),
-        PriemPishi("Ужин","Myaso")
+        PriemPishi("Завтрак",listEda),
+        PriemPishi("Обед",listEda),
+        PriemPishi("Ужин",listEda)
     )
 
     private var adapterPersonalDiet:PersonalDietAdapter by autoCleared()
@@ -33,6 +37,8 @@ class PersonalDietFragment : Fragment(R.layout.personal_diet_layout) {
         binding = PersonalDietLayoutBinding.bind(view)
 
         init()
+
+
 
         binding!!.buttonPersonalDietAdd.setOnClickListener {
             //addDialog()
@@ -60,7 +66,9 @@ class PersonalDietFragment : Fragment(R.layout.personal_diet_layout) {
                 User(3,"Vlad", 193.0, 89.6, )
             )
             val user = userList.random()
-            FirebaseNetwork().refUsers.child(user.id.toString()).setValue(user)
+            FirebaseNetwork().setUser(userList.random())
+            FirebaseNetwork().getDiets({},{})
+
         }
     }
 
