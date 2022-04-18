@@ -9,7 +9,7 @@
         android:id="@+id/height_editing_tv"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="Рост"
+        android:text="@string/Height"
         android:textSize="20dp"
         tools:ignore="MissingConstraints"
         android:gravity="center"/>
@@ -24,24 +24,14 @@
         app:layout_constraintStart_toStartOf="@id/height_editing_tv"
         app:layout_constraintEnd_toEndOf="@id/height_editing_tv"
         />
-    <TextView
-        android:layout_marginLeft="5dp"
-        android:id="@+id/height_editing_kg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:text="см"
-        app:flow_verticalAlign="center"
-        app:layout_constraintBottom_toBottomOf="@id/height_np1"
-        app:layout_constraintStart_toEndOf="@id/height_np1"
-        app:layout_constraintTop_toTopOf="@id/height_np1" />
+
     <Button
         android:id="@+id/cancel_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/height_np1"
         android:layout_marginTop="10dp"
-        android:text="Отмена"
+        android:text="@string/Back"
         app:layout_constraintLeft_toLeftOf="parent"
         tools:ignore="MissingConstraints" />
     <Button
@@ -50,7 +40,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/height_np1"
         android:layout_marginTop="10dp"
-        android:text="Принять"
+        android:text="@string/Accept"
         app:layout_constraintRight_toRightOf="@id/height_editing_tv"
         tools:ignore="MissingConstraints" />
 
