@@ -23,19 +23,19 @@ class EditDialogFragment : DialogFragment() {
 
         binding.editDesWeight.setOnClickListener {
             val editDesWeight = EditDesiredWeightFragment()
-            childFragmentManager.let { it1 -> editDesWeight.show(it1, "EditDesWeightDialog") }
+            editDesWeight.show(childFragmentManager, "EditDesWeightDialog")
         }
         binding.editWeight.setOnClickListener {
             val editWeight = EditWeightFragment()
-            childFragmentManager.let { it1 -> editWeight.show(it1, "EditWeightDialog") }
+            editWeight.show(childFragmentManager, "EditWeightDialog")
         }
         binding.editHeight.setOnClickListener {
             val editHeight = EditHeightFragment()
-            childFragmentManager.let { it1 -> editHeight.show(it1, "EditDesHeightDialog") }
+            editHeight.show(childFragmentManager, "EditDesHeightDialogv")
         }
         binding.editName.setOnClickListener {
             val editName = EditNameFragment()
-            childFragmentManager.let { it1 -> editName.show(it1, "EditNameDialog") }
+            editName.show(childFragmentManager, "EditNameDialog")
         }
         binding.backButton.setOnClickListener {
             dismiss()

@@ -8,18 +8,17 @@ import com.example.technopa.models.User
 class EditWeightVM: ViewModel() {
 
     var user = MutableLiveData<User?>()
+    var weightNp2 = MutableLiveData<Int>()
+    var repository = Repository()
 
     init {
-        user.value = Repository().getUser()
-    }
-
-    fun weightNp2(): Int {
-        return ((user.value!!.weight - user.value!!.weight.toInt())*10).toInt()
+        user.value = repository.getUser()
+        weightNp2.value = ((user.value!!.weight - user.value!!.weight.toInt())*10).toInt()
     }
 
     fun setWeight(IntPart: Int, FracPart: Int) {
-        val user1 = user.value!!
-        user1.weight = IntPart.toDouble()+(FracPart.toDouble()/10)
-        Repository().sendUser(user1)
+        val user1 = user.value
+        user1?.weight = IntPart.toDouble()+(FracPart.toDouble()/10)
+        repository.sendUser(user1)
     }
 }

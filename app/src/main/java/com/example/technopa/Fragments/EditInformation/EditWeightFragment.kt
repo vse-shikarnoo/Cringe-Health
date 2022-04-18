@@ -24,6 +24,10 @@ class EditWeightFragment: DialogFragment() {
 
         binding = EditWeightLayoutBinding.inflate(inflater, container,  false)
 
+        editWeightVM.user.observe(viewLifecycleOwner){
+            setNumberPickers(it)
+        }
+
         setNumberPickers(editWeightVM.user.value)
 
         binding.acceptButton.setOnClickListener {
@@ -42,11 +46,13 @@ class EditWeightFragment: DialogFragment() {
     private fun setNumberPickers(user: User?) {
         binding.weightNp1.maxValue = 300
         binding.weightNp1.minValue = 0
-        binding.weightNp1.value = user?.weight!!.toInt()
+        binding.weightNp1.value = user?.weight?.toInt() ?: 100
 
         binding.weightNp2.maxValue = 9
         binding.weightNp2.minValue = 0
-        binding.weightNp2.value = editWeightVM.weightNp2()
+        editWeightVM.weightNp2.observe(viewLifecycleOwner){
+            binding.weightNp2.value = it
+        }
     }
 
 }

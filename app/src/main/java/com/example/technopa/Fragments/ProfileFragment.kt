@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
+import com.example.technopa.R
 import com.example.technopa.ViewModels.ProfileVM
 import com.example.technopa.databinding.ProfileLayoutBinding
 import com.example.technopa.models.User
@@ -27,8 +29,6 @@ class ProfileFragment: Fragment() {
 
         binding = ProfileLayoutBinding.inflate(inflater, container,  false)
 
-        setUserData(profilevm.user.value)
-
         profilevm.user.observe(viewLifecycleOwner)  {
             setUserData(profilevm.user.value)
         }
@@ -36,7 +36,7 @@ class ProfileFragment: Fragment() {
         //change information
         binding.editTv.setOnClickListener {
             val dialog = EditDialogFragment()
-            childFragmentManager.let { it1 -> dialog.show(it1, "EditDialog") }
+            dialog.show(childFragmentManager, "EditDialog")
         }
 
         return binding.root
@@ -50,8 +50,10 @@ class ProfileFragment: Fragment() {
         binding.heightValueTv.text = user?.height.toString()
         binding.weightValueTv.text = user?.weight.toString()
         binding.desiredWeightValueTv.text = user?.desired_weight.toString()
-        binding.progressBar.max = user?.weight!!.toInt()
-        binding.progressBar.setProgress(user.desired_weight.toInt(),true)
-        binding.progressValueTv.text = profilevm.progressText()
+        binding.progressBar.max = user?.weight?.toInt() ?: 100
+        binding.progressBar.setProgress(user?.desired_weight?.toInt() ?: 100,true)
+        profilevm.progressText.observe(viewLifecycleOwner) {
+            binding.progressValueTv.text = it
+        }
     }
 }

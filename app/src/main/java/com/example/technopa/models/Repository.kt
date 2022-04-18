@@ -7,7 +7,7 @@ class Repository {
         return User()
     }
 
-    fun sendUser(user1: User) {
+    fun sendUser(user1: User?) {
     }
 
 }

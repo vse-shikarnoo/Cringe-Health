@@ -8,14 +8,15 @@ import com.example.technopa.models.User
 class EditHeightVM: ViewModel() {
 
     var user = MutableLiveData<User?>()
+    var repository = Repository()
 
     init {
-        user.value = Repository().getUser()
+        user.value = repository.getUser()
     }
 
     fun setHeight(newHeight: Int) {
-        val user1 = user.value!!
-        user1.height = newHeight
-        Repository().sendUser(user1)
+        val user1 = user.value
+        user1?.height = newHeight
+        repository.sendUser(user1)
     }
 }

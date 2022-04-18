@@ -28,7 +28,9 @@ class EditDesiredWeightFragment : DialogFragment(){
 
         binding = EditDesWeightLayoutBinding.inflate(inflater, container,  false)
 
-        setNumberPickers(editDesWeightVM.user.value)
+        editDesWeightVM.user.observe(viewLifecycleOwner){
+            setNumberPickers(it)
+        }
 
         binding.acceptButton.setOnClickListener {
             editDesWeightVM.setDesWeight(binding.desiredWeightNp1.value, binding.desiredWeightNp2.value)
@@ -46,11 +48,13 @@ class EditDesiredWeightFragment : DialogFragment(){
     private fun setNumberPickers(user: User?) {
         binding.desiredWeightNp1.maxValue = 300
         binding.desiredWeightNp1.minValue = 0
-        binding.desiredWeightNp1.value = user?.desired_weight!!.toInt()
+        binding.desiredWeightNp1.value = user?.desired_weight?.toInt() ?: 0
 
         binding.desiredWeightNp2.maxValue = 9
         binding.desiredWeightNp2.minValue = 0
-        binding.desiredWeightNp2.value = editDesWeightVM.desiredWeightNp2()
+        editDesWeightVM.desiredWeightNp2.observe(viewLifecycleOwner){
+            binding.desiredWeightNp2.value = it
+        }
     }
 
 }

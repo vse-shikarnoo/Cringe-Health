@@ -25,6 +25,10 @@ class EditHeightFragment: DialogFragment() {
 
         setNumberPicker()
 
+        editHeightVM.user.observe(viewLifecycleOwner){
+            setNumberPicker()
+        }
+
         binding.acceptButton.setOnClickListener {
             editHeightVM.setHeight(binding.heightNp1.value)
             dismiss()
@@ -40,6 +44,6 @@ class EditHeightFragment: DialogFragment() {
     private fun setNumberPicker(){
         binding.heightNp1.maxValue = 300
         binding.heightNp1.minValue = 0
-        binding.heightNp1.value = editHeightVM.user.value!!.height as Int
+        binding.heightNp1.value = editHeightVM.user.value?.height as Int
     }
 }
