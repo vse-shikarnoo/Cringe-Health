@@ -2,12 +2,12 @@ package com.example.technopa.models
 
 class Repository {
 
-    @JvmName("getUser1")
     fun getUser(): User {
-        return User()
+        return Singleton.currentUser
     }
 
     fun sendUser(user1: User?) {
+        if (user1 != null) Singleton.currentUser = user1
     }
 
 }

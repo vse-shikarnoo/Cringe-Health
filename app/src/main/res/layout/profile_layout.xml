@@ -36,7 +36,9 @@
         android:layout_marginStart="30dp"
         android:layout_toEndOf="@+id/profile_image"
         android:text="Имя"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:maxLines="1"
+        android:ellipsize="end" />
     <TextView
         android:id="@+id/surname_tv"
         android:layout_width="wrap_content"
@@ -46,6 +48,8 @@
         android:textSize="30sp"
         android:layout_marginStart="30dp"
         android:text="Фамилия"
+        android:ellipsize="end"
+        android:maxLines="1"
         />
 
     <TextView
