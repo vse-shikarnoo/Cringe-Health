@@ -4,8 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Cringe-Health/app/src/main/res/layout/activity_main.xml" value="0.13020833333333334" />
+        <entry key="..\:/Cringe-Health/app/src/main/res/layout/detail_diet_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Cringe-Health/app/src/main/res/layout/detail_training_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Cringe-Health/app/src/main/res/layout/detail_traininh_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Cringe-Health/app/src/main/res/layout/diet_list_layout.xml" value="0.1" />
+        <entry key="..\:/Cringe-Health/app/src/main/res/layout/item_diet_layout.xml" value="0.4" />
         <entry key="..\:/Cringe-Health/app/src/main/res/layout/item_personal_diet_layout.xml" value="0.536" />
+        <entry key="..\:/Cringe-Health/app/src/main/res/layout/item_training_layout.xml" value="0.4" />
+        <entry key="..\:/Cringe-Health/app/src/main/res/layout/main_fragment_layout.xml" value="0.4" />
         <entry key="..\:/Cringe-Health/app/src/main/res/layout/personal_diet_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Cringe-Health/app/src/main/res/layout/training_list_layout.xml" value="0.12360688956433637" />
         <entry key="..\:/myapp/technopa/app/src/main/res/layout/a.xml" value="0.25416666666666665" />
         <entry key="..\:/myapp/technopa/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
         <entry key="..\:/myapp/technopa/app/src/main/res/layout/item_personal_diet_layout.xml" value="0.25416666666666665" />

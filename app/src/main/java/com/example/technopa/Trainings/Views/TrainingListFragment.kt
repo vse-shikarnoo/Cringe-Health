@@ -1,4 +1,4 @@
-package com.example.technopa.Diet.Views
+package com.example.technopa.Trainings.Views
 
 import android.os.Bundle
 import android.view.View
@@ -8,29 +8,29 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.technopa.Diet.Models.DietListModel
 import com.example.technopa.R
+import com.example.technopa.Trainings.Models.TrainingListModel
 import com.example.technopa.autoCleared
-import com.example.technopa.databinding.DietListLayoutBinding
+import com.example.technopa.databinding.TrainingListLayoutBinding
 import com.example.technopa.toast
 
-class DietListFragment : Fragment(R.layout.diet_list_layout) {
+class TrainingListFragment: Fragment(R.layout.training_list_layout) {
 
-    private val viewModel: DietListModel by viewModels()
+    private val viewModel: TrainingListModel by viewModels()
 
-    private var binding: DietListLayoutBinding? = null
+    private var binding: TrainingListLayoutBinding? = null
 
-    private var dietListAdapter: DietListAdapter by autoCleared()
+    private var trainingListAdapter: TrainingListAdapter by autoCleared()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        //toast("Диеты")
+        //toast("Тренировки")
         super.onViewCreated(view, savedInstanceState)
-        binding = DietListLayoutBinding.bind(view)
+        binding = TrainingListLayoutBinding.bind(view)
 
         init()
         observe()
         binding!!.swipeRefresh.setOnRefreshListener {
-            viewModel.getDiets()
+            viewModel.getTrainings()
         }
     }
 
@@ -40,20 +40,20 @@ class DietListFragment : Fragment(R.layout.diet_list_layout) {
     }
 
     fun init() {
-        dietListAdapter = DietListAdapter(){position ->
-            val action = DietListFragmentDirections.actionDietListFragmentToDetailDietFragment(viewModel.dietList.value?.get(position))
+        trainingListAdapter = TrainingListAdapter(){position ->
+            val action = TrainingListFragmentDirections.actionTrainingListFragmentToDetailTrainingFragment(viewModel.trainingList.value?.get(position))
             findNavController().navigate(action)
         }
-        with(binding!!.recyclerViewDietList) {
-            adapter = dietListAdapter
+        with(binding!!.recyclerViewTrainingList) {
+            adapter = trainingListAdapter
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
         }
-        viewModel.getDiets()
+        viewModel.getTrainings()
     }
 
     private fun observe() {
-        viewModel.dietList.observe(viewLifecycleOwner) { dietListAdapter.submitList(it) }
+        viewModel.trainingList.observe(viewLifecycleOwner) { trainingListAdapter.submitList(it) }
         viewModel.isLoading.observe(viewLifecycleOwner){
             updateLoadingState(it)
             binding!!.swipeRefresh.isRefreshing = false
@@ -63,12 +63,14 @@ class DietListFragment : Fragment(R.layout.diet_list_layout) {
     }
 
     private fun updateLoadingState(isLoading: Boolean) {
-        binding!!.recyclerViewDietList.isVisible = isLoading.not()
+        binding!!.recyclerViewTrainingList.isVisible = isLoading.not()
         binding!!.progressBar.isVisible = isLoading
     }
 
     private fun updateErrorState(error: Throwable?) {
         if (error != null) {
-            toast(error.message.toString())        }
+            toast(error.message.toString())
+        }
     }
+
 }

@@ -32,6 +32,16 @@ class MainFragment : Fragment(R.layout.main_fragment_layout) {
             findNavController().navigate(MainFragmentDirections.actionMainFragmentToPersonalTrainingFragment())
             true
         }
+
+        binding!!.textviewDietTrain.setOnClickListener {
+            findNavController().navigate(MainFragmentDirections.actionMainFragmentToDietListFragment())
+
+        }
+
+        binding!!.textviewDietTrain.setOnLongClickListener {
+            findNavController().navigate(MainFragmentDirections.actionMainFragmentToTrainingListFragment())
+            true
+        }
     }
 
     override fun onDestroy() {

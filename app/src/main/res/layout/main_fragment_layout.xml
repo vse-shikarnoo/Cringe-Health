@@ -9,13 +9,14 @@
         android:id="@+id/textviewDietTrain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="dietTrain"
         android:textColor="@android:color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/textviewGI"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/textviewGI"
-        android:text="dietTrain" />
+        app:layout_constraintTop_toTopOf="@id/textviewGI" />
 
     <TextView
         android:id="@+id/textviewGI"
@@ -33,13 +34,14 @@
         android:id="@+id/textviewProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:textColor="@android:color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/textviewGI"
         app:layout_constraintTop_toTopOf="@id/textviewGI"
-        tools:text="Profile" />
+        android:text="Profile" />
 
     <TextView
         android:id="@+id/textviewSmoking"

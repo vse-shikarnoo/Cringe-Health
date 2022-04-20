@@ -7,35 +7,37 @@
     android:padding="8dp">
 
     <TextView
-        android:id="@+id/itemDietTitle"
+        android:id="@+id/itemTrainingTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Диета"
+        tools:text="Тренировка"
         android:gravity="center"
         android:textSize="32sp"
         android:textColor="@color/black"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/itemDietKkal"
+        android:id="@+id/itemTrainingKkal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="1500 ккал в день"
+        tools:text="500 ккал сжигается"
         android:layout_marginTop="8dp"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/itemDietTitle"/>
+        app:layout_constraintTop_toBottomOf="@id/itemTrainingTitle"/>
 
     <TextView
-        android:id="@+id/itemDietPriems"
-        android:layout_width="match_parent"
+        android:id="@+id/itemTrainingExercises"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:gravity="center"
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/itemDietKkal"
-        tools:layout_editor_absoluteX="8dp"
-        tools:text="2 priema" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/itemTrainingKkal"
+        tools:text="3 упражнения" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

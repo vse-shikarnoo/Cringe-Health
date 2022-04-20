@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/dietListFragment">
+    app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/mainFragment"
@@ -16,6 +16,12 @@
         <action
             android:id="@+id/action_mainFragment_to_personalTrainingFragment"
             app:destination="@id/personalTrainingFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_dietListFragment"
+            app:destination="@id/dietListFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_trainingListFragment"
+            app:destination="@id/trainingListFragment" />
     </fragment>
     <fragment
         android:id="@+id/personalDietFragment"
@@ -39,10 +45,31 @@
     <fragment
         android:id="@+id/detailDietFragment"
         android:name="com.example.technopa.Diet.Views.DetailDietFragment"
-        android:label="DetailDietFragment" >
+        android:label="DetailDietFragment"
+        tools:layout="@layout/detail_diet_layout">
         <argument
             android:name="dieta"
             app:argType="com.example.technopa.Dieta"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/trainingListFragment"
+        android:name="com.example.technopa.Trainings.Views.TrainingListFragment"
+        android:label="TrainingListFragment"
+        tools:layout="@layout/training_list_layout">
+
+        <action
+            android:id="@+id/action_trainingListFragment_to_detailTrainingFragment"
+            app:destination="@id/detailTrainingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailTrainingFragment"
+        android:name="com.example.technopa.Trainings.Views.DetailTrainingFragment"
+        android:label="DetailTrainingFragment"
+        tools:layout="@layout/detail_training_layout">
+        <argument
+            android:name="training"
+            app:argType="com.example.technopa.Training"
             app:nullable="true" />
     </fragment>
 </navigation>
