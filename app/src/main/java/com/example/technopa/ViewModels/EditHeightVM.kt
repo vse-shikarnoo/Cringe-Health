@@ -18,5 +18,6 @@ class EditHeightVM: ViewModel() {
         val user1 = user.value
         user1?.height = newHeight
         repository.sendUser(user1)
+
     }
 }
