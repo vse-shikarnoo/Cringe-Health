@@ -1,5 +1,6 @@
 package com.example.technopa.Fragments
 
+import android.app.AlertDialog
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import androidx.fragment.app.viewModels
 import com.example.technopa.R
 import com.example.technopa.ViewModels.ProfileVM
 import com.example.technopa.databinding.ProfileLayoutBinding
+import com.example.technopa.models.Repository
 import com.example.technopa.models.User
 
 class ProfileFragment: Fragment() {
@@ -56,4 +58,5 @@ class ProfileFragment: Fragment() {
             binding.progressValueTv.text = it
         }
     }
+
 }
