@@ -19,9 +19,15 @@ class MainFragment : Fragment(R.layout.main_fragment_layout) {
 
 
 
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+
         binding = MainFragmentLayoutBinding.bind(view)
         super.onViewCreated(view, savedInstanceState)
+
+
 
 
         binding!!.textViewXD.setOnClickListener {
@@ -42,6 +48,13 @@ class MainFragment : Fragment(R.layout.main_fragment_layout) {
             findNavController().navigate(MainFragmentDirections.actionMainFragmentToTrainingListFragment())
             true
         }
+
+        binding!!.textviewProfile.setOnClickListener {
+            findNavController().navigate(MainFragmentDirections.actionMainFragmentToProfileFragment())
+        }
+
+
+
     }
 
     override fun onDestroy() {
@@ -49,4 +62,7 @@ class MainFragment : Fragment(R.layout.main_fragment_layout) {
         super.onDestroy()
 
     }
+
+
+
 }

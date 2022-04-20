@@ -14,7 +14,7 @@ import com.example.technopa.databinding.ItemPersonalDietLayoutBinding
 
 class DietListAdapter(
     private val onItemClick: (position:Int) -> Unit
-): ListAdapter<Dieta, DietListAdapter.Holder>(diffUtilCallBack()) {
+): ListAdapter<Dieta, DietListAdapter.Holder>(DiffUtilCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val binding = ItemDietLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -25,7 +25,7 @@ class DietListAdapter(
         holder.bind(getItem(position))
     }
 
-    class diffUtilCallBack(): DiffUtil.ItemCallback<Dieta>() {
+    class DiffUtilCallBack(): DiffUtil.ItemCallback<Dieta>() {
         override fun areItemsTheSame(oldItem: Dieta, newItem: Dieta): Boolean {
             return oldItem.id == newItem.id
         }

@@ -6,7 +6,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import kotlinx.parcelize.Parcelize
+import kotlinx.android.parcel.Parcelize
+
 import java.lang.Exception
 
 

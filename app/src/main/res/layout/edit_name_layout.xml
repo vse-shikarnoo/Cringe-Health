@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:id="@+id/name_editing"
+        android:layout_width="wrap_content"
+        android:textSize="20sp"
+        android:layout_height="wrap_content"
+        android:text="@string/Name"
+        tools:ignore="InvalidId,MissingConstraints"
+        app:layout_constraintEnd_toEndOf="@id/name_editing_et"
+        app:layout_constraintStart_toStartOf="@id/name_editing_et"/>
+    <EditText
+        android:id="@+id/name_editing_et"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/name_editing"
+        tools:ignore="MissingConstraints"
+        />
+    <TextView
+        android:id="@+id/surname_editing"
+        android:layout_width="wrap_content"
+        android:textSize="20sp"
+        android:layout_height="wrap_content"
+        android:text="@string/Surname"
+        tools:ignore="InvalidId,MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@id/name_editing_et"
+        app:layout_constraintEnd_toEndOf="@id/surname_editing_et"
+        app:layout_constraintStart_toStartOf="@id/surname_editing_et"/>
+    <EditText
+        android:id="@+id/surname_editing_et"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/surname_editing"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/cancel_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/surname_editing_et"
+        android:layout_marginTop="10dp"
+        android:text="@string/Back"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:ignore="MissingConstraints" />
+    <Button
+        android:id="@+id/accept_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/surname_editing_et"
+        android:layout_marginTop="10dp"
+        android:text="@string/Accept"
+        app:layout_constraintRight_toRightOf="@id/surname_editing_et"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

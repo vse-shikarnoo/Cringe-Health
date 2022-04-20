@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@null"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:id="@+id/edit_height"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@color/cardview_shadow_start_color"
+        android:text="@string/EditHeight"
+        android:gravity="center"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/edit_weight"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@color/cardview_shadow_start_color"
+        app:layout_constraintLeft_toRightOf="@+id/edit_height"
+        android:layout_marginStart="20dp"
+        android:text="@string/EditWeight"
+        android:gravity="center"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/edit_des_weight"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@color/cardview_shadow_start_color"
+        android:text="@string/EditDesiredWeight"
+        app:layout_constraintTop_toBottomOf="@+id/edit_height"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        tools:ignore="MissingConstraints" />
+
+
+    <TextView
+        android:id="@+id/edit_name"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@color/cardview_shadow_start_color"
+        app:layout_constraintLeft_toRightOf="@+id/edit_des_weight"
+        android:layout_marginStart="20dp"
+        android:text="@string/EditName"
+        app:layout_constraintTop_toBottomOf="@+id/edit_weight"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Back"
+        app:layout_constraintEnd_toEndOf="@+id/edit_name"
+        app:layout_constraintStart_toStartOf="@+id/edit_des_weight"
+        app:layout_constraintTop_toBottomOf="@+id/edit_des_weight" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

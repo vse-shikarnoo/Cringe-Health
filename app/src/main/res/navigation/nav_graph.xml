@@ -6,6 +6,13 @@
     app:startDestination="@id/mainFragment">
 
     <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.technopa.Fragments.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/profile_layout"/>
+
+
+    <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.technopa.MainFragment"
         android:label="MainFragment"
@@ -22,6 +29,9 @@
         <action
             android:id="@+id/action_mainFragment_to_trainingListFragment"
             app:destination="@id/trainingListFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/personalDietFragment"
