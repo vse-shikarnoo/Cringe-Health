@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">Cringe Health</string>
+
+    <plurals name="exercises">
+        <item quantity="one">%1$d упражнение</item>
+        <item quantity="other">%1$d упражнения</item>
+    </plurals>
+
+    <plurals name="priemsPishi">
+        <item quantity="one">%1$d прием пищи</item>
+        <item quantity="other">%1$d приема пищи</item>
+    </plurals>
     <string name="EditInformation">Редактировать информацию</string>
     <string name="Height">Рост, см:</string>
     <string name="Weight">Вес, кг:</string>

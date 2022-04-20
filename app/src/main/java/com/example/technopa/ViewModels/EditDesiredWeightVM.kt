@@ -1,5 +1,6 @@
 package com.example.technopa.ViewModels
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.technopa.Fragments.ProfileFragment
@@ -8,12 +9,15 @@ import com.example.technopa.models.User
 
 class EditDesiredWeightVM: ViewModel() {
 
-    var user = MutableLiveData<User?>()
+    var userLV = MutableLiveData<User?>()
     var desiredWeightNp2 = MutableLiveData<Int>()
     var repository = Repository()
 
+    val user:LiveData<User?>
+        get() = userLV
+
     init {
-        user.value = repository.getUser()
+        userLV.value = repository.getUser()
         desiredWeightNp2.value = ((user.value!!.desired_weight - user.value!!.desired_weight.toInt())*10).toInt()
     }
 

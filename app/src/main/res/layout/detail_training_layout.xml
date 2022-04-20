@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Title"
+        android:gravity="center"
+        android:textSize="40sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/kaloriiTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="1500 kkal"
+        android:layout_marginTop="20sp"
+        android:gravity="center"
+        android:textSize="26sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView"/>
+
+    <TextView
+        android:id="@+id/opisanieTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Opisanie"
+        android:layout_marginTop="12sp"
+        android:gravity="center"
+        android:textSize="26sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/kaloriiTextView"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
