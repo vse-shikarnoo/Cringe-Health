@@ -1,34 +1,39 @@
 package com.example.technopa
 
-import com.example.technopa.Fragments.ProfileFragment
-import androidx.appcompat.app.AppCompatActivity
+
+
+
 import android.os.Bundle
-import android.view.LayoutInflater
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.technopa.Diet.Views.DietListFragment
-
-
+import com.example.technopa.Fragments.ProfileFragment
 import com.example.technopa.Trainings.Views.TrainingListFragment
 import com.example.technopa.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.technopa.databinding.ProfileLayoutBinding
+
 
 
 class MainActivity : AppCompatActivity() {
     private val mainFragment = MainFragment()
     private val personalTrainingFragment = PersonalTrainingFragment()
     private val profileFragment = ProfileFragment()
+    private var binding: ActivityMainBinding? = null
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+
 
         var fl:Boolean = true
+        val view = binding?.root
+        setContentView(view)
+        binding?.BottomView?.selectedItemId = R.id.mainFragment
 
-        setContentView(R.layout.activity_main)
-        BottomView.selectedItemId = R.id.mainFragment
-
-        BottomView.setOnItemSelectedListener {
+        binding?.BottomView?.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.profileFragment -> replaceFragment(profileFragment)
                 R.id.mainFragment -> replaceFragment(mainFragment)
