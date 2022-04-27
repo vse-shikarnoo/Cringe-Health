@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.technopa.*
 import com.example.technopa.databinding.PersonalDietLayoutBinding
@@ -76,7 +77,7 @@ class PersonalDietFragment : Fragment(R.layout.personal_diet_layout) {
         adapterPersonalDiet = PersonalDietAdapter()
         with(binding!!.recyclerViewPersonalDiet){
             adapter = adapterPersonalDiet
-            layoutManager = LinearLayoutManager(requireContext())
+            layoutManager = GridLayoutManager(requireContext(),3)
             setHasFixedSize(true)
         }
         adapterPersonalDiet.submitList(list)
