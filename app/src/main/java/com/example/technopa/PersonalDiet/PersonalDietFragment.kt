@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.technopa.*
 import com.example.technopa.databinding.PersonalDietLayoutBinding
-import com.google.firebase.database.FirebaseDatabase
 
 
 class PersonalDietFragment : Fragment(R.layout.personal_diet_layout) {
