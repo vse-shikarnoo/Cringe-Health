@@ -36,7 +36,9 @@
         android:layout_marginStart="30dp"
         android:layout_toEndOf="@+id/profile_image"
         android:text="Имя"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:maxLines="1"
+        android:ellipsize="end" />
     <TextView
         android:id="@+id/surname_tv"
         android:layout_width="wrap_content"
@@ -46,6 +48,8 @@
         android:textSize="30sp"
         android:layout_marginStart="30dp"
         android:text="Фамилия"
+        android:ellipsize="end"
+        android:maxLines="1"
         />
 
     <TextView
@@ -138,24 +142,71 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/progress_value_tv"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="21dp"
         android:text="@string/Achievments" />
-    <Button
-        android:id="@+id/progress_btn"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/Progress"
-        android:layout_below="@+id/progress_value_tv"
-        android:layout_marginEnd="20dp"
-        android:layout_alignParentEnd="true"
-        />
-    <com.jjoe64.graphview.GraphView
+
+    <TextView
+        android:id="@+id/priemy_pishy_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/progress_btn"
-        android:layout_marginTop="20dp"
-        />
+        android:layout_below="@id/achieve_btn"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:text="Приемы пищи"
+        android:textSize="25sp"
+        android:layout_marginBottom="10sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/priemy_pishy_tv"
+        android:layout_marginBottom="5sp"
+        android:layout_marginStart="130sp"
+        android:layout_toEndOf="@+id/priemy_pishy_tv"
+        android:text="+добавить" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/priemy_pishy_tv"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30sp"
+        android:text="Название" />
+
+    <TextView
+        android:id="@+id/Kkal_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/priemy_pishy_tv"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="310sp"
+        android:text="Ккалории" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/priemy_pishy_rv"
+        android:layout_width="match_parent"
+        android:layout_height="200sp"
+        android:layout_below="@id/Kkal_tv"
+        android:layout_marginTop="10sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/priemy_pishy_rv"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="260sp"
+        android:text="Итого" />
+    <TextView
+        android:id="@+id/kkal_sum_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/priemy_pishy_rv"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="320sp"
+        android:text="390" />
+
+
+
 </RelativeLayout>
 </ScrollView>

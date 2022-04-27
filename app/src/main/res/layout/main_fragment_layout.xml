@@ -8,44 +8,6 @@
     >
 
     <TextView
-        android:id="@+id/textviewDietTrain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Д/Т"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/textviewGI"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/textviewGI" />
-
-    <TextView
-        android:id="@+id/textviewGI"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="ГИ"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/textviewProfile"
-        app:layout_constraintStart_toEndOf="@id/textviewDietTrain" />
-
-    <TextView
-        android:id="@+id/textviewProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="П"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/textviewGI"
-        app:layout_constraintTop_toTopOf="@id/textviewGI" />
-
-    <TextView
         android:id="@+id/textviewSmoking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

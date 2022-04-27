@@ -1,6 +1,6 @@
 package com.example.technopa.models
 
-open class User {
+class User {
 
     var name = "Vyacheslav"
     var surname = "Gorlov"
@@ -9,4 +9,11 @@ open class User {
     var desired_weight = 85.0
     //val statistic: Statistic,
     //val achievment: List<Achievment>
+
+}
+
+object Singleton{
+
+    var currentUser = User()
+
 }

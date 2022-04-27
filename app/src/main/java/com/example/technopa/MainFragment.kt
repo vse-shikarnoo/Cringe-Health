@@ -86,30 +86,6 @@ class MainFragment : Fragment(R.layout.main_fragment_layout), SensorEventListene
 
     }
 
-    override fun onPause() {
-        super.onPause()
-        sensorManager!!.unregisterListener(this)
-    }
-
-
-    override fun onSensorChanged(event: SensorEvent?) {
-        if(event!!.sensor.type == Sensor.TYPE_ACCELEROMETER){
-            simpleStepDetector!!.updateAccelerometer(event.timestamp, event.values[0], event.values[1], event.values[2])
-        }
-    }
-
-    override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
-
-    }
-
-    override fun step(timeNs: Long) {
-        numSteps++
-        sPref = activity?.getPreferences(MODE_PRIVATE)
-        val ed = sPref?.edit()
-        ed?.putInt("STEPS",numSteps)
-        ed?.commit()
-        binding?.textViewXD?.text = TEXT_NUM_STEPS.plus(numSteps)
-    }
 
 
 }
