@@ -8,10 +8,11 @@ import com.example.technopa.Dieta
 import com.example.technopa.R
 import com.example.technopa.databinding.DetailDietLayoutBinding
 import com.example.technopa.databinding.DietListLayoutBinding
+import com.example.technopa.withArguments
 
 class DetailDietFragment: Fragment(R.layout.detail_diet_layout) {
 
-    private val args: DetailDietFragmentArgs by navArgs()
+
 
     private var dieta: Dieta? = null
 
@@ -27,9 +28,20 @@ class DetailDietFragment: Fragment(R.layout.detail_diet_layout) {
     }
 
     fun bindInfo(){
-        dieta = args.dieta
+        dieta = requireArguments().getParcelable(KEY_DIETA)
         binding!!.titleTextView.text = dieta?.title
         binding!!.kaloriipdTextView.text = "${dieta?.kaloriipd} ккал в день"
         binding!!.opisanieTextView.text = dieta?.opisanie
+    }
+
+    companion object {
+
+        private const val KEY_DIETA = "key_dieta"
+
+        fun newInstance(dieta: Dieta): DetailDietFragment {
+            return DetailDietFragment().withArguments {
+               putParcelable(KEY_DIETA,dieta)
+            }
+        }
     }
 }

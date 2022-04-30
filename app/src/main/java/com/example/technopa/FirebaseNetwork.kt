@@ -96,6 +96,14 @@ class FirebaseNetwork {
         refUsers.child(user.id.toString()).setValue(user)
     }
 
+    fun getUser(
+        call: (User) -> Unit,
+        errorCall: (error: Throwable) -> Unit,
+        id: Long
+    ){
+
+    }
+
     fun getDiets(
         call: (MutableList<Dieta>) -> Unit,
         errorCall: (error: Throwable) -> Unit
@@ -135,6 +143,7 @@ class FirebaseNetwork {
             }
         })
     }
+
 
 
 }

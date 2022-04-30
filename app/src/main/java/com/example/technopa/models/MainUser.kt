@@ -1,6 +1,6 @@
 package com.example.technopa.models
 
-class User {
+class MainUser {
 
     var name = "Vyacheslav"
     var surname = "Gorlov"
@@ -14,6 +14,6 @@ class User {
 
 object Singleton{
 
-    var currentUser = User()
+    var currentUser = MainUser()
 
 }

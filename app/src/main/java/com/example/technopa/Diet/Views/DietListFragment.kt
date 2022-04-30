@@ -9,6 +9,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.technopa.Diet.Models.DietListModel
+import com.example.technopa.Dieta
+import com.example.technopa.Interfaces.FragmentInterface
 import com.example.technopa.R
 import com.example.technopa.autoCleared
 import com.example.technopa.databinding.DietListLayoutBinding
@@ -21,6 +23,9 @@ class DietListFragment : Fragment(R.layout.diet_list_layout) {
     private var binding: DietListLayoutBinding? = null
 
     private var dietListAdapter: DietListAdapter by autoCleared()
+
+    private val fragmentInterface: FragmentInterface?
+        get()=activity?.let{it as? FragmentInterface}
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //toast("Диеты")
@@ -41,8 +46,7 @@ class DietListFragment : Fragment(R.layout.diet_list_layout) {
 
     fun init() {
         dietListAdapter = DietListAdapter(){position ->
-            val action = DietListFragmentDirections.actionDietListFragmentToDetailDietFragment(viewModel.dietList.value?.get(position))
-            findNavController().navigate(action)
+            fragmentInterface?.onItemSelectedDiets(viewModel.dietList.value?.get(position)?: Dieta())
         }
         with(binding!!.recyclerViewDietList) {
             adapter = dietListAdapter

@@ -1,5 +1,6 @@
 package com.example.technopa
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -160,6 +161,13 @@ class StepDetector {
             lastStepTimeNs = timeNs
         }
         oldVelocityEstimate = velocityEstimate
+    }
+}
+
+fun <T: Fragment> T.withArguments(action: Bundle.() -> Unit): T {
+    return apply {
+        val args = Bundle().apply(action)
+        arguments = args
     }
 }
 

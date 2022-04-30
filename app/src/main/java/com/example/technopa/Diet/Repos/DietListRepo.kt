@@ -3,6 +3,7 @@ package com.example.technopa.Diet.Repos
 
 import com.example.technopa.Dieta
 import com.example.technopa.FirebaseNetwork
+import com.example.technopa.User
 
 class DietListRepo {
 
@@ -16,4 +17,6 @@ class DietListRepo {
             errorCallBack(error)
         })
     }
+
+
 }

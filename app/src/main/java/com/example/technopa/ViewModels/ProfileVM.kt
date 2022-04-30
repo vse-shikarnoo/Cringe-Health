@@ -4,11 +4,11 @@ package com.example.technopa.ViewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.technopa.models.Repository
-import com.example.technopa.models.User
+import com.example.technopa.models.MainUser
 
 class ProfileVM: ViewModel() {
 
-        val user = MutableLiveData<User?>()
+        val user = MutableLiveData<MainUser?>()
         var progressText = MutableLiveData<String>()
         var weightNp2 = MutableLiveData<Int>()
         var repository = Repository()

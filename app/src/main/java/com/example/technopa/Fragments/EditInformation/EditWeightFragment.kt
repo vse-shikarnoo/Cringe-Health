@@ -6,12 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
-import com.example.technopa.Fragments.ProfileFragment
-import com.example.technopa.MainActivity
 import com.example.technopa.ViewModels.EditWeightVM
 import com.example.technopa.ViewModels.ProfileVM
 import com.example.technopa.databinding.EditWeightLayoutBinding
-import com.example.technopa.models.User
+import com.example.technopa.models.MainUser
 
 class EditWeightFragment: DialogFragment() {
 
@@ -44,7 +42,7 @@ class EditWeightFragment: DialogFragment() {
 
     }
 
-    private fun setNumberPickers(user: User?) {
+    private fun setNumberPickers(user: MainUser?) {
         binding.weightNp1.maxValue = 300
         binding.weightNp1.minValue = 0
         binding.weightNp1.value = user?.weight?.toInt() ?: 100

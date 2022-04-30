@@ -3,21 +3,23 @@ package com.example.technopa
 import com.example.technopa.Fragments.ProfileFragment
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
+import androidx.annotation.MainThread
 import androidx.fragment.app.Fragment
+import com.example.technopa.Diet.Views.DetailDietFragment
 import com.example.technopa.Diet.Views.DietListFragment
+import com.example.technopa.Interfaces.FragmentInterface
+import com.example.technopa.Trainings.Views.DetailTrainingFragment
 
 
 import com.example.technopa.Trainings.Views.TrainingListFragment
 import com.example.technopa.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity() {
-    private val mainFragment = MainFragment()
-    private val trainingFragment = TrainingListFragment()
-    private val profileFragment = ProfileFragment()
-    private  val dietFragment = DietListFragment()
+
+class MainActivity : AppCompatActivity(), FragmentInterface {
+
     private var binding: ActivityMainBinding? = null
 
 
@@ -27,26 +29,34 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
 
 
+
         var b: Boolean = true
-        var fl:Boolean = true
+
         val view = binding?.root
         setContentView(view)
+        if(supportFragmentManager.findFragmentById(R.id.fragmentContainerView)==null) {
+            Log.d("CheckContainer",(supportFragmentManager.findFragmentById(R.id.fragmentContainerView)==null).toString())
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainerView, MainFragment())
+                .commit()
+        }
         binding?.BottomView?.selectedItemId = R.id.mainFragment
 
-        setContentView(R.layout.activity_main)
-        BottomView.selectedItemId = R.id.mainFragment
 
-        BottomView.setOnItemSelectedListener {
+
+
+        binding?.BottomView?.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.profileFragment -> replaceFragment(profileFragment)
-                R.id.mainFragment -> replaceFragment(mainFragment)
+                R.id.profileFragment -> openFragment(ProfileFragment())
+                R.id.mainFragment -> openFragment(MainFragment())
                 R.id.trainingListFragment -> {
-                    if (b) {
-                        replaceFragment(trainingFragment)
-                        b = false
+                    b = if (b) {
+
+                        openFragment(TrainingListFragment())
+                        false
                     } else {
-                        replaceFragment(dietFragment)
-                        b = true
+                        openFragment(DietListFragment())
+                        true
                     }
                 }
             }
@@ -54,14 +64,38 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun replaceFragment(fragment: Fragment){
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainerView3, fragment)
-            transaction.commit()
 
-    }
 
     override fun onBackPressed() {
-        super.onBackPressed()
+        val count = supportFragmentManager.backStackEntryCount
+
+        if (count == 0) {
+            super.onBackPressed()
+        } else {
+            supportFragmentManager.popBackStack()
+        }
     }
+
+    override fun openFragment(fragment: Fragment) {
+       supportFragmentManager.beginTransaction()
+           .replace(R.id.fragmentContainerView, fragment)
+           .addToBackStack(fragment.toString())
+           .commit()
+    }
+
+    override fun onItemSelectedDiets(dieta: Dieta) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainerView, DetailDietFragment.newInstance(dieta))
+            .addToBackStack(dieta.toString())
+            .commit()
+    }
+
+    override fun onItemSelectedTrainings(training: Training) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainerView, DetailTrainingFragment.newInstance(training))
+            .addToBackStack(training.toString())
+            .commit()
+    }
+
+
 }

@@ -1,4 +1,4 @@
-package com.example.technopa.PersonalDiet
+package com.example. technopa.PersonalDiet
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -24,6 +24,7 @@ class PersonalDietFragment : Fragment(R.layout.personal_diet_layout) {
         Eda("Sup",kalorii = 112.0, belki = 35.0, zhiri = 40.0, uglevodi = 20.0),
         Eda("Meat",kalorii = 122.0, belki = 45.0, zhiri = 50.0, uglevodi = 30.0)
     )
+
     private val list:MutableList<PriemPishi> = mutableListOf(
         PriemPishi("Завтрак",listEda),
         PriemPishi("Обед",listEda),

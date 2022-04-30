@@ -11,7 +11,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import com.example.technopa.ViewModels.EditDesiredWeightVM
 import com.example.technopa.databinding.EditDesWeightLayoutBinding
-import com.example.technopa.models.User
+import com.example.technopa.models.MainUser
 
 class EditDesiredWeightFragment : DialogFragment(){
 
@@ -45,7 +45,7 @@ class EditDesiredWeightFragment : DialogFragment(){
 
     }
 
-    private fun setNumberPickers(user: User?) {
+    private fun setNumberPickers(user: MainUser?) {
         binding.desiredWeightNp1.maxValue = 300
         binding.desiredWeightNp1.minValue = 0
         binding.desiredWeightNp1.value = user?.desired_weight?.toInt() ?: 0

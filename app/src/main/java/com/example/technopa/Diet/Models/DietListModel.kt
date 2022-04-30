@@ -23,16 +23,18 @@ class DietListModel : ViewModel() {
     val isError: LiveData<Throwable?>
         get() = isErrorLiveData
 
-    fun getDiets(){
+
+    fun getDiets() {
         isErrorLiveData.postValue(null)
         isLoadingLiveData.postValue(true)
-        repository.getDiets({dietList ->
-            isLoadingLiveData.postValue(false)
-            dietListLiveData.postValue(dietList)
-        },{error ->
-            isErrorLiveData.postValue(error)
-            isLoadingLiveData.postValue(false)
-        })
+        repository.getDiets(
+            { dietList ->
+                isLoadingLiveData.postValue(false)
+                dietListLiveData.postValue(dietList)
+            }, { error ->
+                isErrorLiveData.postValue(error)
+                isLoadingLiveData.postValue(false)
+            })
     }
 
 

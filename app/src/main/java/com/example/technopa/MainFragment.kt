@@ -42,36 +42,16 @@ class MainFragment : Fragment(R.layout.main_fragment_layout), SensorEventListene
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+        binding = MainFragmentLayoutBinding.bind(view)
+        super.onViewCreated(view, savedInstanceState)
         sPref = activity?.getPreferences(MODE_PRIVATE)
         numSteps = sPref?.getInt("STEPS",numSteps)?.toInt()?:0
         binding?.textViewXD?.text = TEXT_NUM_STEPS.plus(numSteps)
 
 
-        binding = MainFragmentLayoutBinding.bind(view)
-        super.onViewCreated(view, savedInstanceState)
 
-        binding!!.textViewXD.setOnClickListener {
-            findNavController().navigate(MainFragmentDirections.actionMainFragmentToPersonalDietFragment())
-        }
 
-        binding!!.textViewXD.setOnLongClickListener {
-            findNavController().navigate(MainFragmentDirections.actionMainFragmentToPersonalTrainingFragment())
-            true
-        }
 
-        binding!!.textviewDietTrain.setOnClickListener {
-            findNavController().navigate(MainFragmentDirections.actionMainFragmentToDietListFragment())
-
-        }
-
-        binding!!.textviewDietTrain.setOnLongClickListener {
-            findNavController().navigate(MainFragmentDirections.actionMainFragmentToTrainingListFragment())
-            true
-        }
-
-        binding!!.textviewProfile.setOnClickListener {
-            findNavController().navigate(MainFragmentDirections.actionMainFragmentToProfileFragment())
-        }
 
         sensorManager = requireContext().applicationContext.getSystemService(SENSOR_SERVICE) as SensorManager
         //sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
@@ -86,6 +66,17 @@ class MainFragment : Fragment(R.layout.main_fragment_layout), SensorEventListene
 
     }
 
+    override fun onSensorChanged(p0: SensorEvent?) {
+
+    }
+
+    override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
+
+    }
+
+    override fun step(timeNs: Long) {
+
+    }
 
 
 }

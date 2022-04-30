@@ -2,25 +2,28 @@ package com.example.technopa.Trainings.Views
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.technopa.Interfaces.FragmentInterface
 import com.example.technopa.R
+import com.example.technopa.Training
 import com.example.technopa.Trainings.Models.TrainingListModel
 import com.example.technopa.autoCleared
 import com.example.technopa.databinding.TrainingListLayoutBinding
 import com.example.technopa.toast
 
-class TrainingListFragment: Fragment(R.layout.training_list_layout) {
+class TrainingListFragment : Fragment(R.layout.training_list_layout) {
 
     private val viewModel: TrainingListModel by viewModels()
 
     private var binding: TrainingListLayoutBinding? = null
 
     private var trainingListAdapter: TrainingListAdapter by autoCleared()
+
+    private val fragmentInterface: FragmentInterface?
+        get() = activity?.let { it as? FragmentInterface }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //toast("Тренировки")
@@ -40,9 +43,10 @@ class TrainingListFragment: Fragment(R.layout.training_list_layout) {
     }
 
     fun init() {
-        trainingListAdapter = TrainingListAdapter(){position ->
-            val action = TrainingListFragmentDirections.actionTrainingListFragmentToDetailTrainingFragment(viewModel.trainingList.value?.get(position))
-            findNavController().navigate(action)
+        trainingListAdapter = TrainingListAdapter() { position ->
+            fragmentInterface?.onItemSelectedTrainings(
+                viewModel.trainingList.value?.get(position) ?: Training()
+            )
         }
         with(binding!!.recyclerViewTrainingList) {
             adapter = trainingListAdapter
@@ -54,7 +58,7 @@ class TrainingListFragment: Fragment(R.layout.training_list_layout) {
 
     private fun observe() {
         viewModel.trainingList.observe(viewLifecycleOwner) { trainingListAdapter.submitList(it) }
-        viewModel.isLoading.observe(viewLifecycleOwner){
+        viewModel.isLoading.observe(viewLifecycleOwner) {
             updateLoadingState(it)
             binding!!.swipeRefresh.isRefreshing = false
         }
