@@ -1,4 +1,4 @@
-package com.example.technopa.Fragments
+package com.example.technopa.Profile.Views
 
 import android.annotation.SuppressLint
 import android.os.Build
@@ -10,9 +10,9 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.example.technopa.ViewModels.ProfileVM
+import com.example.technopa.Profile.Models.ProfileVM
 import com.example.technopa.databinding.ProfileLayoutBinding
-import com.example.technopa.models.MainUser
+import com.example.technopa.Profile.Repos.MainUser
 
 class ProfileFragment: Fragment() {
 

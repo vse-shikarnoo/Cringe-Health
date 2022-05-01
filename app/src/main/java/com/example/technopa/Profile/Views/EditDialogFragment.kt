@@ -1,14 +1,14 @@
-package com.example.technopa.Fragments
+package com.example.technopa.Profile.Views
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.example.technopa.Fragments.EditInformation.EditDesiredWeightFragment
-import com.example.technopa.Fragments.EditInformation.EditHeightFragment
-import com.example.technopa.Fragments.EditInformation.EditWeightFragment
-import com.example.technopa.Fragments.EditInformation.EditNameFragment
+import com.example.technopa.Profile.Views.EditDesiredWeightFragment
+import com.example.technopa.Profile.Views.EditHeightFragment
+import com.example.technopa.Profile.Views.EditWeightFragment
+import com.example.technopa.Profile.Views.EditNameFragment
 import com.example.technopa.databinding.EditDialogLayoutBinding
 
 class EditDialogFragment : DialogFragment() {

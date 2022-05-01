@@ -1,4 +1,4 @@
-package com.example.technopa.Fragments.EditInformation
+package com.example.technopa.Profile.Views
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,10 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
-import com.example.technopa.ViewModels.EditWeightVM
-import com.example.technopa.ViewModels.ProfileVM
+import com.example.technopa.Profile.Models.ProfileVM
 import com.example.technopa.databinding.EditWeightLayoutBinding
-import com.example.technopa.models.MainUser
+import com.example.technopa.Profile.Repos.MainUser
 
 class EditWeightFragment: DialogFragment() {
 

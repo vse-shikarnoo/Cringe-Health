@@ -1,10 +1,10 @@
-package com.example.technopa.ViewModels
+package com.example.technopa.Profile.Models
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.technopa.models.Repository
-import com.example.technopa.models.MainUser
+import com.example.technopa.Profile.Repos.Repository
+import com.example.technopa.Profile.Repos.MainUser
 
 class EditDesiredWeightVM: ViewModel() {
 

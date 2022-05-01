@@ -1,4 +1,4 @@
-package com.example.technopa.Fragments.EditInformation
+package com.example.technopa.Profile.Views
 
 
 import android.os.Bundle
@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
-import com.example.technopa.ViewModels.EditNameVM
+import com.example.technopa.Profile.Models.EditNameVM
 import com.example.technopa.databinding.EditNameLayoutBinding
 
 class EditNameFragment: DialogFragment(){

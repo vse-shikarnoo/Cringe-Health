@@ -1,4 +1,4 @@
-package com.example.technopa.Fragments.EditInformation
+package com.example.technopa.Profile.Views
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
-import com.example.technopa.ViewModels.EditHeightVM
+import com.example.technopa.Profile.Models.EditHeightVM
 import com.example.technopa.databinding.EditHeightLayoutBinding
 
 class EditHeightFragment: DialogFragment() {

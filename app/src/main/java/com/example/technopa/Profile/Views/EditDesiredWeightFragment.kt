@@ -1,4 +1,4 @@
-package com.example.technopa.Fragments.EditInformation
+package com.example.technopa.Profile.Views
 
 import android.annotation.SuppressLint
 import android.os.Build
@@ -9,9 +9,9 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
-import com.example.technopa.ViewModels.EditDesiredWeightVM
+import com.example.technopa.Profile.Models.EditDesiredWeightVM
 import com.example.technopa.databinding.EditDesWeightLayoutBinding
-import com.example.technopa.models.MainUser
+import com.example.technopa.Profile.Repos.MainUser
 
 class EditDesiredWeightFragment : DialogFragment(){
 

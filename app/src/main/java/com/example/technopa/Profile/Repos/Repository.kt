@@ -1,4 +1,4 @@
-package com.example.technopa.models
+package com.example.technopa.Profile.Repos
 
 class Repository {
 

@@ -1,11 +1,9 @@
 package com.example.technopa
 
-import com.example.technopa.Fragments.ProfileFragment
+import com.example.technopa.Profile.Views.ProfileFragment
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import androidx.annotation.MainThread
 import androidx.fragment.app.Fragment
 import com.example.technopa.Diet.Views.DetailDietFragment
 import com.example.technopa.Diet.Views.DietListFragment
@@ -34,10 +32,10 @@ class MainActivity : AppCompatActivity(), FragmentInterface {
 
         val view = binding?.root
         setContentView(view)
-        if(supportFragmentManager.findFragmentById(R.id.fragmentContainerView)==null) {
-            Log.d("CheckContainer",(supportFragmentManager.findFragmentById(R.id.fragmentContainerView)==null).toString())
+        if(supportFragmentManager.findFragmentById(R.id.mainContainer)==null) {
+            Log.d("CheckContainer",(supportFragmentManager.findFragmentById(R.id.mainContainer)==null).toString())
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainerView, MainFragment())
+                .replace(R.id.mainContainer, MainFragment())
                 .commit()
         }
         binding?.BottomView?.selectedItemId = R.id.mainFragment
@@ -78,21 +76,21 @@ class MainActivity : AppCompatActivity(), FragmentInterface {
 
     override fun openFragment(fragment: Fragment) {
        supportFragmentManager.beginTransaction()
-           .replace(R.id.fragmentContainerView, fragment)
+           .replace(R.id.mainContainer, fragment)
            .addToBackStack(fragment.toString())
            .commit()
     }
 
     override fun onItemSelectedDiets(dieta: Dieta) {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainerView, DetailDietFragment.newInstance(dieta))
+            .replace(R.id.mainContainer, DetailDietFragment.newInstance(dieta))
             .addToBackStack(dieta.toString())
             .commit()
     }
 
     override fun onItemSelectedTrainings(training: Training) {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainerView, DetailTrainingFragment.newInstance(training))
+            .replace(R.id.mainContainer, DetailTrainingFragment.newInstance(training))
             .addToBackStack(training.toString())
             .commit()
     }
