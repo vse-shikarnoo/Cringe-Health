@@ -29,7 +29,7 @@ class MainFragment : Fragment(R.layout.main_fragment_layout), SensorEventListene
 
     var simpleStepDetector: StepDetector? = null
     var sensorManager: SensorManager? = null;
-    private val TEXT_NUM_STEPS = "Number of Steps: "
+    private val TEXT_NUM_STEPS = "Шаги: "
     private var numSteps: Int = 0
     var sPref :SharedPreferences? = null
 
@@ -47,7 +47,7 @@ class MainFragment : Fragment(R.layout.main_fragment_layout), SensorEventListene
         sPref = activity?.getPreferences(MODE_PRIVATE)
         numSteps = sPref?.getInt("STEPS",numSteps)?.toInt()?:0
         binding?.textViewXD?.text = TEXT_NUM_STEPS.plus(numSteps)
-
+        binding?.shagiProgressBar?.max = 10
 
 
 
@@ -78,6 +78,7 @@ class MainFragment : Fragment(R.layout.main_fragment_layout), SensorEventListene
 
     override fun step(timeNs: Long) {
         numSteps++
+        binding?.shagiProgressBar?.incrementProgressBy(1)
         binding?.textViewXD?.text = TEXT_NUM_STEPS.plus(numSteps)
     }
 
