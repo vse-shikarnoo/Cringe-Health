@@ -7,8 +7,7 @@ class MainUser {
     var height = 180
     var weight = 95.0
     var desired_weight = 85.0
-    //val statistic: Statistic,
-    //val achievment: List<Achievment>
+    var eating : List<item> = listOf(item("Завтрак", 150), item("Полдник", 140))
 
 }
 

@@ -10,6 +10,9 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.technopa.Profile.Models.EatAdapter
 import com.example.technopa.Profile.Models.ProfileVM
 import com.example.technopa.databinding.ProfileLayoutBinding
 import com.example.technopa.Profile.Repos.MainUser
@@ -37,6 +40,8 @@ class ProfileFragment: Fragment() {
             EditDialogFragment().show(childFragmentManager, "EditDialog")
         }
 
+
+
         return binding.root
     }
 
@@ -55,6 +60,8 @@ class ProfileFragment: Fragment() {
         profilevm.progressText.observe(viewLifecycleOwner) {
             binding.progressValueTv.text = it
         }
+        binding.priemyPishyRv.adapter = EatAdapter(profilevm.user.value!!.eating)
+        binding.priemyPishyRv.layoutManager = LinearLayoutManager(context)
     }
 
 
