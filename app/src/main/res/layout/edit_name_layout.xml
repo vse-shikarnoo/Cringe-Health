@@ -20,6 +20,7 @@
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/name_editing"
         tools:ignore="MissingConstraints"
+        android:inputType="text"
         />
     <TextView
         android:id="@+id/surname_editing"
@@ -37,7 +38,8 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/surname_editing"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:inputType="text"/>
 
     <Button
         android:id="@+id/cancel_button"

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--suppress ALL -->
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,7 +8,7 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.technopa.Profile.Views.ProfileFragment"
+        android:name="com.example.technopa.profile.Views.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/profile_layout"/>
 
@@ -21,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/dietListFragment"
-        android:name="com.example.technopa.Diet.Views.DietListFragment"
+        android:name="com.example.technopa.diet.views.DietListFragment"
         android:label="DietListFragment"
         tools:layout="@layout/diet_list_layout">
         <action
@@ -30,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailDietFragment"
-        android:name="com.example.technopa.Diet.Views.DetailDietFragment"
+        android:name="com.example.technopa.diet.views.DetailDietFragment"
         android:label="DetailDietFragment"
         tools:layout="@layout/detail_diet_layout">
         <argument
@@ -40,7 +41,7 @@
     </fragment>
     <fragment
         android:id="@+id/trainingListFragment"
-        android:name="com.example.technopa.Trainings.Views.TrainingListFragment"
+        android:name="com.example.technopa.trainings.Views.TrainingListFragment"
         android:label="TrainingListFragment"
         tools:layout="@layout/training_list_layout">
 
@@ -50,7 +51,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailTrainingFragment"
-        android:name="com.example.technopa.Trainings.Views.DetailTrainingFragment"
+        android:name="com.example.technopa.trainings.Views.DetailTrainingFragment"
         android:label="DetailTrainingFragment"
         tools:layout="@layout/detail_training_layout">
         <argument

@@ -45,13 +45,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
+        android:progressDrawable="@drawable/circular_progress_bar"
+        android:background="@drawable/circle_shape"
         android:id="@+id/shagiProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:progress="10"
+        android:indeterminate="false"
+        android:progress="65"
         android:max="100"
         android:scaleX="3"
+        style="?android:attr/progressBarStyleHorizontal"
         android:scaleY="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

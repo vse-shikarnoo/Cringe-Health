@@ -1,5 +1,6 @@
 package com.example.technopa
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,12 +12,14 @@ import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import kotlin.math.min
+import kotlin.math.sqrt
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
 //Всякие функции расширения, можете добавлять
 
-fun Fragment.toast(@StringRes stringRes: String) {
+fun Fragment.toast(@SuppressLint("SupportAnnotationUsage") @StringRes stringRes: String) {
     Toast.makeText(requireContext(), stringRes, Toast.LENGTH_SHORT).show()
 }
 
@@ -83,7 +86,7 @@ class SensorFilter {
         for (i in array.indices) {
             retval += array[i] * array[i]
         }
-        return Math.sqrt(retval.toDouble()).toFloat()
+        return sqrt(retval.toDouble()).toFloat()
     }
 
 
@@ -139,17 +142,17 @@ class StepDetector {
         accelRingZ[accelRingCounter % ACCEL_RING_SIZE] = currentAccel[2]
 
         val worldZ = FloatArray(3)
-        worldZ[0] = SensorFilter().sum(accelRingX) / Math.min(accelRingCounter, ACCEL_RING_SIZE)
-        worldZ[1] = SensorFilter().sum(accelRingY) / Math.min(accelRingCounter, ACCEL_RING_SIZE)
-        worldZ[2] = SensorFilter().sum(accelRingZ) / Math.min(accelRingCounter, ACCEL_RING_SIZE)
+        worldZ[0] = SensorFilter().sum(accelRingX) / min(accelRingCounter, ACCEL_RING_SIZE)
+        worldZ[1] = SensorFilter().sum(accelRingY) / min(accelRingCounter, ACCEL_RING_SIZE)
+        worldZ[2] = SensorFilter().sum(accelRingZ) / min(accelRingCounter, ACCEL_RING_SIZE)
 
-        val normalization_factor = SensorFilter().norm(worldZ)
+        val normalizationFactor = SensorFilter().norm(worldZ)
 
-        worldZ[0] = worldZ[0] / normalization_factor
-        worldZ[1] = worldZ[1] / normalization_factor
-        worldZ[2] = worldZ[2] / normalization_factor
+        worldZ[0] = worldZ[0] / normalizationFactor
+        worldZ[1] = worldZ[1] / normalizationFactor
+        worldZ[2] = worldZ[2] / normalizationFactor
 
-        val currentZ = SensorFilter().dot(worldZ, currentAccel) - normalization_factor
+        val currentZ = SensorFilter().dot(worldZ, currentAccel) - normalizationFactor
         velRingCounter++
         velRing[velRingCounter % VEL_RING_SIZE] = currentZ
 

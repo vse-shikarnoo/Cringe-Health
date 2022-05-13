@@ -57,10 +57,7 @@ data class PriemPishi(
     var belkiO: Double? = 0.0,
     var zhiriO: Double? = 0.0,
     var uglevodiO: Double? = 0.0
-) : Parcelable {
-
-
-}
+) : Parcelable
 
 @Parcelize
 data class Eda(

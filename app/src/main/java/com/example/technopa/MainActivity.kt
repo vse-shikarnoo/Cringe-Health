@@ -1,19 +1,16 @@
 package com.example.technopa
 
-import com.example.technopa.Profile.Views.ProfileFragment
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.technopa.Diet.Views.DetailDietFragment
-import com.example.technopa.Diet.Views.DietListFragment
-import com.example.technopa.Interfaces.FragmentInterface
-import com.example.technopa.Trainings.Views.DetailTrainingFragment
-
-
-import com.example.technopa.Trainings.Views.TrainingListFragment
+import com.example.technopa.diet.views.DetailDietFragment
+import com.example.technopa.diet.views.DietListFragment
+import com.example.technopa.interfaces.FragmentInterface
+import com.example.technopa.profile.Views.ProfileFragment
+import com.example.technopa.trainings.Views.DetailTrainingFragment
+import com.example.technopa.trainings.Views.TrainingListFragment
 import com.example.technopa.databinding.ActivityMainBinding
-
 
 
 class MainActivity : AppCompatActivity(), FragmentInterface {
@@ -28,12 +25,11 @@ class MainActivity : AppCompatActivity(), FragmentInterface {
 
 
 
-        var b: Boolean = true
+        var b = true
 
         val view = binding?.root
         setContentView(view)
         if(supportFragmentManager.findFragmentById(R.id.mainContainer)==null) {
-            Log.d("CheckContainer",(supportFragmentManager.findFragmentById(R.id.mainContainer)==null).toString())
             supportFragmentManager.beginTransaction()
                 .replace(R.id.mainContainer, MainFragment())
                 .commit()

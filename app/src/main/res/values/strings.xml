@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Cringe Health</string>
+    <string name="APP_PREFERENCES">mysettings</string>
+    <string name="APP_PREFERENCES_STEPS">steps</string>
 
     <plurals name="exercises">
         <item quantity="one">%1$d упражнение</item>
