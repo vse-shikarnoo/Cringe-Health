@@ -1,7 +1,6 @@
 package com.example.technopa
 
 
-
 import android.content.Context.MODE_PRIVATE
 import android.content.Context.SENSOR_SERVICE
 import android.content.SharedPreferences
@@ -10,9 +9,11 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.technopa.databinding.MainFragmentLayoutBinding
+import java.util.*
 
 
 //Главный экран
@@ -30,6 +31,7 @@ class MainFragment : Fragment(R.layout.main_fragment_layout), SensorEventListene
     private val TEXT_NUM_STEPS = "Шаги: "
     private val APP_PREFERENCES = R.string.APP_PREFERENCES.toString()
     private val APP_PREFERENCES_STEPS = R.string.APP_PREFERENCES_STEPS.toString()
+    private val APP_PREFERENCES_DATE = "date"
 
 
     private var mSettings: SharedPreferences? = null
@@ -51,17 +53,36 @@ class MainFragment : Fragment(R.layout.main_fragment_layout), SensorEventListene
         super.onViewCreated(view, savedInstanceState)
 
 
+
         mSettings = activity?.getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE)
+
+
+
+        val date = Calendar.getInstance().get(Calendar.DAY_OF_MONTH).toString()
+        Log.d("Date", date)
+
+        //mSettings!!.edit().putString(APP_PREFERENCES_DATE,date).apply()
+        if(mSettings!!.contains(APP_PREFERENCES_DATE)){
+            if (date != mSettings!!.getString(APP_PREFERENCES_DATE, "")) {
+                saveSteps(0)
+                saveDate(date)
+            }
+        }else{
+            saveDate(date)
+            saveSteps(0)
+        }
         numSteps = mSettings!!.getInt(APP_PREFERENCES_STEPS, 0)
+
         if (mSettings!!.contains(APP_PREFERENCES_STEPS)) {
             binding?.textViewXD?.text = numSteps.toString()
         }
 
         binding?.textViewXD?.text = TEXT_NUM_STEPS.plus(numSteps)
         binding?.shagiProgressBar?.max = 10
+
         binding?.textViewXD?.setOnClickListener {
             numSteps--
-            mSettings?.edit()?.putInt(APP_PREFERENCES_STEPS, numSteps)?.apply()
+            saveSteps(numSteps)
 
             binding?.shagiProgressBar?.progress = (numSteps / dnm)
             binding?.textViewXD?.text = TEXT_NUM_STEPS.plus(numSteps)
@@ -99,7 +120,15 @@ class MainFragment : Fragment(R.layout.main_fragment_layout), SensorEventListene
         binding?.shagiProgressBar?.incrementProgressBy(1)
         binding?.textViewXD?.text = TEXT_NUM_STEPS.plus(numSteps)
 
-        mSettings?.edit()?.putInt(APP_PREFERENCES_STEPS, numSteps)?.apply()
+        saveSteps(numSteps)
+    }
+
+    fun saveSteps(steps: Int){
+        mSettings?.edit()?.putInt(APP_PREFERENCES_STEPS, steps)?.apply()
+    }
+
+    fun saveDate(date: String){
+        mSettings?.edit()?.putString(APP_PREFERENCES_DATE, date)?.apply()
     }
 
 

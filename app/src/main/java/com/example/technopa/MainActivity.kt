@@ -11,6 +11,7 @@ import com.example.technopa.profile.Views.ProfileFragment
 import com.example.technopa.trainings.Views.DetailTrainingFragment
 import com.example.technopa.trainings.Views.TrainingListFragment
 import com.example.technopa.databinding.ActivityMainBinding
+import java.util.*
 
 
 class MainActivity : AppCompatActivity(), FragmentInterface {
@@ -22,7 +23,6 @@ class MainActivity : AppCompatActivity(), FragmentInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-
 
 
         var b = true
