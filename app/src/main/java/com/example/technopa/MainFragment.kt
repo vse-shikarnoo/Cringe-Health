@@ -78,13 +78,14 @@ class MainFragment : Fragment(R.layout.main_fragment_layout), SensorEventListene
         }
 
         binding?.textViewXD?.text = TEXT_NUM_STEPS.plus(numSteps)
-        binding?.shagiProgressBar?.max = 10
+        binding?.shagiProgressBar?.max = dnm
+        binding?.shagiProgressBar?.progress = numSteps
 
         binding?.textViewXD?.setOnClickListener {
-            numSteps--
+            numSteps++
             saveSteps(numSteps)
 
-            binding?.shagiProgressBar?.progress = (numSteps / dnm)
+            binding?.shagiProgressBar?.incrementProgressBy(1)
             binding?.textViewXD?.text = TEXT_NUM_STEPS.plus(numSteps)
         }
 

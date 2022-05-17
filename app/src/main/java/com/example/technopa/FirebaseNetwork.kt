@@ -131,6 +131,7 @@ class FirebaseNetwork {
                 for (postSnapshot in snapshot.children) {
                     listTrainings.add(postSnapshot.getValue(Training::class.java) ?: Training())
                 }
+                Log.d("Test", "Success")
                 call(listTrainings)
             }
 
