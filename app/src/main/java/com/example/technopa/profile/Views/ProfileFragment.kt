@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.technopa.FirebaseNetwork
 import com.example.technopa.Profile.Models.EatAdapter
 import com.example.technopa.databinding.ProfileLayoutBinding
 import com.example.technopa.profile.Models.ProfileVM
@@ -29,6 +30,11 @@ class ProfileFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+        FirebaseNetwork().getUser({},{},"0")
+        FirebaseNetwork().getUser({},{},"1")
+        FirebaseNetwork().getUser({},{},"2")
+        FirebaseNetwork().getUser({},{},"3")
 
         binding = ProfileLayoutBinding.inflate(inflater, container,  false)
 

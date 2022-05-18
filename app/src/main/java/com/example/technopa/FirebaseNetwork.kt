@@ -10,15 +10,16 @@ import kotlinx.android.parcel.Parcelize
 
 import java.lang.Exception
 
-
+@Parcelize
 data class User(
-    val id: Long,
-    val nickname: String,
-    val height: Double,
-    val weight: Double,
+    val id: String = "",
+    val name: String? = "",
+    val surname: String? = "",
+    val height: Double? = 0.0,
+    val weight: Double? = 0.0,
     //val statistic:Statistic,
     //val Achievements:List<Achievement>
-)
+):Parcelable
 
 data class Statistic(
     val id: Long,
@@ -90,15 +91,19 @@ class FirebaseNetwork {
 
 
     fun setUser(user: User) {
-        refUsers.child(user.id.toString()).setValue(user)
+        refUsers.child(user.id).setValue(user)
     }
 
     fun getUser(
         call: (User) -> Unit,
         errorCall: (error: Throwable) -> Unit,
-        id: Long
+        userId: String
     ){
-
+        refUsers.child(userId).get().addOnSuccessListener {
+            Log.i("getUser", "Got value ${it.getValue(User::class.java)}")
+        }.addOnFailureListener{
+            Log.e("getUser", "Error getting data", it)
+        }
     }
 
     fun getDiets(

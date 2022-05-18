@@ -12,24 +12,21 @@ import com.example.technopa.databinding.PersonalDietLayoutBinding
 class PersonalDietFragment : Fragment(R.layout.personal_diet_layout) {
 
 
-
-
-
     private var binding: PersonalDietLayoutBinding? = null
 
     private val listEda = mutableListOf(
-        Eda("Syrok",kalorii = 102.0, belki = 25.0, zhiri = 30.0, uglevodi = 10.0),
-        Eda("Sup",kalorii = 112.0, belki = 35.0, zhiri = 40.0, uglevodi = 20.0),
-        Eda("Meat",kalorii = 122.0, belki = 45.0, zhiri = 50.0, uglevodi = 30.0)
+        Eda("Syrok", kalorii = 102.0, belki = 25.0, zhiri = 30.0, uglevodi = 10.0),
+        Eda("Sup", kalorii = 112.0, belki = 35.0, zhiri = 40.0, uglevodi = 20.0),
+        Eda("Meat", kalorii = 122.0, belki = 45.0, zhiri = 50.0, uglevodi = 30.0)
     )
 
-    private val list:MutableList<PriemPishi> = mutableListOf(
-        PriemPishi("Завтрак",listEda),
-        PriemPishi("Обед",listEda),
-        PriemPishi("Ужин",listEda)
+    private val list: MutableList<PriemPishi> = mutableListOf(
+        PriemPishi("Завтрак", listEda),
+        PriemPishi("Обед", listEda),
+        PriemPishi("Ужин", listEda)
     )
 
-    private var adapterPersonalDiet:PersonalDietAdapter by autoCleared()
+    private var adapterPersonalDiet: PersonalDietAdapter by autoCleared()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -59,30 +56,30 @@ class PersonalDietFragment : Fragment(R.layout.personal_diet_layout) {
              */
             //mRf.child(list[0].title).setValue(list[1])
             //mrfUsers.child("124").setValue("Vanya")
-            val userList:List<User> = listOf(
-                User(1, "caramel", 163.0, 69.6),
-                User(2, "Vanya", 173.0, 79.6),
-                User(3, "Vlad", 193.0, 89.6)
+            val userList: List<User> = listOf(
+                User("1", "caramel", "", 163.0, 69.6),
+                User("2", "Vanya", "", 173.0, 79.6),
+                User("3", "Vlad", "", 193.0, 89.6)
             )
             val user = userList.random()
             FirebaseNetwork().setUser(userList.random())
-            FirebaseNetwork().getDiets({},{})
+            FirebaseNetwork().getDiets({}, {})
 
         }
     }
 
-    fun init(){
+    fun init() {
         adapterPersonalDiet = PersonalDietAdapter()
-        with(binding!!.recyclerViewPersonalDiet){
+        with(binding!!.recyclerViewPersonalDiet) {
             adapter = adapterPersonalDiet
-            layoutManager = GridLayoutManager(requireContext(),3)
+            layoutManager = GridLayoutManager(requireContext(), 3)
             setHasFixedSize(true)
         }
         adapterPersonalDiet.submitList(list)
     }
 
 
-    private fun addDialog(){
+    private fun addDialog() {
         AlertDialog.Builder(requireContext())
             .setMessage("Проводим технические работы по добавлению добавления")
             .setTitle("Не работает")
@@ -90,7 +87,6 @@ class PersonalDietFragment : Fragment(R.layout.personal_diet_layout) {
             .setNegativeButton("Не понял") { _, _ -> addDialog() }
             .show()
     }
-
 
 
 }
