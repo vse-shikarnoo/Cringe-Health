@@ -14,6 +14,7 @@
     </plurals>
     <string name="EditInformation">Редактировать информацию</string>
     <string name="Height">Рост, см:</string>
+    <string name="DNM">Выберите дневную норму шагов</string>
     <string name="Weight">Вес, кг:</string>
     <string name="DesiredWeight">Желаемый вес, кг:</string>
     <string name="Achievments">Достижения</string>

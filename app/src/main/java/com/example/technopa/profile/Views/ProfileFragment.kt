@@ -1,4 +1,4 @@
-package com.example.technopa.Profile.Views
+package com.example.technopa.profile.Views
 
 import android.annotation.SuppressLint
 import android.os.Build
@@ -11,11 +11,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.technopa.Profile.Models.EatAdapter
-import com.example.technopa.Profile.Models.ProfileVM
 import com.example.technopa.databinding.ProfileLayoutBinding
-import com.example.technopa.Profile.Repos.MainUser
+import com.example.technopa.profile.Models.ProfileVM
+import com.example.technopa.profile.Repos.MainUser
 
 class ProfileFragment: Fragment() {
 

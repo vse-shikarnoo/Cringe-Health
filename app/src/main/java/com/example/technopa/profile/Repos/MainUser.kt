@@ -1,5 +1,7 @@
 package com.example.technopa.profile.Repos
 
+import com.example.technopa.Profile.Repos.item
+
 class MainUser {
 
     var name = "Vyacheslav"

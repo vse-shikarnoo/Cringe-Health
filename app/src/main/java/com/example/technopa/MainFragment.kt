@@ -1,6 +1,7 @@
 package com.example.technopa
 
 
+import android.app.AlertDialog
 import android.content.Context.MODE_PRIVATE
 import android.content.Context.SENSOR_SERVICE
 import android.content.SharedPreferences
@@ -11,8 +12,10 @@ import android.hardware.SensorManager
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.technopa.databinding.MainFragmentLayoutBinding
+
 import java.util.*
 
 
@@ -26,11 +29,12 @@ class MainFragment : Fragment(R.layout.main_fragment_layout), SensorEventListene
     private var sensorManager: SensorManager? = null
 
     private var numSteps: Int = 0
-    private val dnm: Int = 100
+    private var dnm: Int = 10000
 
     private val TEXT_NUM_STEPS = "Шаги: "
     private val APP_PREFERENCES = R.string.APP_PREFERENCES.toString()
     private val APP_PREFERENCES_STEPS = R.string.APP_PREFERENCES_STEPS.toString()
+    private val APP_PREFERENCES_DNM_STEPS = "dnm"
     private val APP_PREFERENCES_DATE = "date"
 
 
@@ -57,36 +61,41 @@ class MainFragment : Fragment(R.layout.main_fragment_layout), SensorEventListene
         mSettings = activity?.getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE)
 
 
-
         val date = Calendar.getInstance().get(Calendar.DAY_OF_MONTH).toString()
         Log.d("Date", date)
 
-        //mSettings!!.edit().putString(APP_PREFERENCES_DATE,date).apply()
-        if(mSettings!!.contains(APP_PREFERENCES_DATE)){
+
+        if (mSettings!!.contains(APP_PREFERENCES_DATE)) {
             if (date != mSettings!!.getString(APP_PREFERENCES_DATE, "")) {
                 saveSteps(0)
                 saveDate(date)
             }
-        }else{
+        } else {
             saveDate(date)
             saveSteps(0)
         }
         numSteps = mSettings!!.getInt(APP_PREFERENCES_STEPS, 0)
+        dnm = mSettings!!.getInt(APP_PREFERENCES_DNM_STEPS, 0)
 
         if (mSettings!!.contains(APP_PREFERENCES_STEPS)) {
             binding?.textViewXD?.text = numSteps.toString()
         }
 
-        binding?.textViewXD?.text = TEXT_NUM_STEPS.plus(numSteps)
-        binding?.shagiProgressBar?.max = dnm
-        binding?.shagiProgressBar?.progress = numSteps
+
+        updateProgressBar()
 
         binding?.textViewXD?.setOnClickListener {
-            numSteps++
+            numSteps += 1
             saveSteps(numSteps)
+
 
             binding?.shagiProgressBar?.incrementProgressBy(1)
             binding?.textViewXD?.text = TEXT_NUM_STEPS.plus(numSteps)
+        }
+
+        binding?.shagiProgressBar?.setOnClickListener {
+            choseDNM()
+
         }
 
         sensorManager =
@@ -94,6 +103,37 @@ class MainFragment : Fragment(R.layout.main_fragment_layout), SensorEventListene
         //sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         simpleStepDetector = StepDetector()
         simpleStepDetector!!.registerListener(this)
+
+    }
+
+    private fun updateProgressBar() {
+        binding?.textViewXD?.text = TEXT_NUM_STEPS.plus(numSteps)
+        binding?.shagiProgressBar?.max = dnm
+        binding?.shagiProgressBar?.progress = numSteps
+    }
+
+    private fun choseDNM() {
+        val listDNM =
+            arrayOf("0", "100", "10000", "12000", "14000", "16000", "18000", "20000")
+        AlertDialog.Builder(requireContext())
+            .setTitle("Выберите дневную норму шагов")
+            .setItems(listDNM) { _, position ->
+                if (position == 0) {
+                    numSteps = 0
+                    saveSteps(numSteps)
+                    toast("Шаги сброшены")
+                } else {
+                    dnm = listDNM[position].toInt()
+                    mSettings?.edit()
+                        ?.putInt(APP_PREFERENCES_DNM_STEPS, dnm)
+                        ?.apply()
+                    toast("Дневная норма шагов = $dnm")
+                }
+
+                updateProgressBar()
+            }
+            .show()
+
 
     }
 
@@ -124,11 +164,11 @@ class MainFragment : Fragment(R.layout.main_fragment_layout), SensorEventListene
         saveSteps(numSteps)
     }
 
-    fun saveSteps(steps: Int){
+    fun saveSteps(steps: Int) {
         mSettings?.edit()?.putInt(APP_PREFERENCES_STEPS, steps)?.apply()
     }
 
-    fun saveDate(date: String){
+    fun saveDate(date: String) {
         mSettings?.edit()?.putString(APP_PREFERENCES_DATE, date)?.apply()
     }
 
