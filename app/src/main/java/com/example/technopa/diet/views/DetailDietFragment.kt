@@ -6,11 +6,14 @@ import androidx.fragment.app.Fragment
 import com.example.technopa.Dieta
 import com.example.technopa.R
 import com.example.technopa.databinding.DetailDietLayoutBinding
+import com.example.technopa.interfaces.FragmentInterface
+import com.example.technopa.trainings.Views.TrainingListFragment
 import com.example.technopa.withArguments
 
 class DetailDietFragment: Fragment(R.layout.detail_diet_layout) {
 
-
+    private val fragmentInterface: FragmentInterface?
+        get() = activity?.let { it as? FragmentInterface }
 
     private var dieta: Dieta? = null
 
@@ -22,6 +25,10 @@ class DetailDietFragment: Fragment(R.layout.detail_diet_layout) {
         binding = DetailDietLayoutBinding.bind(view)
 
         bindInfo()
+
+        binding?.backArrowDetailDiet?.setOnClickListener {
+            fragmentInterface?.openFragment(parentFragment?: TrainingListFragment())
+        }
 
     }
 

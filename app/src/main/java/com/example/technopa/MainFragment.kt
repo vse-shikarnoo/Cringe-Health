@@ -37,6 +37,13 @@ class MainFragment : Fragment(R.layout.main_fragment_layout), SensorEventListene
     private val APP_PREFERENCES_DNM_STEPS = "dnm"
     private val APP_PREFERENCES_DATE = "date"
 
+    private val KEY = "key"
+    //000000000
+    //100000000
+    //100010000
+
+
+
 
     private var mSettings: SharedPreferences? = null
 
@@ -56,6 +63,7 @@ class MainFragment : Fragment(R.layout.main_fragment_layout), SensorEventListene
         binding = MainFragmentLayoutBinding.bind(view)
         super.onViewCreated(view, savedInstanceState)
 
+        
 
 
         mSettings = activity?.getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE)
@@ -170,6 +178,7 @@ class MainFragment : Fragment(R.layout.main_fragment_layout), SensorEventListene
 
     fun saveDate(date: String) {
         mSettings?.edit()?.putString(APP_PREFERENCES_DATE, date)?.apply()
+
     }
 
 

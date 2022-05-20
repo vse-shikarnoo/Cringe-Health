@@ -6,11 +6,13 @@ import androidx.fragment.app.Fragment
 import com.example.technopa.R
 import com.example.technopa.Training
 import com.example.technopa.databinding.DetailTrainingLayoutBinding
+import com.example.technopa.interfaces.FragmentInterface
 import com.example.technopa.withArguments
 
 class DetailTrainingFragment: Fragment(R.layout.detail_training_layout) {
 
-
+    private val fragmentInterface: FragmentInterface?
+        get() = activity?.let { it as? FragmentInterface }
 
     private var training: Training? = null
 
@@ -22,6 +24,10 @@ class DetailTrainingFragment: Fragment(R.layout.detail_training_layout) {
         binding = DetailTrainingLayoutBinding.bind(view)
 
         bindInfo()
+
+        binding?.backArrowDetailTraining?.setOnClickListener {
+            fragmentInterface?.openFragment(parentFragment?:TrainingListFragment())
+        }
 
     }
 
