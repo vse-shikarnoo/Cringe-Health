@@ -1,4 +1,4 @@
-package com.example.technopa
+package com.example.technopa.MainInfo.View
 
 
 import android.app.AlertDialog
@@ -12,36 +12,50 @@ import android.hardware.SensorManager
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import com.example.technopa.MainInfo.Model.MainModel
+import com.example.technopa.R
+import com.example.technopa.StepDetector
+import com.example.technopa.StepListener
 import com.example.technopa.databinding.MainFragmentLayoutBinding
+import com.example.technopa.toast
 
 import java.util.*
+import kotlin.properties.Delegates
 
 
 //Главный экран
 //Переходы на экраны персональной диеты/тренировки и профиля
 //
+
+//
 class MainFragment : Fragment(R.layout.main_fragment_layout), SensorEventListener, StepListener {
+
+    private var viewModel: MainModel? = null
 
     private var binding: MainFragmentLayoutBinding? = null
     private var simpleStepDetector: StepDetector? = null
     private var sensorManager: SensorManager? = null
 
-    private var numSteps: Int = 0
-    private var dnm: Int = 10000
+
 
     private val TEXT_NUM_STEPS = "Шаги: "
-    private val APP_PREFERENCES = R.string.APP_PREFERENCES.toString()
-    private val APP_PREFERENCES_STEPS = R.string.APP_PREFERENCES_STEPS.toString()
-    private val APP_PREFERENCES_DNM_STEPS = "dnm"
-    private val APP_PREFERENCES_DATE = "date"
+    private var numSteps by Delegates.notNull<Int>()
+    private var dayNormalSteps by Delegates.notNull<Int>()
 
 
-    private var mSettings: SharedPreferences? = null
+
+
+
+
 
 
     override fun onResume() {
+
+
+        //Разобраться с изменением шагов
         super.onResume()
         sensorManager!!.registerListener(
             this,
@@ -57,40 +71,17 @@ class MainFragment : Fragment(R.layout.main_fragment_layout), SensorEventListene
         super.onViewCreated(view, savedInstanceState)
 
 
-
-        mSettings = activity?.getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE)
-
-
-        val date = Calendar.getInstance().get(Calendar.DAY_OF_MONTH).toString()
-        Log.d("Date", date)
-
-
-        if (mSettings!!.contains(APP_PREFERENCES_DATE)) {
-            if (date != mSettings!!.getString(APP_PREFERENCES_DATE, "")) {
-                saveSteps(0)
-                saveDate(date)
-            }
-        } else {
-            saveDate(date)
-            saveSteps(0)
-        }
-        numSteps = mSettings!!.getInt(APP_PREFERENCES_STEPS, 0)
-        dnm = mSettings!!.getInt(APP_PREFERENCES_DNM_STEPS, 0)
-
-        if (mSettings!!.contains(APP_PREFERENCES_STEPS)) {
-            binding?.textViewXD?.text = numSteps.toString()
-        }
+        viewModel = MainModel(requireActivity().application)
 
 
         updateProgressBar()
+        observe()
 
         binding?.textViewXD?.setOnClickListener {
-            numSteps += 1
-            saveSteps(numSteps)
-
-
-            binding?.shagiProgressBar?.incrementProgressBy(1)
-            binding?.textViewXD?.text = TEXT_NUM_STEPS.plus(numSteps)
+            viewModel?.incrementStep()
+            viewModel?.saveSteps(numSteps)
+            updateProgressBar()
+            Log.d("Test", "Имитация шага numSteps = ${viewModel?.steps?.value}")
         }
 
         binding?.shagiProgressBar?.setOnClickListener {
@@ -107,9 +98,11 @@ class MainFragment : Fragment(R.layout.main_fragment_layout), SensorEventListene
     }
 
     private fun updateProgressBar() {
-        binding?.textViewXD?.text = TEXT_NUM_STEPS.plus(numSteps)
-        binding?.shagiProgressBar?.max = dnm
-        binding?.shagiProgressBar?.progress = numSteps
+        updateState()
+        binding?.shagiProgressBar?.max = dayNormalSteps
+        Log.d("Model param", "steps = $numSteps; dns = $dayNormalSteps")
+
+
     }
 
     private fun choseDNM() {
@@ -120,14 +113,12 @@ class MainFragment : Fragment(R.layout.main_fragment_layout), SensorEventListene
             .setItems(listDNM) { _, position ->
                 if (position == 0) {
                     numSteps = 0
-                    saveSteps(numSteps)
+                    viewModel?.saveSteps(numSteps)
                     toast("Шаги сброшены")
                 } else {
-                    dnm = listDNM[position].toInt()
-                    mSettings?.edit()
-                        ?.putInt(APP_PREFERENCES_DNM_STEPS, dnm)
-                        ?.apply()
-                    toast("Дневная норма шагов = $dnm")
+                    dayNormalSteps = listDNM[position].toInt()
+                    viewModel?.saveDNS(dayNormalSteps)
+                    toast("Дневная норма шагов = $dayNormalSteps")
                 }
 
                 updateProgressBar()
@@ -158,19 +149,30 @@ class MainFragment : Fragment(R.layout.main_fragment_layout), SensorEventListene
 
     override fun step(timeNs: Long) {
         numSteps++
-        binding?.shagiProgressBar?.incrementProgressBy(1)
+        viewModel?.saveSteps(numSteps)
+        Log.d("Test", "Сделвн шаг numSteps = $numSteps")
+    }
+
+    private fun observe(){
+        viewModel?.dns?.observe(viewLifecycleOwner){
+            dayNormalSteps = viewModel?.dns?.value?:0
+            updateState()
+        }
+        viewModel?.steps?.observe(viewLifecycleOwner){
+            numSteps = viewModel?.steps?.value?:0
+            updateState()
+        }
+    }
+
+    private fun updateState(){
+        numSteps = viewModel?.steps?.value?:0
+        dayNormalSteps = viewModel?.dns?.value?:0
+        binding?.shagiProgressBar?.progress = numSteps
         binding?.textViewXD?.text = TEXT_NUM_STEPS.plus(numSteps)
 
-        saveSteps(numSteps)
     }
 
-    fun saveSteps(steps: Int) {
-        mSettings?.edit()?.putInt(APP_PREFERENCES_STEPS, steps)?.apply()
-    }
 
-    fun saveDate(date: String) {
-        mSettings?.edit()?.putString(APP_PREFERENCES_DATE, date)?.apply()
-    }
 
 
 }

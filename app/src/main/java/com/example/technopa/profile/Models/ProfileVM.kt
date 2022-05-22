@@ -13,6 +13,8 @@ class ProfileVM: ViewModel() {
         var weightNp2 = MutableLiveData<Int>()
         private var repository = Repository()
 
+        var desiredWeightNp2 = MutableLiveData<Int>()
+
         init {
                 user.value = repository.getUser()
                 progressText.value = (((user.value?.weight?.let { user.value?.desired_weight?.div(it) })?.times(
@@ -25,6 +27,24 @@ class ProfileVM: ViewModel() {
                 val user1 = user.value
                 user1?.weight = IntPart.toDouble()+(FracPart.toDouble()/10)
                 user.value = user1
+                repository.sendUser(user1)
+        }
+
+        fun setHeight(newHeight: Int) {
+                val user1 = user.value
+                user1?.height = newHeight
+                repository.sendUser(user1)
+
+        }
+        fun setNameSurname(newName: String, newSurname: String) {
+                val user1 = user.value
+                user1?.name = newName
+                user1?.surname = newSurname
+                repository.sendUser(user1)
+        }
+        fun setDesWeight(IntPart: Int, FractionalPart: Int) {
+                val user1 = user.value
+                user1?.desired_weight = IntPart.toDouble()+(FractionalPart.toDouble()/10)
                 repository.sendUser(user1)
         }
 

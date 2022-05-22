@@ -26,5 +26,11 @@
         <item name="colorOnPrimary">@color/white</item>
     </style>
 
+    <style name="ShagiProgressBar" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:progress">0</item>
+        <item name="android:max">1000</item>
+
+    </style>
+
 </resources>
 
