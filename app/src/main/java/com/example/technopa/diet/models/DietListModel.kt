@@ -3,7 +3,8 @@ package com.example.technopa.diet.models
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.technopa.Dieta
+import com.example.technopa.Classes.Dieta
+
 import com.example.technopa.diet.repos.DietListRepo
 
 class DietListModel : ViewModel() {

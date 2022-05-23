@@ -3,7 +3,8 @@ package com.example.technopa.trainings.Models
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.technopa.Training
+import com.example.technopa.Classes.Training
+
 import com.example.technopa.trainings.Repos.TrainingListRepo
 
 class TrainingListModel : ViewModel() {

@@ -3,7 +3,8 @@ package com.example.technopa.diet.views
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.example.technopa.Dieta
+import com.example.technopa.Classes.Dieta
+
 import com.example.technopa.R
 import com.example.technopa.databinding.DetailDietLayoutBinding
 import com.example.technopa.interfaces.FragmentInterface

@@ -1,8 +1,9 @@
 package com.example.technopa.interfaces
 
 import androidx.fragment.app.Fragment
-import com.example.technopa.Dieta
-import com.example.technopa.Training
+import com.example.technopa.Classes.Dieta
+import com.example.technopa.Classes.Training
+
 
 interface FragmentInterface {
     fun openFragment(fragment: Fragment)

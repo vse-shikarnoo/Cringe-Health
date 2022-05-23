@@ -2,6 +2,10 @@ package com.example.technopa
 
 import android.os.Parcelable
 import android.util.Log
+import com.example.technopa.Classes.Dieta
+import com.example.technopa.Classes.PriemPishi
+import com.example.technopa.Classes.Training
+import com.example.technopa.Classes.User
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -9,77 +13,13 @@ import com.google.firebase.database.ValueEventListener
 import kotlinx.android.parcel.Parcelize
 import java.lang.Exception
 
-@Parcelize
-data class User(
-    val id: String = "",
-    val name: String? = "",
-    val surname: String? = "",
-    val height: Double? = 0.0,
-    val weight: Double? = 0.0,
-    // val statistic:Statistic,
-    // val Achievements:List<Achievement>
-) : Parcelable
 
-data class Statistic(
-    val id: Long,
-    val TrainingList: Map<String, List<Training>>, // Здесь String это дата
-    val PriemPishiList: Map<String, List<PriemPishi>>,
-)
 
-data class Achievement(
-    // val picture:Picture,
-    val data: String,
-    val opisanie: String
-)
 
-@Parcelize
-data class Training(
-    var id: Long? = null,
-    val title: String? = ",",
-    val exercises: List<Exercise> = emptyList(),
-    val kalorii: Double = 0.0,
-    val time: Int = 0,
-    val opisanie: String? = ""
-) : Parcelable
 
-@Parcelize
-data class Exercise(
-    val title: String = "",
-    val povtoreniya: String? = null,
-    val opisanie: String = ""
-) : Parcelable
 
-@Parcelize
-data class PriemPishi(
-    val title: String? = null,
-    val eda: List<Eda>? = null,
-    var kaloriiO: Double? = 0.0, // Каллории и БЖУ общее за прием пищи
-    var belkiO: Double? = 0.0,
-    var zhiriO: Double? = 0.0,
-    var uglevodiO: Double? = 0.0
-) : Parcelable
 
-@Parcelize
-data class Eda(
-    val title: String? = null,
-    val kalorii: Double? = null,
-    val belki: Double? = null,
-    val zhiri: Double? = null,
-    val uglevodi: Double? = null
-) : Parcelable
 
-@Parcelize
-data class Dieta(
-    var title: String? = "",
-    var id: Long? = null,
-    var priemPishiList: List<PriemPishi>? = emptyList(),
-    var kaloriipd: Double? = 0.0, // Каллории и БЖУ в день
-    var opisanie: String? = ""
-) : Parcelable {
-    override fun toString(): String {
-        return "Dieta[title = $title;priem pishi = $priemPishiList]"
-    }
-}
 
 class FirebaseNetwork {
     private val database = FirebaseDatabase.getInstance()

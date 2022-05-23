@@ -7,7 +7,8 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.technopa.Dieta
+import com.example.technopa.Classes.Dieta
+
 import com.example.technopa.R
 import com.example.technopa.autoCleared
 import com.example.technopa.databinding.DietListLayoutBinding

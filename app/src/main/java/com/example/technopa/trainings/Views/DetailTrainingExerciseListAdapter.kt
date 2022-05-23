@@ -6,9 +6,9 @@ import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.technopa.Exercise
-import com.example.technopa.R
-import com.example.technopa.Training
+import com.example.technopa.Classes.Exercise
+
+
 import com.example.technopa.databinding.ItemExerciseDetailTrainingLayoutBinding
 import com.example.technopa.databinding.ItemTrainingLayoutBinding
 

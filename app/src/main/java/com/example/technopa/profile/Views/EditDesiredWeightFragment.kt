@@ -9,13 +9,13 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
-import com.example.technopa.databinding.EditDesWeightLayoutBinding
 import com.example.technopa.profile.Models.EditDesiredWeightVM
+import com.example.technopa.databinding.EditDesWeightLayoutBinding
 import com.example.technopa.profile.Repos.MainUser
 
-class EditDesiredWeightFragment : DialogFragment() {
+class EditDesiredWeightFragment : DialogFragment(){
 
-    private val editDesWeightVM: EditDesiredWeightVM by viewModels()
+    private val editDesWeightVM : EditDesiredWeightVM by viewModels()
 
     private lateinit var binding: EditDesWeightLayoutBinding
     @SuppressLint("SetTextI18n")
@@ -26,9 +26,9 @@ class EditDesiredWeightFragment : DialogFragment() {
         savedInstanceState: Bundle?,
     ): View {
 
-        binding = EditDesWeightLayoutBinding.inflate(inflater, container, false)
+        binding = EditDesWeightLayoutBinding.inflate(inflater, container,  false)
 
-        editDesWeightVM.user.observe(viewLifecycleOwner) {
+        editDesWeightVM.user.observe(viewLifecycleOwner){
             setNumberPickers(it)
         }
 
@@ -42,6 +42,7 @@ class EditDesiredWeightFragment : DialogFragment() {
         }
 
         return binding.root
+
     }
 
     private fun setNumberPickers(user: MainUser?) {
@@ -51,8 +52,11 @@ class EditDesiredWeightFragment : DialogFragment() {
 
         binding.desiredWeightNp2.maxValue = 9
         binding.desiredWeightNp2.minValue = 0
-        editDesWeightVM.desiredWeightNp2.observe(viewLifecycleOwner) {
+        editDesWeightVM.desiredWeightNp2.observe(viewLifecycleOwner){
             binding.desiredWeightNp2.value = it
         }
     }
+
 }
+
+

@@ -1,6 +1,7 @@
 package com.example.technopa.diet.repos
 
-import com.example.technopa.Dieta
+import com.example.technopa.Classes.Dieta
+
 import com.example.technopa.FirebaseNetwork
 
 class DietListRepo {

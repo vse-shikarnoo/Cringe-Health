@@ -33,12 +33,7 @@
         android:id="@+id/detailDietFragment"
         android:name="com.example.technopa.diet.views.DetailDietFragment"
         android:label="DetailDietFragment"
-        tools:layout="@layout/detail_diet_layout">
-        <argument
-            android:name="dieta"
-            app:argType="com.example.technopa.Dieta"
-            app:nullable="true" />
-    </fragment>
+        tools:layout="@layout/detail_diet_layout"/>
     <fragment
         android:id="@+id/trainingListFragment"
         android:name="com.example.technopa.trainings.Views.TrainingListFragment"
@@ -53,10 +48,5 @@
         android:id="@+id/detailTrainingFragment"
         android:name="com.example.technopa.trainings.Views.DetailTrainingFragment"
         android:label="DetailTrainingFragment"
-        tools:layout="@layout/detail_training_layout">
-        <argument
-            android:name="training"
-            app:argType="com.example.technopa.Training"
-            app:nullable="true" />
-    </fragment>
+        tools:layout="@layout/detail_training_layout"/>
 </navigation>

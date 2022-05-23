@@ -1,7 +1,8 @@
 package com.example.technopa.trainings.Repos
 
+import com.example.technopa.Classes.Training
 import com.example.technopa.FirebaseNetwork
-import com.example.technopa.Training
+
 
 class TrainingListRepo {
 
