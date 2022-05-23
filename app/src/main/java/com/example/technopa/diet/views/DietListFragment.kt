@@ -2,6 +2,7 @@ package com.example.technopa.diet.views
 
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -46,10 +47,11 @@ class DietListFragment : Fragment(R.layout.diet_list_layout) {
         dietListAdapter = DietListAdapter { position ->
             fragmentInterface?.onItemSelectedDiets(viewModel.dietList.value?.get(position) ?: Dieta())
         }
-        with(binding!!.recyclerViewDietList) {
-            adapter = dietListAdapter
-            layoutManager = LinearLayoutManager(requireContext())
-            setHasFixedSize(true)
+        with(binding?.recyclerViewDietList) {
+            this?.adapter = dietListAdapter
+            this?.layoutManager = LinearLayoutManager(requireContext())
+            this?.setHasFixedSize(true)
+
         }
         viewModel.getDiets()
     }

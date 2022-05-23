@@ -3,9 +3,12 @@ package com.example.technopa.trainings.Views
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.technopa.R
 import com.example.technopa.Training
+import com.example.technopa.autoCleared
 import com.example.technopa.databinding.DetailTrainingLayoutBinding
+import com.example.technopa.interfaces.FragmentInterface
 import com.example.technopa.withArguments
 
 class DetailTrainingFragment : Fragment(R.layout.detail_training_layout) {
@@ -14,16 +17,37 @@ class DetailTrainingFragment : Fragment(R.layout.detail_training_layout) {
 
     private var binding: DetailTrainingLayoutBinding? = null
 
+    private var detailExerciseAdapter : DetailTrainingExerciseListAdapter by autoCleared()
+
+    private val fragmentInterface: FragmentInterface?
+        get() = activity?.let { it as? FragmentInterface }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = DetailTrainingLayoutBinding.bind(view)
+        training = requireArguments().getParcelable(KEY_TRAINING)
 
-        bindInfo()
+        init()
+        bindInfo(training)
+
+        binding?.backArrowDetailTraining?.setOnClickListener {
+            fragmentInterface?.openFragment(TrainingListFragment())
+        }
     }
 
-    private fun bindInfo() {
-        training = requireArguments().getParcelable(KEY_TRAINING)
+    fun init(){
+        detailExerciseAdapter = DetailTrainingExerciseListAdapter()
+        with(binding?.recyclerViewDetailTraining){
+            this?.adapter = detailExerciseAdapter
+            this?.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+            this?.setHasFixedSize(true)
+        }
+        detailExerciseAdapter.submitList(training?.exercises)
+    }
+
+    private fun bindInfo(training: Training?) {
+
         binding!!.titleTextView.text = training?.title ?: ""
         binding!!.kaloriiTextView.text = "${training?.kalorii} ккал"
         binding!!.opisanieTextView.text = training?.opisanie ?: ""

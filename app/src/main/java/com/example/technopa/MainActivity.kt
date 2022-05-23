@@ -3,7 +3,7 @@ package com.example.technopa
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.technopa.MainInfo.View.MainFragment
+import com.example.technopa.main.view.MainFragment
 import com.example.technopa.databinding.ActivityMainBinding
 import com.example.technopa.diet.views.DetailDietFragment
 import com.example.technopa.diet.views.DietListFragment

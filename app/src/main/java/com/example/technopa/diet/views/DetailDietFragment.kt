@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import com.example.technopa.Dieta
 import com.example.technopa.R
 import com.example.technopa.databinding.DetailDietLayoutBinding
+import com.example.technopa.interfaces.FragmentInterface
 import com.example.technopa.withArguments
 
 class DetailDietFragment : Fragment(R.layout.detail_diet_layout) {
@@ -14,12 +15,19 @@ class DetailDietFragment : Fragment(R.layout.detail_diet_layout) {
 
     private var binding: DetailDietLayoutBinding? = null
 
+    private val fragmentInterface: FragmentInterface?
+        get() = activity?.let { it as? FragmentInterface }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = DetailDietLayoutBinding.bind(view)
 
         bindInfo()
+
+        binding?.backArrowDetailDiet?.setOnClickListener {
+            fragmentInterface?.openFragment(DietListFragment())
+        }
     }
 
     private fun bindInfo() {

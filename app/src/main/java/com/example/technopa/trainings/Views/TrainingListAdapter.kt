@@ -2,6 +2,7 @@ package com.example.technopa.trainings.Views
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -48,8 +49,11 @@ class TrainingListAdapter(
         fun bind(item: Training) {
             binding.itemTrainingTitle.text = item.title
             binding.itemTrainingKkal.text = "${item.kalorii} ккал сжигается"
-
             binding.itemTrainingExercises.text = parent.context.resources.getQuantityString(R.plurals.exercises, item.exercises.size, item.exercises.size)
+
+            binding.itemTrainingTitle.animation = AnimationUtils.loadAnimation(parent.context,R.anim.animation)
+            binding.itemTrainingKkal.animation = AnimationUtils.loadAnimation(parent.context,R.anim.animation)
+            binding.itemTrainingExercises.animation = AnimationUtils.loadAnimation(parent.context,R.anim.animation)
             // itemView.itemPersonalDietTextView.text = item.name
         }
     }

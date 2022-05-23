@@ -1,4 +1,4 @@
-package com.example.technopa.MainInfo.View
+package com.example.technopa.main.view
 
 import android.app.AlertDialog
 
@@ -7,7 +7,7 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.technopa.MainInfo.Model.MainModel
+import com.example.technopa.main.model.MainModel
 import com.example.technopa.R
 
 import com.example.technopa.databinding.MainFragmentLayoutBinding
@@ -27,6 +27,7 @@ class MainFragment : Fragment(R.layout.main_fragment_layout) {
 
 
     private val TEXT_NUM_STEPS = "Шаги: "
+    private val TEXT_DNS = "Дневная норма шагов:"
     private var numSteps by Delegates.notNull<Int>()
     private var dayNormalSteps by Delegates.notNull<Int>()
 
@@ -41,7 +42,7 @@ class MainFragment : Fragment(R.layout.main_fragment_layout) {
         observe()
 
 
-        binding?.textViewXD?.setOnClickListener {
+        binding?.textViewStep?.setOnClickListener {
             viewModel?.incrementStep()
             updateState()
 
@@ -99,7 +100,8 @@ class MainFragment : Fragment(R.layout.main_fragment_layout) {
         Log.d("Test DNS", dayNormalSteps.toString())
         binding?.shagiProgressBar?.max = dayNormalSteps
         binding?.shagiProgressBar?.progress = numSteps
-        binding?.textViewXD?.text = TEXT_NUM_STEPS.plus(numSteps)
+        binding?.textViewStep?.text = TEXT_NUM_STEPS.plus(numSteps)
+        binding?.textViewDNS?.text = TEXT_DNS.plus(dayNormalSteps)
 
         Log.d("Test", "After update steps = $numSteps; dns = $dayNormalSteps")
     }

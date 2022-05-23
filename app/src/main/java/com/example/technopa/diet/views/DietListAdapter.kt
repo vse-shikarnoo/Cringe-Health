@@ -1,7 +1,9 @@
 package com.example.technopa.diet.views
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -13,13 +15,17 @@ class DietListAdapter(
     private val onItemClick: (position: Int) -> Unit
 ) : ListAdapter<Dieta, DietListAdapter.Holder>(DiffUtilCallBack()) {
 
+    private val lastPosition = -1
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val binding = ItemDietLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemDietLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return Holder(binding, onItemClick, parent)
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.bind(getItem(position))
+
     }
 
     class DiffUtilCallBack : DiffUtil.ItemCallback<Dieta>() {
@@ -47,8 +53,18 @@ class DietListAdapter(
         fun bind(item: Dieta) {
             binding.itemDietTitle.text = item.title
             binding.itemDietKkal.text = "${item.kaloriipd} ккал в день"
-            binding.itemDietPriems.text = parent.resources.getQuantityString(R.plurals.priemsPishi, item.priemPishiList!!.size, item.priemPishiList!!.size)
+            binding.itemDietPriems.text = parent.resources.getQuantityString(
+                R.plurals.priemsPishi,
+                item.priemPishiList!!.size,
+                item.priemPishiList!!.size
+            )
+
+            binding.itemDietTitle.animation = AnimationUtils.loadAnimation(parent.context,R.anim.animation)
+            binding.itemDietKkal.animation = AnimationUtils.loadAnimation(parent.context,R.anim.animation)
+            binding.itemDietPriems.animation = AnimationUtils.loadAnimation(parent.context,R.anim.animation)
             // itemView.itemPersonalDietTextView.text = item.name
         }
     }
+
+
 }

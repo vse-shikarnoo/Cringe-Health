@@ -45,7 +45,7 @@ data class Training(
 @Parcelize
 data class Exercise(
     val title: String = "",
-    val povtoreniya: Double? = null,
+    val povtoreniya: String? = null,
     val opisanie: String = ""
 ) : Parcelable
 
@@ -113,7 +113,7 @@ class FirebaseNetwork {
                 for (postSnapshot in snapshot.children) {
                     listDiets.add(postSnapshot.getValue(Dieta::class.java) ?: Dieta())
                 }
-                call(listDiets)
+                call((listDiets+listDiets+listDiets) as MutableList<Dieta>)
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -134,7 +134,7 @@ class FirebaseNetwork {
                     listTrainings.add(postSnapshot.getValue(Training::class.java) ?: Training())
                 }
                 Log.d("Test", "Success")
-                call(listTrainings)
+                call((listTrainings+listTrainings+listTrainings) as MutableList<Training>)
             }
 
             override fun onCancelled(error: DatabaseError) {

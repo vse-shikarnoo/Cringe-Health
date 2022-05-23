@@ -1,4 +1,4 @@
-package com.example.technopa.MainInfo.Repo
+package com.example.technopa.main.repo
 
 import android.app.Application
 import android.content.Context.MODE_PRIVATE

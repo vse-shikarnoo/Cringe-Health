@@ -1,4 +1,4 @@
-package com.example.technopa.MainInfo.Model
+package com.example.technopa.main.model
 
 import android.app.Application
 import android.content.Context
@@ -9,7 +9,7 @@ import android.hardware.SensorManager
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.technopa.MainInfo.Repo.MainRepo
+import com.example.technopa.main.repo.MainRepo
 import com.example.technopa.StepDetector
 import com.example.technopa.StepListener
 

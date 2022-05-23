@@ -32,9 +32,11 @@ class TrainingListFragment : Fragment(R.layout.training_list_layout) {
 
         init()
         observe()
-        binding!!.swipeRefresh.setOnRefreshListener {
+        binding?.swipeRefresh?.setOnRefreshListener {
             viewModel.getTrainings()
         }
+
+
     }
 
     override fun onDestroy() {
@@ -48,10 +50,10 @@ class TrainingListFragment : Fragment(R.layout.training_list_layout) {
                 viewModel.trainingList.value?.get(position) ?: Training()
             )
         }
-        with(binding!!.recyclerViewTrainingList) {
-            adapter = trainingListAdapter
-            layoutManager = LinearLayoutManager(requireContext())
-            setHasFixedSize(true)
+        with(binding?.recyclerViewTrainingList) {
+            this?.adapter = trainingListAdapter
+            this?.layoutManager = LinearLayoutManager(requireContext())
+            this?.setHasFixedSize(true)
         }
         viewModel.getTrainings()
     }
