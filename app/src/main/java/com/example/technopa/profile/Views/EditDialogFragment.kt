@@ -15,7 +15,7 @@ class EditDialogFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        val binding = EditDialogLayoutBinding.inflate(inflater, container,  false)
+        val binding = EditDialogLayoutBinding.inflate(inflater, container, false)
 
         binding.editDesWeight.setOnClickListener {
             val editDesWeight = EditDesiredWeightFragment()
@@ -38,8 +38,5 @@ class EditDialogFragment : DialogFragment() {
         }
 
         return binding.root
-
     }
-
-
 }

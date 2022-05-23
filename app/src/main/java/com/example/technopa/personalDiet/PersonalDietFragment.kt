@@ -8,9 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.technopa.*
 import com.example.technopa.databinding.PersonalDietLayoutBinding
 
-
 class PersonalDietFragment : Fragment(R.layout.personal_diet_layout) {
-
 
     private var binding: PersonalDietLayoutBinding? = null
 
@@ -34,12 +32,9 @@ class PersonalDietFragment : Fragment(R.layout.personal_diet_layout) {
 
         init()
 
-
-
         binding!!.buttonPersonalDietAdd.setOnClickListener {
-            //addDialog()
-            //myRef.setValue(list.random())
-
+            // addDialog()
+            // myRef.setValue(list.random())
 
             /*
             -MzWWDzFrpiD9ZSoFryh
@@ -48,14 +43,14 @@ class PersonalDietFragment : Fragment(R.layout.personal_diet_layout) {
                     title: "Завтрак"
 
              */
-            //mRf.child(list[0].title).setValue(list[0])
+            // mRf.child(list[0].title).setValue(list[0])
             /*
             Завтрак
                 eda: "Sirok"
                 title: "Завтрак"
              */
-            //mRf.child(list[0].title).setValue(list[1])
-            //mrfUsers.child("124").setValue("Vanya")
+            // mRf.child(list[0].title).setValue(list[1])
+            // mrfUsers.child("124").setValue("Vanya")
             val userList: List<User> = listOf(
                 User("1", "caramel", "", 163.0, 69.6),
                 User("2", "Vanya", "", 173.0, 79.6),
@@ -64,7 +59,6 @@ class PersonalDietFragment : Fragment(R.layout.personal_diet_layout) {
             val user = userList.random()
             FirebaseNetwork().setUser(userList.random())
             FirebaseNetwork().getDiets({}, {})
-
         }
     }
 
@@ -78,7 +72,6 @@ class PersonalDietFragment : Fragment(R.layout.personal_diet_layout) {
         adapterPersonalDiet.submitList(list)
     }
 
-
     private fun addDialog() {
         AlertDialog.Builder(requireContext())
             .setMessage("Проводим технические работы по добавлению добавления")
@@ -87,6 +80,4 @@ class PersonalDietFragment : Fragment(R.layout.personal_diet_layout) {
             .setNegativeButton("Не понял") { _, _ -> addDialog() }
             .show()
     }
-
-
 }

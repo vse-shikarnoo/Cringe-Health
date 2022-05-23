@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.technopa.Training
 import com.example.technopa.trainings.Repos.TrainingListRepo
 
-class TrainingListModel: ViewModel() {
+class TrainingListModel : ViewModel() {
 
     private var repository = TrainingListRepo()
 
@@ -23,13 +23,13 @@ class TrainingListModel: ViewModel() {
     val isError: LiveData<Throwable?>
         get() = isErrorLiveData
 
-    fun getTrainings(){
+    fun getTrainings() {
         isErrorLiveData.postValue(null)
         isLoadingLiveData.postValue(true)
-        repository.getTrainings({trainingList ->
+        repository.getTrainings({ trainingList ->
             isLoadingLiveData.postValue(false)
             trainingListLiveData.postValue(trainingList)
-        },{error ->
+        }, { error ->
             isErrorLiveData.postValue(error)
             isLoadingLiveData.postValue(false)
         })

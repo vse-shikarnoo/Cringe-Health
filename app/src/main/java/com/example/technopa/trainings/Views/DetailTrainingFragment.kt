@@ -6,13 +6,9 @@ import androidx.fragment.app.Fragment
 import com.example.technopa.R
 import com.example.technopa.Training
 import com.example.technopa.databinding.DetailTrainingLayoutBinding
-import com.example.technopa.interfaces.FragmentInterface
 import com.example.technopa.withArguments
 
-class DetailTrainingFragment: Fragment(R.layout.detail_training_layout) {
-
-    private val fragmentInterface: FragmentInterface?
-        get() = activity?.let { it as? FragmentInterface }
+class DetailTrainingFragment : Fragment(R.layout.detail_training_layout) {
 
     private var training: Training? = null
 
@@ -24,18 +20,13 @@ class DetailTrainingFragment: Fragment(R.layout.detail_training_layout) {
         binding = DetailTrainingLayoutBinding.bind(view)
 
         bindInfo()
-
-        binding?.backArrowDetailTraining?.setOnClickListener {
-            fragmentInterface?.openFragment(parentFragment?:TrainingListFragment())
-        }
-
     }
 
-    private fun bindInfo(){
+    private fun bindInfo() {
         training = requireArguments().getParcelable(KEY_TRAINING)
-        binding!!.titleTextView.text = training?.title?:""
+        binding!!.titleTextView.text = training?.title ?: ""
         binding!!.kaloriiTextView.text = "${training?.kalorii} ккал"
-        binding!!.opisanieTextView.text = training?.opisanie?:""
+        binding!!.opisanieTextView.text = training?.opisanie ?: ""
     }
     companion object {
 
@@ -43,7 +34,7 @@ class DetailTrainingFragment: Fragment(R.layout.detail_training_layout) {
 
         fun newInstance(training: Training): DetailTrainingFragment {
             return DetailTrainingFragment().withArguments {
-                putParcelable(KEY_TRAINING,training)
+                putParcelable(KEY_TRAINING, training)
             }
         }
     }

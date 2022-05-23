@@ -7,11 +7,11 @@ class TrainingListRepo {
 
     fun getTrainings(
         callback: (List<Training>) -> Unit,
-        errorCallBack: (e:Throwable) -> Unit
-    ){
+        errorCallBack: (e: Throwable) -> Unit
+    ) {
         FirebaseNetwork().getTrainings({ trainingList ->
             callback(trainingList)
-        },{error ->
+        }, { error ->
             errorCallBack(error)
         })
     }

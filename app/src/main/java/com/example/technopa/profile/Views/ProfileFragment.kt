@@ -31,19 +31,22 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
+        FirebaseNetwork().getUser({}, {}, "0")
+        FirebaseNetwork().getUser({}, {}, "1")
+        FirebaseNetwork().getUser({}, {}, "2")
+        FirebaseNetwork().getUser({}, {}, "3")
+
         binding = ProfileLayoutBinding.inflate(inflater, container, false)
 
         profilevm.user.observe(this, Observer { setUserData(it) })
 
-        //change information
+        // change information
         binding.editTv.setOnClickListener {
             EditDialogFragment().show(childFragmentManager, "EditDialog")
         }
 
-
         return binding.root
     }
-
 
     @RequiresApi(Build.VERSION_CODES.N)
     private fun setUserData(user: MainUser?) {
@@ -60,6 +63,4 @@ class ProfileFragment : Fragment() {
         binding.priemyPishyRv.adapter = EatAdapter(profilevm.user.value!!.eating)
         binding.priemyPishyRv.layoutManager = LinearLayoutManager(context)
     }
-
-
 }

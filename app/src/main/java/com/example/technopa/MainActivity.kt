@@ -1,43 +1,35 @@
 package com.example.technopa
 
-
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.technopa.MainInfo.View.MainFragment
+import com.example.technopa.databinding.ActivityMainBinding
 import com.example.technopa.diet.views.DetailDietFragment
 import com.example.technopa.diet.views.DietListFragment
 import com.example.technopa.interfaces.FragmentInterface
 import com.example.technopa.profile.Views.*
 import com.example.technopa.trainings.Views.DetailTrainingFragment
 import com.example.technopa.trainings.Views.TrainingListFragment
-import com.example.technopa.databinding.ActivityMainBinding
-import java.util.*
-
 
 class MainActivity : AppCompatActivity(), FragmentInterface {
 
     private var binding: ActivityMainBinding? = null
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-
 
         var b = true
 
         val view = binding?.root
         setContentView(view)
-        if(supportFragmentManager.findFragmentById(R.id.mainContainer)==null) {
+        if (supportFragmentManager.findFragmentById(R.id.mainContainer) == null) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.mainContainer, MainFragment())
                 .commit()
         }
         binding?.BottomView?.selectedItemId = R.id.mainFragment
-
-
-
 
         binding?.BottomView?.setOnItemSelectedListener {
             when (it.itemId) {
@@ -58,8 +50,6 @@ class MainActivity : AppCompatActivity(), FragmentInterface {
         }
     }
 
-
-
     override fun onBackPressed() {
         val count = supportFragmentManager.backStackEntryCount
 
@@ -71,10 +61,10 @@ class MainActivity : AppCompatActivity(), FragmentInterface {
     }
 
     override fun openFragment(fragment: Fragment) {
-       supportFragmentManager.beginTransaction()
-           .replace(R.id.mainContainer, fragment)
-           .addToBackStack(fragment.toString())
-           .commit()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.mainContainer, fragment)
+            .addToBackStack(fragment.toString())
+            .commit()
     }
 
     override fun onItemSelectedDiets(dieta: Dieta) {
@@ -90,6 +80,4 @@ class MainActivity : AppCompatActivity(), FragmentInterface {
             .addToBackStack(training.toString())
             .commit()
     }
-
-
 }

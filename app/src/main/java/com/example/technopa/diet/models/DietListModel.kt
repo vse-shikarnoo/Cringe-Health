@@ -3,8 +3,8 @@ package com.example.technopa.diet.models
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.technopa.diet.repos.DietListRepo
 import com.example.technopa.Dieta
+import com.example.technopa.diet.repos.DietListRepo
 
 class DietListModel : ViewModel() {
 
@@ -23,7 +23,6 @@ class DietListModel : ViewModel() {
     val isError: LiveData<Throwable?>
         get() = isErrorLiveData
 
-
     fun getDiets() {
         isErrorLiveData.postValue(null)
         isLoadingLiveData.postValue(true)
@@ -32,10 +31,9 @@ class DietListModel : ViewModel() {
                 isLoadingLiveData.postValue(false)
                 dietListLiveData.postValue(dietList)
             }, { error ->
-                isErrorLiveData.postValue(error)
-                isLoadingLiveData.postValue(false)
-            })
+            isErrorLiveData.postValue(error)
+            isLoadingLiveData.postValue(false)
+        }
+        )
     }
-
-
 }

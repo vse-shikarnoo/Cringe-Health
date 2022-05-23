@@ -10,12 +10,12 @@ import com.example.technopa.R
 import com.example.technopa.databinding.ItemDietLayoutBinding
 
 class DietListAdapter(
-    private val onItemClick: (position:Int) -> Unit
-): ListAdapter<Dieta, DietListAdapter.Holder>(DiffUtilCallBack()) {
+    private val onItemClick: (position: Int) -> Unit
+) : ListAdapter<Dieta, DietListAdapter.Holder>(DiffUtilCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val binding = ItemDietLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return Holder(binding, onItemClick,parent)
+        return Holder(binding, onItemClick, parent)
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
@@ -36,7 +36,7 @@ class DietListAdapter(
         private val binding: ItemDietLayoutBinding,
         val onItemClick: (position: Int) -> Unit,
         val parent: ViewGroup
-    ): RecyclerView.ViewHolder(binding.root){
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         init {
             binding.root.setOnClickListener {
@@ -44,13 +44,11 @@ class DietListAdapter(
             }
         }
 
-        fun bind(item: Dieta){
+        fun bind(item: Dieta) {
             binding.itemDietTitle.text = item.title
             binding.itemDietKkal.text = "${item.kaloriipd} ккал в день"
-            binding.itemDietPriems.text = parent.resources.getQuantityString(R.plurals.priemsPishi,item.priemPishiList!!.size,item.priemPishiList!!.size)
-            //itemView.itemPersonalDietTextView.text = item.name
+            binding.itemDietPriems.text = parent.resources.getQuantityString(R.plurals.priemsPishi, item.priemPishiList!!.size, item.priemPishiList!!.size)
+            // itemView.itemPersonalDietTextView.text = item.name
         }
     }
-
-
 }

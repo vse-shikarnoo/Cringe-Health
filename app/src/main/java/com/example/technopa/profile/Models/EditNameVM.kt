@@ -2,10 +2,10 @@ package com.example.technopa.profile.Models
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.technopa.profile.Repos.Repository
 import com.example.technopa.profile.Repos.MainUser
+import com.example.technopa.profile.Repos.Repository
 
-class EditNameVM: ViewModel() {
+class EditNameVM : ViewModel() {
 
     var user = MutableLiveData<MainUser?>()
     private var repository = Repository()
@@ -20,6 +20,4 @@ class EditNameVM: ViewModel() {
         user1?.surname = newSurname
         repository.sendUser(user1)
     }
-
-
 }
