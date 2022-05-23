@@ -6,15 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
-import com.example.technopa.profile.Models.ProfileVM
 import com.example.technopa.databinding.EditWeightLayoutBinding
+import com.example.technopa.profile.Models.ProfileVM
 import com.example.technopa.profile.Repos.MainUser
 
-class EditWeightFragment: DialogFragment() {
+class EditWeightFragment : DialogFragment() {
 
     private lateinit var binding: EditWeightLayoutBinding
 
-    private val profileVM : ProfileVM by viewModels(ownerProducer = {requireParentFragment()})
+    private val profileVM: ProfileVM by viewModels(ownerProducer = { requireParentFragment() })
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,9 +22,9 @@ class EditWeightFragment: DialogFragment() {
         savedInstanceState: Bundle?,
     ): View {
 
-        binding = EditWeightLayoutBinding.inflate(inflater, container,  false)
+        binding = EditWeightLayoutBinding.inflate(inflater, container, false)
 
-        profileVM.user.observe(viewLifecycleOwner){
+        profileVM.user.observe(viewLifecycleOwner) {
             setNumberPickers(it)
         }
 
@@ -38,7 +38,6 @@ class EditWeightFragment: DialogFragment() {
         }
 
         return binding.root
-
     }
 
     private fun setNumberPickers(user: MainUser?) {
@@ -48,9 +47,8 @@ class EditWeightFragment: DialogFragment() {
 
         binding.weightNp2.maxValue = 9
         binding.weightNp2.minValue = 0
-        profileVM.weightNp2.observe(viewLifecycleOwner){
+        profileVM.weightNp2.observe(viewLifecycleOwner) {
             binding.weightNp2.value = it
         }
     }
-
 }

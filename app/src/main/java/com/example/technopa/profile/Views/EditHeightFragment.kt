@@ -6,12 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
-import com.example.technopa.profile.Models.EditHeightVM
 import com.example.technopa.databinding.EditHeightLayoutBinding
+import com.example.technopa.profile.Models.EditHeightVM
 
-class EditHeightFragment: DialogFragment() {
+class EditHeightFragment : DialogFragment() {
 
-    private val editHeightVM : EditHeightVM by viewModels()
+    private val editHeightVM: EditHeightVM by viewModels()
 
     private lateinit var binding: EditHeightLayoutBinding
 
@@ -21,11 +21,11 @@ class EditHeightFragment: DialogFragment() {
         savedInstanceState: Bundle?,
     ): View {
 
-        binding = EditHeightLayoutBinding.inflate(inflater, container,  false)
+        binding = EditHeightLayoutBinding.inflate(inflater, container, false)
 
         setNumberPicker()
 
-        editHeightVM.user.observe(viewLifecycleOwner){
+        editHeightVM.user.observe(viewLifecycleOwner) {
             setNumberPicker()
         }
 
@@ -41,7 +41,7 @@ class EditHeightFragment: DialogFragment() {
         return binding.root
     }
 
-    private fun setNumberPicker(){
+    private fun setNumberPicker() {
         binding.heightNp1.maxValue = 300
         binding.heightNp1.minValue = 0
         binding.heightNp1.value = editHeightVM.user.value?.height as Int

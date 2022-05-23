@@ -1,18 +1,17 @@
 package com.example.technopa.profile.Views
 
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
-import com.example.technopa.profile.Models.EditNameVM
 import com.example.technopa.databinding.EditNameLayoutBinding
+import com.example.technopa.profile.Models.EditNameVM
 
-class EditNameFragment: DialogFragment(){
+class EditNameFragment : DialogFragment() {
 
-    private val editNameVM : EditNameVM by viewModels()
+    private val editNameVM: EditNameVM by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -20,9 +19,9 @@ class EditNameFragment: DialogFragment(){
         savedInstanceState: Bundle?,
     ): View {
 
-        val binding = EditNameLayoutBinding.inflate(inflater, container,  false)
+        val binding = EditNameLayoutBinding.inflate(inflater, container, false)
 
-        editNameVM.user.observe(viewLifecycleOwner){
+        editNameVM.user.observe(viewLifecycleOwner) {
             binding.nameEditingEt.setText(it?.name)
             binding.surnameEditingEt.setText(it?.surname)
         }
@@ -37,7 +36,5 @@ class EditNameFragment: DialogFragment(){
         }
 
         return binding.root
-
     }
-
 }

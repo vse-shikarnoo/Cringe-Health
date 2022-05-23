@@ -17,11 +17,11 @@ import com.example.technopa.databinding.ProfileLayoutBinding
 import com.example.technopa.profile.Models.ProfileVM
 import com.example.technopa.profile.Repos.MainUser
 
-class ProfileFragment: Fragment() {
+class ProfileFragment : Fragment() {
 
     private lateinit var binding: ProfileLayoutBinding
 
-    private val profilevm : ProfileVM by viewModels()
+    private val profilevm: ProfileVM by viewModels()
 
     @SuppressLint("FragmentLiveDataObserve")
     @RequiresApi(Build.VERSION_CODES.N)
@@ -31,45 +31,36 @@ class ProfileFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        FirebaseNetwork().getUser({},{},"0")
-        FirebaseNetwork().getUser({},{},"1")
-        FirebaseNetwork().getUser({},{},"2")
-        FirebaseNetwork().getUser({},{},"3")
+        FirebaseNetwork().getUser({}, {}, "0")
+        FirebaseNetwork().getUser({}, {}, "1")
+        FirebaseNetwork().getUser({}, {}, "2")
+        FirebaseNetwork().getUser({}, {}, "3")
 
-        binding = ProfileLayoutBinding.inflate(inflater, container,  false)
+        binding = ProfileLayoutBinding.inflate(inflater, container, false)
 
         profilevm.user.observe(this, Observer { setUserData(it) })
 
-        //change information
+        // change information
         binding.editTv.setOnClickListener {
             EditDialogFragment().show(childFragmentManager, "EditDialog")
         }
 
-
-
         return binding.root
     }
 
-
-
-
     @RequiresApi(Build.VERSION_CODES.N)
-    private fun setUserData(user: MainUser?){
+    private fun setUserData(user: MainUser?) {
         binding.nameTv.text = user?.name
         binding.surnameTv.text = user?.surname
         binding.heightValueTv.text = user?.height.toString()
         binding.weightValueTv.text = user?.weight.toString()
         binding.desiredWeightValueTv.text = user?.desired_weight.toString()
         binding.progressBar.max = user?.weight?.toInt() ?: 100
-        binding.progressBar.setProgress(user?.desired_weight?.toInt() ?: 100,true)
+        binding.progressBar.setProgress(user?.desired_weight?.toInt() ?: 100, true)
         profilevm.progressText.observe(viewLifecycleOwner) {
             binding.progressValueTv.text = it
         }
         binding.priemyPishyRv.adapter = EatAdapter(profilevm.user.value!!.eating)
         binding.priemyPishyRv.layoutManager = LinearLayoutManager(context)
     }
-
-
-
-
 }

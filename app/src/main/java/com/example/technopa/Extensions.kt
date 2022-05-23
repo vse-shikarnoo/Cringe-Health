@@ -17,12 +17,11 @@ import kotlin.math.sqrt
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
-//Всякие функции расширения, можете добавлять
+// Всякие функции расширения, можете добавлять
 
 fun Fragment.toast(@SuppressLint("SupportAnnotationUsage") @StringRes stringRes: String) {
     Toast.makeText(requireContext(), stringRes, Toast.LENGTH_SHORT).show()
 }
-
 
 fun ViewGroup.inflate(@LayoutRes layoutRes: Int, attachToRoot: Boolean = false): View {
     return LayoutInflater.from(context).inflate(layoutRes, this, attachToRoot)
@@ -46,8 +45,7 @@ class AutoClearedValue<T : Any>(val fragment: Fragment) : ReadWriteProperty<Frag
     }
 
     override fun getValue(thisRef: Fragment, property: KProperty<*>): T {
-        return _value ?: throw IllegalStateException(
-        )
+        return _value ?: throw IllegalStateException()
     }
 
     override fun setValue(thisRef: Fragment, property: KProperty<*>, value: T) {
@@ -61,7 +59,6 @@ fun <T : Any> Fragment.autoCleared() =
 interface StepListener {
     fun step(timeNs: Long)
 }
-
 
 class SensorFilter {
 
@@ -88,7 +85,6 @@ class SensorFilter {
         }
         return sqrt(retval.toDouble()).toFloat()
     }
-
 
     fun dot(a: FloatArray, b: FloatArray): Float {
         return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]
@@ -158,8 +154,9 @@ class StepDetector {
 
         val velocityEstimate = SensorFilter().sum(velRing)
 
-        if (velocityEstimate > STEP_THRESHOLD && oldVelocityEstimate <= STEP_THRESHOLD
-            && timeNs - lastStepTimeNs > STEP_DELAY_NS) {
+        if (velocityEstimate > STEP_THRESHOLD && oldVelocityEstimate <= STEP_THRESHOLD &&
+            timeNs - lastStepTimeNs > STEP_DELAY_NS
+        ) {
             listener!!.step(timeNs)
             lastStepTimeNs = timeNs
         }
@@ -167,10 +164,9 @@ class StepDetector {
     }
 }
 
-fun <T: Fragment> T.withArguments(action: Bundle.() -> Unit): T {
+fun <T : Fragment> T.withArguments(action: Bundle.() -> Unit): T {
     return apply {
         val args = Bundle().apply(action)
         arguments = args
     }
 }
-

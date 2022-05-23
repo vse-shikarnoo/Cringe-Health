@@ -7,7 +7,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.parcel.Parcelize
-
 import java.lang.Exception
 
 @Parcelize
@@ -17,18 +16,18 @@ data class User(
     val surname: String? = "",
     val height: Double? = 0.0,
     val weight: Double? = 0.0,
-    //val statistic:Statistic,
-    //val Achievements:List<Achievement>
-):Parcelable
+    // val statistic:Statistic,
+    // val Achievements:List<Achievement>
+) : Parcelable
 
 data class Statistic(
     val id: Long,
-    val TrainingList: Map<String, List<Training>>, //Здесь String это дата
+    val TrainingList: Map<String, List<Training>>, // Здесь String это дата
     val PriemPishiList: Map<String, List<PriemPishi>>,
 )
 
 data class Achievement(
-    //val picture:Picture,
+    // val picture:Picture,
     val data: String,
     val opisanie: String
 )
@@ -41,20 +40,20 @@ data class Training(
     val kalorii: Double = 0.0,
     val time: Int = 0,
     val opisanie: String? = ""
-):Parcelable
+) : Parcelable
 
 @Parcelize
 data class Exercise(
     val title: String = "",
     val povtoreniya: Double? = null,
     val opisanie: String = ""
-):Parcelable
+) : Parcelable
 
 @Parcelize
 data class PriemPishi(
     val title: String? = null,
     val eda: List<Eda>? = null,
-    var kaloriiO: Double? = 0.0, //Каллории и БЖУ общее за прием пищи
+    var kaloriiO: Double? = 0.0, // Каллории и БЖУ общее за прием пищи
     var belkiO: Double? = 0.0,
     var zhiriO: Double? = 0.0,
     var uglevodiO: Double? = 0.0
@@ -78,17 +77,15 @@ data class Dieta(
     var opisanie: String? = ""
 ) : Parcelable {
     override fun toString(): String {
-        return "Dieta[title = ${title};priem pishi = ${priemPishiList}]"
+        return "Dieta[title = $title;priem pishi = $priemPishiList]"
     }
 }
-
 
 class FirebaseNetwork {
     private val database = FirebaseDatabase.getInstance()
     private val refUsers = database.getReference("Users")
     private val refTrainings = database.getReference("Trainings")
     private val refDiets = database.getReference("Diets")
-
 
     fun setUser(user: User) {
         refUsers.child(user.id).setValue(user)
@@ -98,10 +95,10 @@ class FirebaseNetwork {
         call: (User) -> Unit,
         errorCall: (error: Throwable) -> Unit,
         userId: String
-    ){
+    ) {
         refUsers.child(userId).get().addOnSuccessListener {
             Log.i("getUser", "Got value ${it.getValue(User::class.java)}")
-        }.addOnFailureListener{
+        }.addOnFailureListener {
             Log.e("getUser", "Error getting data", it)
         }
     }
@@ -146,7 +143,4 @@ class FirebaseNetwork {
             }
         })
     }
-
-
-
 }

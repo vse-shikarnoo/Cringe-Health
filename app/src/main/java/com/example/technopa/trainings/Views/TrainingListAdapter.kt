@@ -9,14 +9,14 @@ import com.example.technopa.R
 import com.example.technopa.Training
 import com.example.technopa.databinding.ItemTrainingLayoutBinding
 
-class TrainingListAdapter (
-    private val onItemClick: (position:Int) -> Unit
-): ListAdapter<Training, TrainingListAdapter.Holder>(DiffUtilCallBack()) {
+class TrainingListAdapter(
+    private val onItemClick: (position: Int) -> Unit
+) : ListAdapter<Training, TrainingListAdapter.Holder>(DiffUtilCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
 
         val binding = ItemTrainingLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return Holder(binding, onItemClick,parent)
+        return Holder(binding, onItemClick, parent)
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
@@ -37,7 +37,7 @@ class TrainingListAdapter (
         private val binding: ItemTrainingLayoutBinding,
         val onItemClick: (position: Int) -> Unit,
         val parent: ViewGroup
-    ): RecyclerView.ViewHolder(binding.root){
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         init {
             binding.root.setOnClickListener {
@@ -45,14 +45,12 @@ class TrainingListAdapter (
             }
         }
 
-        fun bind(item: Training){
+        fun bind(item: Training) {
             binding.itemTrainingTitle.text = item.title
             binding.itemTrainingKkal.text = "${item.kalorii} ккал сжигается"
 
-            binding.itemTrainingExercises.text = parent.context.resources.getQuantityString(R.plurals.exercises,item.exercises.size,item.exercises.size)
-            //itemView.itemPersonalDietTextView.text = item.name
+            binding.itemTrainingExercises.text = parent.context.resources.getQuantityString(R.plurals.exercises, item.exercises.size, item.exercises.size)
+            // itemView.itemPersonalDietTextView.text = item.name
         }
     }
-
-
 }
