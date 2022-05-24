@@ -89,7 +89,7 @@ class MainFragment : Fragment(R.layout.main_fragment_layout) {
     override fun onPause() {
         super.onPause()
         val serviceIntent: Intent = Intent(requireContext(), ForegroundService::class.java)
-        serviceIntent.putExtra("inputExtra", "Foreground Service Try")
+        serviceIntent.putExtra("inputExtra",numSteps)
 
 
         ContextCompat.startForegroundService(requireContext(), serviceIntent)

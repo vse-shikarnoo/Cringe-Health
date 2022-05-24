@@ -6,17 +6,16 @@ import android.app.Activity.RESULT_OK
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.Environment
-import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
-import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -27,7 +26,8 @@ import com.example.technopa.databinding.ProfileLayoutBinding
 import com.example.technopa.profile.Models.ProfileVM
 import com.example.technopa.profile.Repos.MainUser
 import java.io.File
-import java.io.InputStream
+import java.io.FileDescriptor
+import java.io.IOException
 
 
 class ProfileFragment(val application: Activity): Fragment() {
@@ -90,10 +90,11 @@ class ProfileFragment(val application: Activity): Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == IMAGE_REQUEST_CODE && resultCode == RESULT_OK){
             binding.profileImage.setImageURI(data?.data)
-            var file = File(data?.data?.path)
+            val file = data?.data?.path?.let { File(it) }
             val editor: SharedPreferences.Editor? = mSettings?.edit()
-            editor?.putString("IMAGE_PATH", file.absolutePath)
+            editor?.putString("IMAGE_PATH", file?.absolutePath)
             editor?.apply()
+            Log.d("profileImage", file?.absolutePath.toString())
         }
 
     }
@@ -136,6 +137,17 @@ class ProfileFragment(val application: Activity): Fragment() {
                     mSettings.getString("WEIGHT", "")!!.toDouble()*100).toInt().toString() + "%"
         else binding.progressValueTv.text = profilevm.progressText.value.toString()
 
+
+
+    }
+
+    @Throws(IOException::class)
+    private fun getBitmapFromUri(uri: Uri, context: Context): Bitmap? {
+        val parcelFileDescriptor = context.contentResolver.openFileDescriptor(uri, "r")
+        val fileDescriptor: FileDescriptor = parcelFileDescriptor!!.fileDescriptor
+        val image = BitmapFactory.decodeFileDescriptor(fileDescriptor)
+        parcelFileDescriptor.close()
+        return image
     }
 
     companion object{

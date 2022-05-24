@@ -2,7 +2,7 @@
 
 
     <!-- Base application theme. -->
-    <style name="Theme.Technopa" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Technopa" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/black</item>
         <item name="colorPrimaryVariant">@color/black</item>
