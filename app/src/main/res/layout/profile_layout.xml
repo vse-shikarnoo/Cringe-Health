@@ -3,147 +3,152 @@
     android:id="@+id/scroll"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="15dp"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:src="@drawable/image1"
-        />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/edit_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/profile_image"
-        android:layout_alignStart="@+id/profile_image"
-        android:layout_alignEnd="@+id/profile_image"
-        android:gravity="center"
-        android:paddingTop="8dp"
-        android:text="@string/EditInformation"
-        android:textSize="13sp" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/image1" />
 
-    <TextView
-        android:id="@+id/name_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_below="@+id/edit_tv"
-        android:maxLines="1"
-        android:text="Имя"
-        android:textSize="30sp" />
-    <TextView
-        android:id="@+id/surname_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/name_tv"
-        android:textSize="30sp"
-        android:layout_marginStart="30dp"
-        android:text="Фамилия"
-        android:ellipsize="end"
-        android:maxLines="1"
-        />
+        <TextView
+            android:id="@+id/edit_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profile_image"
+            android:layout_alignStart="@+id/profile_image"
+            android:layout_alignEnd="@+id/profile_image"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:text="@string/EditInformation"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
 
-    <TextView
-        android:id="@+id/height_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/surname_tv"
-        android:layout_marginStart="30dp"
-        android:text="@string/Height"
-        android:textSize="20sp" />
+        <TextView
+            android:id="@+id/name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edit_tv"
+            android:layout_marginStart="30dp"
+            android:maxLines="1"
+            android:text="Имя"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
 
-    <TextView
-        android:id="@+id/height_value_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/height_tv"
-        android:layout_marginStart="5dp"
-        android:layout_toEndOf="@+id/height_tv"
-        android:text=""
-        android:textSize="20sp" />
-    <TextView
-        android:id="@+id/weight_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/height_tv"
-        android:textSize="20sp"
-        android:layout_marginStart="30dp"
-        android:text="@string/Weight"
-        />
+        <TextView
+            android:id="@+id/surname_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name_tv"
+            android:layout_marginStart="30dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Фамилия"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
 
-    <TextView
-        android:id="@+id/weight_value_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/weight_tv"
-        android:layout_marginStart="5dp"
-        android:layout_toEndOf="@+id/weight_tv"
-        android:text=""
-        android:textSize="20sp" />
+        <TextView
+            android:id="@+id/height_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/surname_tv"
+            android:layout_marginStart="30dp"
+            android:text="@string/Height"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/desired_weight_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/weight_tv"
-        android:layout_marginStart="30dp"
-        android:text="@string/DesiredWeight"
-        android:textSize="20sp" />
+        <TextView
+            android:id="@+id/height_value_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/height_tv"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/height_tv"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/desired_weight_value_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/desired_weight_tv"
-        android:layout_marginStart="5dp"
-        android:layout_toEndOf="@+id/desired_weight_tv"
-        android:text=""
-        android:textSize="20sp" />
+        <TextView
+            android:id="@+id/weight_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/height_tv"
+            android:layout_marginStart="30dp"
+            android:text="@string/Weight"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/progress_value_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/desired_weight_tv"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:gravity="end"
-        android:text=""
-        android:textSize="20sp" />
+        <TextView
+            android:id="@+id/weight_value_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/weight_tv"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/weight_tv"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:layout_alignTop="@+id/progress_value_tv"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_toStartOf="@+id/progress_value_tv" />
+        <TextView
+            android:id="@+id/desired_weight_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/weight_tv"
+            android:layout_marginStart="30dp"
+            android:text="@string/DesiredWeight"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/achieve_btn"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/progress_value_tv"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="21dp"
-        android:text="@string/Achievments" />
+        <TextView
+            android:id="@+id/desired_weight_value_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/desired_weight_tv"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/desired_weight_tv"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/progress_value_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/desired_weight_tv"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="end"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_alignTop="@+id/progress_value_tv"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+
+            android:layout_toStartOf="@+id/progress_value_tv" />
+
+        <Button
+            android:id="@+id/achieve_btn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/progress_value_tv"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="21dp"
+            android:text="@string/Achievments" />
 
 
-
-
-
-
-
-
-</RelativeLayout>
+    </RelativeLayout>
 </ScrollView>

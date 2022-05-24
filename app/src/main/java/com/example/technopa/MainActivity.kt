@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity(), FragmentInterface {
 
         binding?.BottomView?.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.profileFragment -> openFragment(ProfileFragment())
+                R.id.profileFragment -> openFragment(ProfileFragment(this))
                 R.id.mainFragment -> openFragment(MainFragment())
                 R.id.trainingListFragment -> {
                     b = if (b) {
