@@ -1,15 +1,25 @@
 package com.example.technopa.profile.Views
 
+import android.app.Activity
+import android.app.Application
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import com.example.technopa.R
 import com.example.technopa.profile.Models.EditHeightVM
 import com.example.technopa.databinding.EditHeightLayoutBinding
 
-class EditHeightFragment: DialogFragment() {
+class EditHeightFragment(val application: Activity): DialogFragment() {
+
+    private val APP_PREFERENCES = R.string.APP_PREFERENCES.toString()
+
+    private val mSettings: SharedPreferences? = application.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
+
 
     private val editHeightVM : EditHeightVM by viewModels()
 
@@ -30,6 +40,9 @@ class EditHeightFragment: DialogFragment() {
         }
 
         binding.acceptButton.setOnClickListener {
+            val editor: SharedPreferences.Editor? = mSettings?.edit()
+            editor?.putString("HEIGHT", binding.heightNp1.value.toString())
+            editor?.apply()
             editHeightVM.setHeight(binding.heightNp1.value)
             dismiss()
         }

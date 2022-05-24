@@ -1,16 +1,25 @@
 package com.example.technopa.profile.Views
 
+import android.app.Activity
+import android.app.Application
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import com.example.technopa.R
 import com.example.technopa.profile.Models.ProfileVM
 import com.example.technopa.databinding.EditWeightLayoutBinding
 import com.example.technopa.profile.Repos.MainUser
 
-class EditWeightFragment: DialogFragment() {
+class EditWeightFragment(val application: Activity): DialogFragment() {
+
+    private val APP_PREFERENCES = R.string.APP_PREFERENCES.toString()
+
+    private val mSettings: SharedPreferences? = application.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
 
     private lateinit var binding: EditWeightLayoutBinding
 
@@ -29,6 +38,10 @@ class EditWeightFragment: DialogFragment() {
         }
 
         binding.acceptButton.setOnClickListener {
+            val weight: String = binding.weightNp1.value.toString() + "." + binding.weightNp2.value.toString()
+            val editor: SharedPreferences.Editor? = mSettings?.edit()
+            editor?.putString("WEIGHT", weight)
+            editor?.apply()
             profileVM.setWeight(binding.weightNp1.value, binding.weightNp2.value)
             dismiss()
         }
