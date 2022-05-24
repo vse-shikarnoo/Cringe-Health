@@ -37,9 +37,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginTop="16dp">
 
-
-
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewDietList"
             android:layout_width="0dp"

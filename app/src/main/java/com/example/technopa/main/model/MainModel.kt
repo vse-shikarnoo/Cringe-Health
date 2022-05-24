@@ -42,7 +42,7 @@ class MainModel(application: Application) : AndroidViewModel(application), Senso
 
         sensorManager?.registerListener(
             this,
-            sensorManager!!.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+            sensorManager?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
             SensorManager.SENSOR_DELAY_FASTEST
         )
 
@@ -50,8 +50,8 @@ class MainModel(application: Application) : AndroidViewModel(application), Senso
     }
 
     override fun onSensorChanged(event: SensorEvent?) {
-        if (event!!.sensor.type == Sensor.TYPE_ACCELEROMETER) {
-            simpleStepDetector!!.updateAccelerometer(
+        if (event?.sensor?.type == Sensor.TYPE_ACCELEROMETER) {
+            simpleStepDetector?.updateAccelerometer(
                 event.timestamp,
                 event.values[0],
                 event.values[1],

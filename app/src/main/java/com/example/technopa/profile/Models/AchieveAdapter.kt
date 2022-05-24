@@ -34,7 +34,7 @@ class AchieveAdapter(private val achievments: List<String>) : RecyclerView.Adapt
 
 
         fun bind(title: String) {
-            //ivPoster.setImageResource(R.drawable.btn)
+
             tvTitle.text = title
         }
     }

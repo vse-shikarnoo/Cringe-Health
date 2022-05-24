@@ -63,14 +63,14 @@ class TrainingListFragment : Fragment(R.layout.training_list_layout) {
         viewModel.trainingList.observe(viewLifecycleOwner) { trainingListAdapter.submitList(it) }
         viewModel.isLoading.observe(viewLifecycleOwner) {
             updateLoadingState(it)
-            binding!!.swipeRefresh.isRefreshing = false
+            binding?.swipeRefresh?.isRefreshing = false
         }
         viewModel.isError.observe(viewLifecycleOwner) { updateErrorState(it) }
     }
 
     private fun updateLoadingState(isLoading: Boolean) {
-        binding!!.recyclerViewTrainingList.isVisible = isLoading.not()
-        binding!!.progressBar.isVisible = isLoading
+        binding?.recyclerViewTrainingList?.isVisible = isLoading.not()
+        binding?.progressBar?.isVisible = isLoading
     }
 
     private fun updateErrorState(error: Throwable?) {

@@ -12,6 +12,7 @@ class MainRepo(application: Application) {
     private val APP_PREFERENCES_STEPS = R.string.APP_PREFERENCES_STEPS.toString()
     private val APP_PREFERENCES_DNS_STEPS = "dayNormaSteps"
     private val APP_PREFERENCES_DATE = "date"
+    private val APP_PREFERENCES_AVHIEVMENTS ="achievments"
 
 
     private val mSettings: SharedPreferences =
