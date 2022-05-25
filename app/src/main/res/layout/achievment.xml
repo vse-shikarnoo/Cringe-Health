@@ -3,24 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/achieve_imageView"
-        android:layout_width="50sp"
-        android:layout_height="50sp"
-        app:srcCompat="@android:drawable/btn_star_big_off"
-        tools:ignore="MissingConstraints" />
+        android:id="@+id/achieve_imageViewTrue"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/ic_baseline_star_24"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        />
+
+    <ImageView
+        android:id="@+id/achieve_imageViewFalse"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/ic_baseline_star_border_24"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        />
 
     <TextView
         android:id="@+id/achieve_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Title"
+        android:textColor="@color/black"
         android:textSize="20sp"
-        android:layout_marginStart="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/achieve_imageView"
-        app:layout_constraintStart_toEndOf="@+id/achieve_imageView"
-        app:layout_constraintTop_toTopOf="@+id/achieve_imageView"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

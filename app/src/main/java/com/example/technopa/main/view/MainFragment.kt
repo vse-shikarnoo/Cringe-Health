@@ -35,6 +35,8 @@ class MainFragment : Fragment(R.layout.main_fragment_layout) {
     private var dayNormalSteps by Delegates.notNull<Int>()
 
 
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         binding = MainFragmentLayoutBinding.bind(view)
@@ -115,6 +117,9 @@ class MainFragment : Fragment(R.layout.main_fragment_layout) {
     private fun updateState() {
         numSteps = viewModel?.steps?.value ?: 0
         dayNormalSteps = viewModel?.dns?.value ?: 0
+        if (numSteps == dayNormalSteps){
+            toast("Вы уже выполнили дневную норму шагов")
+        }
         Log.d("Test DNS", dayNormalSteps.toString())
         binding?.shagiProgressBar?.max = dayNormalSteps
         binding?.shagiProgressBar?.progress = numSteps

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    >
+
+    <TextView
+        android:id="@+id/dnm_editing_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/DNM"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <NumberPicker
+        android:id="@+id/dnmNP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@id/dnm_editing_tv"
+        app:layout_constraintStart_toStartOf="@id/dnm_editing_tv"
+        app:layout_constraintTop_toBottomOf="@+id/dnm_editing_tv"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/cancel_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/Back"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/dnm_editing_tv"
+        app:layout_constraintTop_toBottomOf="@+id/height_np1"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/accept_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/Accept"
+        app:layout_constraintEnd_toEndOf="@+id/dnm_editing_tv"
+        app:layout_constraintRight_toRightOf="@id/dnm_editing_tv"
+        app:layout_constraintTop_toBottomOf="@id/height_np1"
+        tools:ignore="MissingConstraints" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

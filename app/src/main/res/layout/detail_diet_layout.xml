@@ -12,7 +12,8 @@
         app:tint="@color/black"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/ic_baseline_keyboard_arrow_left_24"/>
+        android:src="@drawable/ic_baseline_keyboard_arrow_left_24"
+        />
 
     <TextView
         android:id="@+id/titleTextView"

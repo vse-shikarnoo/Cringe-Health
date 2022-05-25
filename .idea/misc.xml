@@ -6,6 +6,8 @@
         <entry key="..\:/Cringe-Health/app/src/main/res/drawable/circle_shape.xml" value="0.2" />
         <entry key="..\:/Cringe-Health/app/src/main/res/drawable/circular_progress_bar.xml" value="0.2" />
         <entry key="..\:/Cringe-Health/app/src/main/res/drawable/progress_drawable.xml" value="0.2" />
+        <entry key="..\:/Cringe-Health/app/src/main/res/layout/achieve_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Cringe-Health/app/src/main/res/layout/achievment.xml" value="0.25416666666666665" />
         <entry key="..\:/Cringe-Health/app/src/main/res/layout/activity_main.xml" value="0.13020833333333334" />
         <entry key="..\:/Cringe-Health/app/src/main/res/layout/detail_diet_layout.xml" value="0.2" />
         <entry key="..\:/Cringe-Health/app/src/main/res/layout/detail_training_layout.xml" value="0.2" />
@@ -15,6 +17,7 @@
         <entry key="..\:/Cringe-Health/app/src/main/res/layout/item_personal_diet_layout.xml" value="0.536" />
         <entry key="..\:/Cringe-Health/app/src/main/res/layout/main_fragment_layout.xml" value="0.4" />
         <entry key="..\:/Cringe-Health/app/src/main/res/layout/personal_diet_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Cringe-Health/app/src/main/res/layout/profile_layout.xml" value="0.15806159420289856" />
         <entry key="..\:/Cringe-Health/app/src/main/res/layout/training_list_layout.xml" value="0.16032608695652173" />
         <entry key="..\:/myapp/technopa/app/src/main/res/layout/a.xml" value="0.25416666666666665" />
         <entry key="..\:/myapp/technopa/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
@@ -34,7 +37,7 @@
         <entry key="..\:/skillbox/myworks/Cringe-Health/app/src/main/res/layout/item_exercise_detail_training_layout.xml" value="0.2" />
         <entry key="..\:/skillbox/myworks/Cringe-Health/app/src/main/res/layout/main_fragment_layout.xml" value="0.3546875" />
         <entry key="..\:/skillbox/myworks/Cringe-Health/app/src/main/res/layout/personal_diet_layout.xml" value="0.35052083333333334" />
-        <entry key="..\:/skillbox/myworks/Cringe-Health/app/src/main/res/layout/profile_layout.xml" value="0.22" />
+        <entry key="..\:/skillbox/myworks/Cringe-Health/app/src/main/res/layout/profile_layout.xml" value="0.3546875" />
         <entry key="..\:/skillbox/myworks/Cringe-Health/app/src/main/res/layout/training_list_layout.xml" value="0.16770833333333332" />
         <entry key="..\:/skillbox/myworks/Cringe-Health/app/src/main/res/menu/menu.xml" value="0.25" />
         <entry key="..\:/skillbox/myworks/Cringe-Health/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />

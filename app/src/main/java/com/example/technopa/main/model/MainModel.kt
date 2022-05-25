@@ -69,6 +69,7 @@ class MainModel(application: Application) : AndroidViewModel(application), Senso
     fun incrementStep() {
         stepsLiveData.postValue(stepsLiveData.value?.plus(1))
         saveSteps(steps.value?.plus(1) ?: 0)
+        repository.checkAchievments()
     }
 
     fun saveSteps(
@@ -91,6 +92,7 @@ class MainModel(application: Application) : AndroidViewModel(application), Senso
         repository.getSteps { steps ->
             stepsLiveData.postValue(steps)
             checkDate()
+            repository.checkAchievments()
         }
     }
 

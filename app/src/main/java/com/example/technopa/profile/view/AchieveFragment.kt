@@ -1,6 +1,8 @@
 package com.example.technopa.Profile.Views
 
+import android.app.Application
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,17 +17,32 @@ import com.example.technopa.databinding.AchievmentBinding
 
 class AchieveFragment: Fragment() {
 
-    var achievments : List<String> = listOf("10 шагов пройдено","100 шагов пройдено",
+    val achievments : List<String> = listOf("10 шагов пройдено","100 шагов пройдено",
         "500 шагов пройдено","1000 шагов пройдено","5000 шагов пройдено","10000 шагов пройдено")
+
+    private val APP_PREFERENCES_ACHIEVMENTS ="achievments"
+
+    var achievementString: String = "000000"
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        var binding = AchieveLayoutBinding.inflate(inflater, container,  false)
+    ): View {
+        val binding = AchieveLayoutBinding.inflate(inflater, container,  false)
 
-        binding.achieveRv.adapter = AchieveAdapter(achievments)
+        achievementString =
+            activity?.getSharedPreferences(R.string.APP_PREFERENCES.toString(), Application.MODE_PRIVATE)?.getString(
+                APP_PREFERENCES_ACHIEVMENTS,""
+            ).toString()
+
+        Log.d("AchievmentString", "get $achievementString")
+
+        activity?.getSharedPreferences(R.string.APP_PREFERENCES.toString(), Application.MODE_PRIVATE)?.edit()
+            ?.putString(APP_PREFERENCES_ACHIEVMENTS,achievementString)
+            ?.apply()
+
+        binding.achieveRv.adapter = AchieveAdapter(achievments,achievementString)
         binding.achieveRv.layoutManager = LinearLayoutManager(context)
 
 
