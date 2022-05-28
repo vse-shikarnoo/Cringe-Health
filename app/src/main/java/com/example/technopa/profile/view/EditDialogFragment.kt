@@ -8,8 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.example.technopa.databinding.EditDialogLayoutBinding
+import com.example.technopa.profile.Models.ProfileVM
 
-class EditDialogFragment(val application: Activity) : DialogFragment() {
+class EditDialogFragment(val application: Activity, var profilevm: ProfileVM) : DialogFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -20,19 +21,19 @@ class EditDialogFragment(val application: Activity) : DialogFragment() {
         val binding = EditDialogLayoutBinding.inflate(inflater, container,  false)
 
         binding.editDesWeight.setOnClickListener {
-            val editDesWeight = EditDesiredWeightFragment(application)
+            val editDesWeight = EditDesiredWeightFragment(application, profilevm)
             editDesWeight.show(childFragmentManager, "EditDesWeightDialog")
         }
         binding.editWeight.setOnClickListener {
-            val editWeight = EditWeightFragment(application)
+            val editWeight = EditWeightFragment(application, profilevm)
             editWeight.show(childFragmentManager, "EditWeightDialog")
         }
         binding.editHeight.setOnClickListener {
-            val editHeight = EditHeightFragment(application)
+            val editHeight = EditHeightFragment(application, profilevm)
             editHeight.show(childFragmentManager, "EditDesHeightDialogv")
         }
         binding.editName.setOnClickListener {
-            val editName = EditNameFragment(application)
+            val editName = EditNameFragment(application, profilevm)
             editName.show(childFragmentManager, "EditNameDialog")
         }
         binding.backButton.setOnClickListener {

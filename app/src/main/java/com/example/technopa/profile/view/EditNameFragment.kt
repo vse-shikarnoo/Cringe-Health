@@ -3,7 +3,6 @@ package com.example.technopa.profile.Views
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -11,15 +10,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.AndroidViewModel
 import com.example.technopa.R
-import com.example.technopa.profile.Models.EditNameVM
 import com.example.technopa.databinding.EditNameLayoutBinding
+import com.example.technopa.profile.Models.ProfileVM
 
-class EditNameFragment(application: Activity): DialogFragment(){
-
-    private val editNameVM : EditNameVM by viewModels()
+class EditNameFragment(application: Activity, var profilevm: ProfileVM): DialogFragment(){
 
     private val APP_PREFERENCES = R.string.APP_PREFERENCES.toString()
 
@@ -33,7 +28,7 @@ class EditNameFragment(application: Activity): DialogFragment(){
     ): View {
 
         val binding = EditNameLayoutBinding.inflate(inflater, container,  false)
-        editNameVM.user.observe(viewLifecycleOwner){
+        profilevm.user.observe(viewLifecycleOwner){
             binding.nameEditingEt.setText(it?.name)
             binding.surnameEditingEt.setText(it?.surname)
         }
@@ -43,7 +38,7 @@ class EditNameFragment(application: Activity): DialogFragment(){
             editor?.putString("NAME", binding.nameEditingEt.text.toString())
             editor?.putString("SURNAME", binding.surnameEditingEt.text.toString())
             editor?.apply()
-            editNameVM.setNameSurname(binding.nameEditingEt.text.toString(), binding.surnameEditingEt.text.toString())
+            profilevm.setNameSurname(binding.nameEditingEt.text.toString(), binding.surnameEditingEt.text.toString())
             dismiss()
         }
 

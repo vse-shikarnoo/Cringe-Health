@@ -60,7 +60,7 @@ class ProfileFragment(val application: Activity): Fragment() {
 
         //change information
         binding.editTv.setOnClickListener {
-            EditDialogFragment(application).show(childFragmentManager, "EditDialog")
+            EditDialogFragment(application, profilevm).show(childFragmentManager, "EditDialog")
         }
 
         binding.achieveBtn.setOnClickListener {
@@ -135,7 +135,8 @@ class ProfileFragment(val application: Activity): Fragment() {
         if (mSettings?.getString("DES_WEIGHT", "") != "" && mSettings?.getString("WEIGHT", "") != "") binding.progressValueTv.text =
             (mSettings?.getString("DES_WEIGHT", "")!!.toDouble()/
                     mSettings.getString("WEIGHT", "")!!.toDouble()*100).toInt().toString() + "%"
-        else binding.progressValueTv.text = profilevm.progressText.value.toString()
+        else binding.progressValueTv.text = (user?.desired_weight!! /
+                user.weight*100).toInt().toString() + "%"
 
 
 

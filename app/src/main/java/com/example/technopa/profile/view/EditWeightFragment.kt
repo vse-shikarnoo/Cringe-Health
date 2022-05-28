@@ -15,15 +15,13 @@ import com.example.technopa.profile.Models.ProfileVM
 import com.example.technopa.databinding.EditWeightLayoutBinding
 import com.example.technopa.profile.Repos.MainUser
 
-class EditWeightFragment(val application: Activity): DialogFragment() {
+class EditWeightFragment(val application: Activity, var profilevm: ProfileVM): DialogFragment() {
 
     private val APP_PREFERENCES = R.string.APP_PREFERENCES.toString()
 
     private val mSettings: SharedPreferences? = application.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
 
     private lateinit var binding: EditWeightLayoutBinding
-
-    private val profileVM : ProfileVM by viewModels(ownerProducer = {requireParentFragment()})
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,7 +31,7 @@ class EditWeightFragment(val application: Activity): DialogFragment() {
 
         binding = EditWeightLayoutBinding.inflate(inflater, container,  false)
 
-        profileVM.user.observe(viewLifecycleOwner){
+        profilevm.user.observe(viewLifecycleOwner){
             setNumberPickers(it)
         }
 
@@ -42,7 +40,7 @@ class EditWeightFragment(val application: Activity): DialogFragment() {
             val editor: SharedPreferences.Editor? = mSettings?.edit()
             editor?.putString("WEIGHT", weight)
             editor?.apply()
-            profileVM.setWeight(binding.weightNp1.value, binding.weightNp2.value)
+            profilevm.setWeight(binding.weightNp1.value, binding.weightNp2.value)
             dismiss()
         }
 
@@ -61,7 +59,7 @@ class EditWeightFragment(val application: Activity): DialogFragment() {
 
         binding.weightNp2.maxValue = 9
         binding.weightNp2.minValue = 0
-        profileVM.weightNp2.observe(viewLifecycleOwner){
+        profilevm.weightNp2.observe(viewLifecycleOwner){
             binding.weightNp2.value = it
         }
     }
