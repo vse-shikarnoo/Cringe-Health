@@ -10,6 +10,7 @@ import android.hardware.SensorManager
 import android.os.Build
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import java.util.*
@@ -24,6 +25,7 @@ class ForegroundService() : Service(), SensorEventListener,
     private val APP_PREFERENCES_DATE = "date"
     private val APP_PREFERENCES_AVHIEVMENTS = "achievments"
 
+    private val application = MyApplication()
 
     private var mSettings: SharedPreferences? = null
 
@@ -46,9 +48,9 @@ class ForegroundService() : Service(), SensorEventListener,
         getSteps()
         getDNS()
 
-        mSettings = MyApplication().mSettings
+        mSettings = application.mSettings
 
-        sensorManager = MyApplication().sensorManager
+        sensorManager = application.sensorManager
         // sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         simpleStepDetector = StepDetector()
         simpleStepDetector?.registerListener(this)
@@ -60,10 +62,6 @@ class ForegroundService() : Service(), SensorEventListener,
         )
 
 
-    }
-
-    override fun onCreate() {
-        super.onCreate()
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -171,6 +169,8 @@ class ForegroundService() : Service(), SensorEventListener,
 
         }
     }
+
+
 
 }
 
